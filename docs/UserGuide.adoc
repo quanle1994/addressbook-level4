@@ -102,13 +102,13 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 === Order persons in Address Book by a parameter: `order`
 
 Order the list of persons according to a specified parameter. +
-Format: `order naME` or `o Address`
+Format: `order PARAMETER` or `o PARAMETER`
 
 ****
 * This will change the index of the person in the Address Book, which will affect other commands that use this attribute such as
 `delete` or `select`.
 * The Allowable parameters are `NAME` and `ADDRESS`.
-* The parameter is case-insenstive.
+* The parameter is case-insenstive. e.g. `order naME` or `o Address`
 * This command will only order by only one single parameter.
 * The error messange `"The parameter can only be either Name or Address"` will be displayed if the parameter is not either Name
 or Address.
