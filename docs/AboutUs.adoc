@@ -21,8 +21,7 @@ Responsibilites : Logic Model
 
 === Le Quang Quan
 image::quanle1994.png[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]]
-//[<<johndoe#, portfolio>>]
+{empty}[https://github.com/quanle1994[github]] [<<LeQuangQuan#, portfolio>>]
 
 Role: Developer, Functionality Planner, Code Quality, Integration  +
 Responsibilities: User Interface Model

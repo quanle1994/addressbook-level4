@@ -336,6 +336,7 @@ The export mechanism is facilitated by `XmlFileStorage`, which resides inside `S
 to export either their addressbook or eventbook in a excel format.
 //end::export[]
 
+// tag::find[]
 === Find From All Text Fields Mechanism
 
 The existing find command is enhanced to allow the user to search for text in multiple fields. Previously, users can
@@ -378,7 +379,10 @@ The code shows how the command is being processed based on the attribute charact
 find will look for keywords in the name. If the attribute is a, the command will find in the address. Lastly, if the
 attribute is m, the command will find in all text fields.
 
-In the future, this feature can be developed into a best-matched result based on different fields.
+In the future, this feature can be developed into a best-matched search based on different fields whereby the contact
+that matches the most fields will appear first followed by the one matching second most fields. Users are allowed to
+set the number of results to appear.
+//end::find[]
 
 // tag::group[]
 === Group mechanism
@@ -580,9 +584,19 @@ Themes will persist even after closing the app, allowing the user to use the app
 // end::theme[]
 //@@author
 
+// tag::lock[]
 === Lock Mechanism
 
-The lock mechanism will enable a user to lock the current list of contacts using a user account comprising a user
+The addressbook.xml file will be encrypted to protect the confidentiality of the data. Contacts are encrypted in
+separate files named by the user's `USERNAME` and encrypted by the user's `PASSWORD`. If the contacts are open to the
+public, it will be in the `PUBLIC.encrypted` file, which is encrypted with the password `PUBLIC`. Every time TunedIn
+runs, it will decrypt the `PUBLIC.encrypted` file with the `PUBLIC` password and write the data into the
+addressbook.xml file for the rest of the program to load up. Once a mutating operation is done to the addressbook.xml
+file, the `save` command must be executed afterwards for the changes to be saved to the encrypted files. Till date,
+most of the mutating commands are incorporated with the `save` command, but users are advised to save manually in
+case of bugs or unincorporated commands.
+
+The `lock` command will enable a user to lock the current list of contacts using a user account comprising a user
 name and a password. The user credentials will then be persisted into the account.xml file as SHA-256 hash digests .
 In particular, User name will be hashed and stored directly into the account.xml file. Each user will be given a
 randomised salt value, which will be hex-coded and stored in the account.xml file. The password will first be
@@ -860,37 +874,12 @@ public class CurrentUserDetails {
         CurrentUserDetails.passwordText = passwordText;
     }
 
-    public static String getUserId() {
-        return userId;
-    }
-
-    public static void setUserId(String userId) {
-        CurrentUserDetails.userId = userId;
-    }
-
-    public static String getUserIdHex() {
-        return userIdHex;
-    }
-
-    public static void setUserIdHex(String userIdHex) {
-        CurrentUserDetails.userIdHex = userIdHex;
-    }
-
-    public static String getSaltText() {
-        return saltText;
-    }
-
-    public static void setSaltText(String saltText) {
-        CurrentUserDetails.saltText = saltText;
-    }
-
-    public static String getPasswordText() {
-        return passwordText;
-    }
-
-    public static void setPasswordText(String passwordText) {
-        CurrentUserDetails.passwordText = passwordText;
-    }
+    public static void setPublicUser() {
+            userId = "PUBLIC";
+            userIdHex = "PUBLIC";
+            saltText = "";
+            passwordText = "PUBLIC";
+        }
 }
 ----
 
@@ -902,8 +891,7 @@ public class CurrentUserDetails {
 to the program +
 
 ---
-
-
+// end::lock[]
 
 // tag::undoredo[]
 === Undo/Redo mechanism
