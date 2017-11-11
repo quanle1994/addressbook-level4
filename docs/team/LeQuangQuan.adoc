@@ -1,0 +1,111 @@
+= Le Quang Quan - Project Portfolio
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== Project: TunedIn
+TunedIn is a free-to-use application that brings to you the power of a full-fledged command line personal organizer,
+bundled together with a user-friendly interface that keeps all of your information easily accessible and at your fingertips.
+
+*Code contributed*: [https://github.com/CS2103AUG2017-T14-B2/main/blob/master/collated/main/quanle1994.md[Functional
+code]]
+
+=== Enhancement Added:
+* Colour tags of the same type and differentiate tags of different types
+* Add Order Command
+* Enhance Find Command to find all text fields
+* Develop lock mechanism
+
+==== External behavior
+
+---
+
+include::../UserGuide.adoc[tag=find]
+
+---
+
+---
+
+include::../UserGuide.adoc[tag=lock]
+
+---
+
+=== Justification
+
+The colouring of different tags will help users differentiate different tags associated with a contact more easily.
+
+Ordering is essential to TunedIn. It provides the fundamental and a must-to-have functionality of an organizer.
+With the ordering mechanism, user will be able to order the list of contacts in 14 different ways. This
+is inline with our goal in making TunedIn as customizable as possible
+and, most importantly to allow the user to organize the contacts to their most preferred way.
+
+The find command is enhanced to search for all text fields and gives user the control over which text field to search
+for, including but not limited to the contact's name. This ensures that the user can search for contacts even though
+he/she cannot remember the contact's name. This is useful when remarks are attached to each contact, which can make
+the search more flexible.
+
+The Lock mechanism allows users to create user accounts that allow the programme to encrypt their contacts, enhancing
+the confidentiality of the data. This is important when the computer is shared among different people, or when a user
+wants to manage different lists of contacts.
+
+=== Implementation
+
+---
+
+include::../DeveloperGuide.adoc[tag=find]
+
+---
+
+=== External behavior
+
+---
+
+include::../UserGuide.adoc[tag=group]
+
+---
+
+==== Justification
+
+Group mechanism is another essential function of TunedIn. It allows the user to organize the
+contacts to user specified groups.
+
+==== Implementation
+
+---
+
+include::../DeveloperGuide.adoc[tag=group]
+
+---
+
+==== External behavior
+
+---
+
+include::../UserGuide.adoc[tag=list]
+
+---
+
+==== Justification
+
+List can be used to show the entire list of contacts.
+It is further enhanced to complement the function of group by allowing user to
+view a list of contacts by group. Instead of implementing the group list view function
+in the group function, it is more intuitive for the user to typed `list` followed by group
+name.
+
+==== Implementation
+
+---
+
+
+---
+
+
+=== Enhancement Proposed:
+
+
+
+=== Other contributions
+
+* Updated the person card with birthday (Pull requests https://github.com[#33], https://github.com[#34])
+* Updated the person card with group ()
