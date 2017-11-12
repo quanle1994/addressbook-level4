@@ -696,7 +696,7 @@ The execution of the command is done in the following method :
     }
 ----
 
-After a series of function calls, the *model.orderList()* method will eventually call *orderBy()* method
+After a series of function calls, the *model.orderList()* method will eventually call *orderPersonList()* method
 in the `UniquePersonList`.
 
 `UniquePersonList` deals with the list of persons that enforces uniqueness between its elements
@@ -704,13 +704,13 @@ and supports a set of list operations. The following diagram shows the UML diagr
 
 image::UniquePersonList_UML.png[width="300"]
 
-*orderBy()* method is able to order the existing person list by a maximum of two parameters.
+*orderPersonList()* method is able to order the existing person list by a maximum of two parameters.
 It will order the list by the first parameter follow by the second parameter.
-The implementation of the *orderBy()* is shown below:
+The implementation of the *orderPersonList()* is shown below:
 
 [source, java]
 ----
-    public void orderBy(String parameter) throws UnrecognisedParameterException {
+    public void orderPersonList(String parameter) throws UnrecognisedParameterException {
 
         switch (parameter) {
         case "NAME":
