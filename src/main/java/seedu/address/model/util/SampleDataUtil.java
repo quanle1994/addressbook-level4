@@ -62,11 +62,11 @@ public class SampleDataUtil {
     public static Event[] getSampleEvents() {
         try {
             return new Event[]{
-                new Event(new Title("Halloween Horror Night"), new Description("Horrifying night"),
-                        new Location("Univsersal Studio"), new Datetime("13-10-2017 2359")),
-                new Event(new Title("Basketball Competition"), new Description("Championship tournament"),
+                new Event(new Title("Halloween Horror Night 7"), new Description("Night out with friends"),
+                        new Location("Univsersal Studio"), new Datetime("13-10-2017 1900")),
+                new Event(new Title("NBA Basketball Finals"), new Description("Cavs vs 76ers"),
                         new Location("UTSH"), new Datetime("26-10-2017 0800")),
-                new Event(new Title("USProduction"), new Description("Drama performance"),
+                new Event(new Title("USProductions"), new Description("Drama Performance"),
                         new Location("YNC Blackbox"), new Datetime("17-10-2017 1200"))
             };
         } catch (IllegalValueException e) {
