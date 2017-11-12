@@ -425,6 +425,9 @@ public class EventListPanel extends UiPart<Region> {
     public static NodeList getNodeListFromFile(File file, String nodeName) throws SAXException,
             IOException, ParserConfigurationException {
 
+        requireNonNull(file);
+        requireNonNull(nodeName);
+
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(file);
@@ -445,6 +448,9 @@ public class EventListPanel extends UiPart<Region> {
      */
     public static void appendHeader(StringBuilder sb, String header) {
 
+        requireNonNull(sb);
+        requireNonNull(header);
+
         //Append the header to the CSV file
         sb.append(header);
         sb.append(XmlUtil.NEW_LINE_SEPARATOR);
@@ -460,6 +466,10 @@ public class EventListPanel extends UiPart<Region> {
      * @param fields using varargs as events book and address book have different number of fields
      */
     public static void appendContent(StringBuilder sb, Element element, String ... fields) {
+
+        requireNonNull(sb);
+        requireNonNull(element);
+        requireNonNull(fields);
 
         for (String f: fields) {
             // need "\"" at the front and back as some fields uses commas in their text
@@ -1159,7 +1169,7 @@ public class AddEventCommand extends UndoableCommand {
             + PREFIX_TITLE + "Halloween Horror Night "
             + PREFIX_DESCRIPTION + "Horrifying night "
             + PREFIX_LOCATION + "Universal Studio "
-            + PREFIX_DATETIME + "13-10-17 2359";
+            + PREFIX_DATETIME + "13-10-2017 2359";
 
     public static final String MESSAGE_SUCCESS = "New event added: %1$s";
     public static final String MESSAGE_DUPLICATE_EVENT = "This event already exists in the event book";
@@ -2001,10 +2011,11 @@ public class Title {
      */
     public Title(String title) throws IllegalValueException {
         requireNonNull(title);
-        if (!isValidTitle(title)) {
+        String trimmedTitle = title.trim();
+        if (!isValidTitle(trimmedTitle)) {
             throw new IllegalValueException(MESSAGE_TITLE_CONSTRAINTS);
         }
-        this.value = title;
+        this.value = trimmedTitle;
     }
 
     /**
@@ -2109,10 +2120,11 @@ public class Description {
      */
     public Description(String description) throws IllegalValueException {
         requireNonNull(description);
-        if (!isValidDescription(description)) {
+        String trimmedDescription = description.trim();
+        if (!isValidDescription(trimmedDescription)) {
             throw new IllegalValueException(MESSAGE_DESCRIPTION_CONSTRAINTS);
         }
-        this.value = description;
+        this.value = trimmedDescription;
     }
 
     /**
@@ -2326,10 +2338,11 @@ public class Location {
      */
     public Location(String location) throws IllegalValueException {
         requireNonNull(location);
-        if (!isValidLocation(location)) {
+        String trimmedLocation = location.trim();
+        if (!isValidLocation(trimmedLocation)) {
             throw new IllegalValueException(MESSAGE_LOCATION_CONSTRAINTS);
         }
-        this.value = location;
+        this.value = trimmedLocation;
     }
 
     /**
@@ -2473,7 +2486,7 @@ public class Datetime {
 ``` java
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
+ * A list of events that enforces uniqueness between its elements and does not allow nulls.
  * <p>
  * Supports a minimal set of list operations.
  *

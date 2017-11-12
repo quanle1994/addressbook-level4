@@ -1,4 +1,362 @@
 # kaiyu92
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Before
+    public void setup() throws Exception {
+        NodeList personList = XmlUtil.getNodeListFromFile(VALID_ADDRESSBOOK_FILE, "persons");
+        singlePersonElement = (Element) personList.item(0);
+
+        NodeList eventList = XmlUtil.getNodeListFromFile(VALID_EVENTBOOK_FILE, "events");
+        singleEventElement = (Element) eventList.item(0);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void exportGeneralBookDataToFile_nullDestination_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.exportDataToFile(null, new StringBuilder());
+    }
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendGeneralBookHeader_nullBuilder_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendHeader(null, "testing");
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendGeneralBookHeader_nullHeader_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendHeader(new StringBuilder(), null);
+    }
+
+    //==============================Addressbook==========================================
+
+    @Test
+    public void getAddressBookDataFromFile_nullFile_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.getDataFromFile(null, AddressBook.class);
+    }
+
+    @Test
+    public void getAddressBookDataFromFile_nullClass_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.getDataFromFile(VALID_ADDRESSBOOK_FILE, null);
+    }
+
+    @Test
+    public void getAddressBookDataFromFile_missingFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlUtil.getDataFromFile(MISSING_FILE, AddressBook.class);
+    }
+
+    @Test
+    public void getAddressBookDataFromFile_emptyFile_dataFormatMismatchException() throws Exception {
+        thrown.expect(JAXBException.class);
+        XmlUtil.getDataFromFile(EMPTY_FILE, AddressBook.class);
+    }
+
+    @Test
+    public void getAddressBookDataFromFile_validFile_validResult() throws Exception {
+        XmlSerializableAddressBook dataFromFile = XmlUtil.getDataFromFile(VALID_ADDRESSBOOK_FILE,
+                XmlSerializableAddressBook.class);
+        assertEquals(9, dataFromFile.getPersonList().size());
+        assertEquals(0, dataFromFile.getTagList().size());
+    }
+
+    @Test
+    public void saveAddressBookDataToFile_nullFile_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.saveDataToFile(null, new AddressBook());
+    }
+
+    @Test
+    public void saveAddressBookDataToFile_nullClass_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.saveDataToFile(VALID_ADDRESSBOOK_FILE, null);
+    }
+
+    @Test
+    public void saveAddressBookDataToFile_missingFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlUtil.saveDataToFile(MISSING_FILE, new AddressBook());
+    }
+
+    @Test
+    public void saveAddressBookDataToFile_validFile_dataSaved() throws Exception {
+        TEMP_ADDRESSBOOK_FILE.createNewFile();
+        XmlSerializableAddressBook dataToWrite = new XmlSerializableAddressBook(new AddressBook());
+        XmlUtil.saveDataToFile(TEMP_ADDRESSBOOK_FILE, dataToWrite);
+        XmlSerializableAddressBook dataFromFile = XmlUtil.getDataFromFile(TEMP_ADDRESSBOOK_FILE,
+                XmlSerializableAddressBook.class);
+        assertEquals((new AddressBook(dataToWrite)).toString(), (new AddressBook(dataFromFile)).toString());
+        //TODO: use equality instead of string comparisons
+
+        AddressBookBuilder builder = new AddressBookBuilder(new AddressBook());
+        dataToWrite = new XmlSerializableAddressBook(
+                builder.withPerson(new PersonBuilder().build()).withTag("Friends").build());
+
+        XmlUtil.saveDataToFile(TEMP_ADDRESSBOOK_FILE, dataToWrite);
+        dataFromFile = XmlUtil.getDataFromFile(TEMP_ADDRESSBOOK_FILE, XmlSerializableAddressBook.class);
+        assertEquals((new AddressBook(dataToWrite)).toString(), (new AddressBook(dataFromFile)).toString());
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void exportAddressBookDataToFile_nullContent_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.exportDataToFile(ADDRESSBOOK_DESTINATION_PATH, null);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getAddressBookNodeList_missingFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlUtil.getNodeListFromFile(MISSING_FILE, "persons");
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getAddressBookNodeList_nullNodeName_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.getNodeListFromFile(VALID_ADDRESSBOOK_FILE, null);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getAddressBookNodeList_validFile_validResult() throws Exception {
+        NodeList personList = XmlUtil.getNodeListFromFile(VALID_ADDRESSBOOK_FILE, "persons");
+        assertEquals(9, personList.getLength());
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendAddressBookHeader_validHeader_validResult() throws Exception {
+        StringBuilder sb = new StringBuilder();
+        XmlUtil.appendHeader(sb, ADDRESSBOOK_HEADER);
+        int headerLength = (sb.toString().split(XmlUtil.NEW_LINE_SEPARATOR))[0].split(XmlUtil.COMMA_DELIMITER).length;
+        assertEquals(8, headerLength);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendAddressBookContent_nullBuilder_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendContent(null, singlePersonElement, "name", "phone", "address", "birthday",
+                "email", "group", "remark");
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendAddressBookContent_nullElement_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendContent(new StringBuilder(), null, "name", "phone", "address", "birthday",
+                "email", "group", "remark");
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendAddressBookContent_nullFields_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendContent(new StringBuilder(), singlePersonElement, (String) null);
+    }
+
+    //=======================================================================================================
+
+    //============================EventBook===============================================================
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookDataFromFile_nullFile_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.getDataFromFile(null, EventBook.class);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookDataFromFile_nullClass_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.getDataFromFile(VALID_EVENTBOOK_FILE, null);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookDataFromFile_missingFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlUtil.getDataFromFile(MISSING_FILE, EventBook.class);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookDataFromFile_emptyFile_dataFormatMismatchException() throws Exception {
+        thrown.expect(JAXBException.class);
+        XmlUtil.getDataFromFile(EMPTY_FILE, EventBook.class);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookDataFromFile_validFile_validResult() throws Exception {
+        XmlSerializableEventBook dataFromFile = XmlUtil.getDataFromFile(VALID_EVENTBOOK_FILE,
+                XmlSerializableEventBook.class);
+        assertEquals(6, dataFromFile.getEventList().size());
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void saveDataToFile_nullFile_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.saveDataToFile(null, new EventBook());
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void saveEventBookDataToFile_nullClass_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.saveDataToFile(VALID_EVENTBOOK_FILE, null);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void saveEventBookDataToFile_missingFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlUtil.saveDataToFile(MISSING_FILE, new EventBook());
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void saveEventBookDataToFile_validFile_dataSaved() throws Exception {
+        TEMP_EVENTBOOK_FILE.createNewFile();
+        XmlSerializableEventBook dataToWrite = new XmlSerializableEventBook(new EventBook());
+        XmlUtil.saveDataToFile(TEMP_EVENTBOOK_FILE, dataToWrite);
+        XmlSerializableEventBook dataFromFile = XmlUtil.getDataFromFile(TEMP_EVENTBOOK_FILE,
+                XmlSerializableEventBook.class);
+        assertEquals((new EventBook(dataToWrite)).toString(), (new EventBook(dataFromFile)).toString());
+        //TODO: use equality instead of string comparisons
+
+        EventBookBuilder builder = new EventBookBuilder(new EventBook());
+        dataToWrite = new XmlSerializableEventBook(builder.withEvent(new EventBuilder().build()).build());
+
+        XmlUtil.saveDataToFile(TEMP_EVENTBOOK_FILE, dataToWrite);
+        dataFromFile = XmlUtil.getDataFromFile(TEMP_EVENTBOOK_FILE, XmlSerializableEventBook.class);
+        assertEquals((new EventBook(dataToWrite)).toString(), (new EventBook(dataFromFile)).toString());
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void exportEventBookDataToFile_nullContent_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.exportDataToFile(EVENTBOOK_DESTINATION_PATH, null);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookNodeList_missingFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlUtil.getNodeListFromFile(MISSING_FILE, "events");
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookNodeList_nullNodeName_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.getNodeListFromFile(VALID_EVENTBOOK_FILE, null);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void getEventBookNodeList_validFile_validResult() throws Exception {
+        NodeList eventList = XmlUtil.getNodeListFromFile(VALID_EVENTBOOK_FILE, "events");
+        assertEquals(6, eventList.getLength());
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendEventBookHeader_validHeader_validResult() throws Exception {
+        StringBuilder sb = new StringBuilder();
+        XmlUtil.appendHeader(sb, EVENTBOOK_HEADER);
+        int headerLength = (sb.toString().split(XmlUtil.NEW_LINE_SEPARATOR))[0].split(XmlUtil.COMMA_DELIMITER).length;
+        assertEquals(4, headerLength);
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendEventBookContent_nullBuilder_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendContent(null, singleEventElement, "title", "description", "location", "datetime");
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendEventBookContent_nullElement_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendContent(new StringBuilder(), null, "title",
+                "description", "location", "datetime");
+    }
+
+```
+###### /java/seedu/address/commons/util/XmlUtilTest.java
+``` java
+    @Test
+    public void appendEventBookContent_nullFields_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlUtil.appendContent(new StringBuilder(), singleEventElement, (String) null);
+    }
+    //=======================================================================================================
+}
+```
 ###### /java/seedu/address/logic/parser/FindEventCommandParserTest.java
 ``` java
 public class FindEventCommandParserTest {
@@ -709,7 +1067,8 @@ public class AddEventCommandTest {
         }
 
         @Override
-        public void orderEventList(String parameter) throws UnrecognisedParameterException {
+        public void orderEventList(String parameter)
+                throws seedu.address.model.event.exceptions.UnrecognisedParameterException {
             fail("This method should not be called.");
         }
 
@@ -1242,14 +1601,14 @@ public class OrderEventCommandTest {
     }
 
     @Test
-    public void execute_zeroParameter_listNotSorted() {
+    public void execute_zeroParameter_listNotSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(" ");
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_WRONG_PARAMETER,
                 Arrays.asList(SPECTRA, DEEPAVALI, HENNA, WINE));
     }
 
     @Test
-    public void execute_titleParameter_listSorted() {
+    public void execute_titleParameter_listSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(firstParameter);
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_SUCCESS + firstParameter,
                 Arrays.asList(DEEPAVALI, HENNA, SPECTRA, WINE));
@@ -1257,14 +1616,14 @@ public class OrderEventCommandTest {
 
 
     @Test
-    public void execute_locationParameter_listSorted() {
+    public void execute_locationParameter_listSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(secondParameter);
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_SUCCESS + secondParameter,
                 Arrays.asList(WINE, DEEPAVALI, SPECTRA, HENNA));
     }
 
     @Test
-    public void execute_datetimeParameter_listSorted() {
+    public void execute_datetimeParameter_listSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(thirdParameter);
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_SUCCESS + thirdParameter,
                 Arrays.asList(DEEPAVALI, WINE, HENNA, SPECTRA));
@@ -1311,7 +1670,7 @@ public class OrderEventCommandTest {
      * - the {@code FilteredList<ReadOnlyEvent>} is equal to {@code expectedList}<br>
      */
     private void assertOrderSuccess(OrderEventCommand command, String expectedMessage,
-                                    List<ReadOnlyEvent> expectedList) {
+                                    List<ReadOnlyEvent> expectedList) throws CommandException {
         CommandResult commandResult = command.executeUndoableCommand();
 
         assertEquals(expectedMessage, commandResult.feedbackToUser);
@@ -1591,6 +1950,120 @@ public class ListEventCommandTest {
     }
 }
 ```
+###### /java/seedu/address/logic/commands/ExportCommandTest.java
+``` java
+public class ExportCommandTest {
+
+    private ExportCommand exportCommandForAddressBook;
+    private ExportCommand exportCommandForEventBook;
+    private CommandHistory history;
+
+    @Before
+    public void setUp() {
+
+        UserPrefs userPrefs = new UserPrefs();
+        Config config = new Config();
+        Storage userStorage = new StorageManager(
+                new XmlAddressBookStorage(userPrefs.getAddressBookFilePath(), userPrefs.getAddressbookExportedPath(),
+                        userPrefs.getAddressbookHeader()),
+                new XmlEventBookStorage(userPrefs.getEventBookFilePath(), userPrefs.getEventbookExportedPath(),
+                        userPrefs.getEventbookHeader()),
+                new JsonUserPrefsStorage(config.getUserPrefsFilePath()),
+                new XmlAccountStorage(userPrefs.getAccountFilePath()));
+        Model model = new ModelManager();
+        model.setUserStorage(userStorage);
+        history = new CommandHistory();
+        exportCommandForAddressBook = new ExportCommand("addressbook");
+        exportCommandForEventBook = new ExportCommand("eventbook");
+
+
+        Logic logic = null;
+        exportCommandForAddressBook.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+        exportCommandForEventBook.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+    }
+
+    @Test
+    public void execute_exportAddressBook_success() throws CommandException, DuplicateUserException {
+        CommandResult result = exportCommandForAddressBook.execute();
+        assertEquals(MESSAGE_EXPORT_BOOK_SUCCESS, result.feedbackToUser);
+    }
+
+    @Test
+    public void execute_exportEventBook_success() throws CommandException, DuplicateUserException {
+        CommandResult result = exportCommandForEventBook.execute();
+        assertEquals(MESSAGE_EXPORT_BOOK_SUCCESS, result.feedbackToUser);
+    }
+}
+```
+###### /java/seedu/address/storage/StorageManagerTest.java
+``` java
+    @Test
+    public void eventBookReadSave() throws Exception {
+
+        EventBook original = getTypicalEventBook();
+        storageManager.saveEventBook(original);
+        ReadOnlyEventBook retrieved = storageManager.readEventBook().get();
+        assertEquals(original, new EventBook(retrieved));
+    }
+
+```
+###### /java/seedu/address/storage/StorageManagerTest.java
+``` java
+    @Test
+    public void getEventBookFilePath() {
+        assertNotNull(storageManager.getEventBookFilePath());
+    }
+
+```
+###### /java/seedu/address/storage/StorageManagerTest.java
+``` java
+    @Test
+    public void handleEventBookChangedEvent_exceptionThrown_eventRaised() {
+        // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
+        Storage storage = new StorageManager(new XmlAddressBookStorageExceptionThrowingStub("dummy",
+                "dummy", "dummy"),
+                new XmlEventBookStorageExceptionThrowingStub("dummy", "dummy", "dummy"),
+                new JsonUserPrefsStorage("dummy"), new XmlAccountStorage("dummy"));
+        storage.handleEventBookChangedEvent(new EventBookChangedEvent(new EventBook()));
+        assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof DataSavingExceptionEvent);
+    }
+
+    /**
+     * A Stub class to throw an exception when the save method is called
+     */
+    class XmlAddressBookStorageExceptionThrowingStub extends XmlAddressBookStorage {
+
+        public XmlAddressBookStorageExceptionThrowingStub(String filePath, String exportPath, String header) {
+            super(filePath, exportPath, header);
+        }
+
+        @Override
+        public void saveAddressBook(ReadOnlyAddressBook addressBook, String filePath) throws IOException {
+            throw new IOException("dummy exception");
+        }
+    }
+
+```
+###### /java/seedu/address/storage/StorageManagerTest.java
+``` java
+    /**
+     * A Stub class to throw an exception when the save method is called
+     */
+    class XmlEventBookStorageExceptionThrowingStub extends XmlEventBookStorage {
+
+        public XmlEventBookStorageExceptionThrowingStub(String filePath, String exportPath, String header) {
+            super(filePath, exportPath, header);
+        }
+
+        @Override
+        public void saveEventBook(ReadOnlyEventBook eventBook, String filePath) throws IOException {
+            throw new IOException("dummy exception");
+        }
+    }
+}
+```
 ###### /java/seedu/address/storage/XmlEventBookStorageTest.java
 ``` java
 public class XmlEventBookStorageTest {
@@ -1598,7 +2071,7 @@ public class XmlEventBookStorageTest {
             .getPath("./src/test/data/XmlEventBookStorageTest/");
 
     private static final String HEADER = "Title,Description,Location,Datetime";
-    private static final String EXPORT_DATE = "TempEventBook.csv";
+    private static final String EXPORT_DATA = "TempEventBook.csv";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -1613,7 +2086,7 @@ public class XmlEventBookStorageTest {
     }
 
     private java.util.Optional<ReadOnlyEventBook> readEventBook(String filePath) throws Exception {
-        return new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATE, HEADER)
+        return new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATA, HEADER)
                 .readEventBook(addToTestDataPathIfNotNull(filePath));
     }
 
@@ -1674,7 +2147,7 @@ public class XmlEventBookStorageTest {
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getEventList_modifyList_throwsUnsupportedOperationException() {
         XmlSerializableEventBook eventBook = new XmlSerializableEventBook();
         thrown.expect(UnsupportedOperationException.class);
         eventBook.getEventList().remove(0);
@@ -1685,7 +2158,7 @@ public class XmlEventBookStorageTest {
      */
     private void saveEventBook(ReadOnlyEventBook eventBook, String filePath) {
         try {
-            new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATE, HEADER)
+            new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATA, HEADER)
                     .saveEventBook(eventBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
@@ -1804,15 +2277,18 @@ public class UniqueEventListTest {
         assertFalse(modelManager.equals(5));
 
         // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, differentEventBook, userPrefs,
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, eventBook, userPrefs,
                 account, config)));
 
-        // different filteredList -> returns false
+        // different Persons filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
-        ContainsKeywordsPredicate.setPredicateType('n');
         modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
 
+        // different events filteredList -> returns false
+        String keywordForEvents = SPECTRA.getTitle().value;
+        modelManager.updateFilteredEventList(new TitleContainsKeywordsPredicate(Arrays.asList(keywordForEvents)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -1821,6 +2297,7 @@ public class UniqueEventListTest {
         // different userPrefs -> returns true
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookName("differentName");
+        differentUserPrefs.setEventBookName("differentName");
         assertTrue(modelManager.equals(new ModelManager(addressBook, eventBook, differentUserPrefs, account, config)));
     }
 }
