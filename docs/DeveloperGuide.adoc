@@ -329,7 +329,7 @@ commands in the TunedIn application. It also interacts with the newly added cale
 
 image::CalendarUI.png[width="500"]
 
-Firstly, for `Event` mechanism to incorporate TunedIn, the UI component will remain the same as how it deals with the
+Firstly, for Event mechanism to incorporate TunedIn, the UI component will remain the same as how it deals with the
 previous `Addressbook` application. For the Logic component, it will also remain the same, but with a new naming for the parser
 (`AddressbookParser` -> `GeneralbookParser`) Reason being is because it will indicate a much clearer meaning that it can process
 command for both `Addressbook` and `Eventbook`.
@@ -438,15 +438,15 @@ image::DeleteEventSequenceDiagram.png[width="800"]
 
 The following activity diagram summarize what happens inside the `EventBook` when a user executes a new `addevent` command:
 
-image::AddEventActivityDiagram.png[width="400"]
+image::AddEventActivityDiagram.png[width="300"]
 
 The following activity diagram summarize what happens inside the `EventBook` when a user executes a new `editevent` command:
 
-image::UpdateEventActivityDiagram.png[width="400"]
+image::UpdateEventActivityDiagram.png[width="300"]
 
 The following activity diagram summarize what happens inside the `EventBook` when a user executes a new `deleteevent` command:
 
-image::DeleteEventActivityDiagram.png[width="400"]
+image::DeleteEventActivityDiagram.png[width="300"]
 
 ==== Design Considerations
 
@@ -563,7 +563,7 @@ The implementation of exporting eventbook into a csv file is shown below:
 
 The following activity diagram summarize what happens inside the `XmlFileStorage` when a user executes a new command:
 
-image::ExportActivityDiagram.png[width="400"]
+image::ExportActivityDiagram.png[width="300"]
 
 ==== Design Considerations
 
