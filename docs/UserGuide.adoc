@@ -14,7 +14,6 @@ endif::[]
 
 By: `The TunedIn Team`      Since: `Sep 2017`      Licence: `MIT`
 
-//@@author keloysiusmak
 == Introduction
 
 Welcome to TunedIn, a free-to-use application that brings to you the power of a full-fledged command line personal
@@ -37,7 +36,6 @@ customizability in our application as much as possible.
 We continue to strive and innovate to bring TunedIn to the next level, in a harmonious and non-invasive way to
 complement our daily lives. Feedback is always welcome at hello@tunedinapp.com, we'd be happy to hear how we can
 improve TunedIn.
-//@@author
 
 == Getting Started
 
@@ -65,7 +63,6 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Refer to the link:#commands[Commands] section below for details of each command.
 .  Having troubles? Drop us an email at help@tunedinapp.com and we'll get back to you as soon as possible.
 
-//@@author keloysiusmak
 == Commands
 
 TunedIn is a Command Line Application (CLI), and we have no plans to do otherwise. Operations are carried out on
@@ -73,7 +70,6 @@ TunedIn using Commands, which can be keyed in in the command field. We have a va
 with Contact List, Event List and the app Theme. All the commands together with their usage are listed below.
 We are constantly striving to expand this list of commands, feel free
 to contact us if you have any suggestions for commands.
-//@@author
 
 ====
 *Command Format*
@@ -102,7 +98,6 @@ Examples:
 * `add n/Betsy Crowe t/friend a/Newgate Prison p/1234567 b/01-10-1995 t/criminal`
 
 // tag::event[]
-//@@author kaiyu92
 === Adding an event: `addevent` - Since V1.2
 
 Adds an event to the event book +
@@ -146,7 +141,6 @@ Deletes the 2nd person in the address book.
 Deletes the 1st person in the results of the `find` command.
 
 // tag::event[]
-//@@author kaiyu92
 === Deleting an event : `deleteevent` - Since V1.2
 
 Deletes the specified event from the event book. +
@@ -187,7 +181,6 @@ Edits the phone number and email address of the 1st person in current list of ad
 Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 // tag::event[]
-//@@author kaiyu92
 === Editing an event : `editevent` - Since V1.2
 
 Edits an existing event in the event book. +
@@ -213,7 +206,6 @@ Exits the program. +
 Format: `exit`
 
 // tag::export[]
-//@@author kaiyu92
 === Export : `export` - Since V1.5
 
 Exports the TunedIn application data (either event book or address book) into csv format. +
@@ -257,7 +249,6 @@ Returns any person having names with `jo` in the sequence
 // end::find[]
 
 // tag::event[]
-//@@author kaiyu92
 === Finding Event : `findevent` - Since V1.3
 
 Finds events whose titles contain any of the given keywords. +
@@ -419,7 +410,6 @@ Invalid command Example :
 // end::order[]
 
 // tag::event[]
-//@@author kaiyu92
 === Order events in Event Book by a parameter: `orderevent` - Since V1.3
 
 Order the list of events according to a specified parameter. Parameters are case insensitive. +
@@ -467,7 +457,6 @@ The `redo` command fails as there are no `undo` commands executed previously.
 // end::undoredo[]
 
 // tag::remark[]
-//@@author kaiyu92
 === Remarking a person : `remark` - Since V1.1
 
 Remarks an existing person in the address book. +
@@ -532,7 +521,6 @@ Selects the 2nd person in the address book.
 Selects the 1st person in the results of the `find` command.
 
 // tag::event[]
-//@@author kaiyu92
 === Selecting an event : `selectevent` - Since V1.4
 
 Selects the event identified by the index number used in the last event listing. +
@@ -555,7 +543,6 @@ Selects the 1st event in the results of the `findevent` command.
 // end::event[]
 
 // tag::alias[]
-//@@author keloysiusmak
 === Set aliases : `setalias` - Since V1.2
 
 Set alias for a particular command. +
@@ -581,15 +568,12 @@ Examples:
 // end::theme[]
 
 // tag::switch[]
-//@@author kaiyu92
 === Switch Tab : `switch` - Since V1.4
 
 Switch to either `contacts` or `events` tab panel. +
 Format: `switch`
-//@@author
 // end::switch[]
 
-//@@author keloysiusmak
 // tag::transfer[]
 === Transfer : `transfer`
 
@@ -603,7 +587,6 @@ Format: `transfer`
 Shows the list of aliases used, as well as protected aliases. +
 Format: `viewalias`
 // end::alias[]
-//@@author
 
 === Undoing previous command : `undo` - Since V1.0
 
@@ -633,7 +616,6 @@ The `undo` command fails as there are no undoable commands executed previously.
 
 ===
 
-//@@author keloysiusmak
 == Upcoming Features
 
 === Change Password : `changepassword` - Coming in V2.0
@@ -734,7 +716,7 @@ need to save manually.
 
 *Q*: Is this application free to use? +
 *A*: Yes, the application is free to use, and will remain this way.
-//@@author
+
 == Command Summary
 
 * *Add* : `add n/NAME p/PHONE_NUMBERx a/ADDRESS [b/BIRTHDAY] [e/EMAIL] [t/TAG]...` +
