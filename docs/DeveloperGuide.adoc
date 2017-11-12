@@ -334,7 +334,7 @@ previous `Addressbook` application. For the Logic component, it will also remain
 (`AddressbookParser` -> `GeneralbookParser`) Reason being is because it will indicate a much clearer meaning that it can process
 command for both `Addressbook` and `Eventbook`.
 
-For the Model component, event mechanism will deals with `EventBook`, and faciliated by `ModelManager`. 
+For the Model component, event mechanism will deals with `EventBook`, and faciliated by `ModelManager`.
 
 The following diagram shows the inheritance diagram for `EventBook`:
 
@@ -373,7 +373,7 @@ The implementation of the faciliation between ModelManager and EventBook is show
         indicateEventBookChanged();
     }
 ----
-For the Storage component, event mechanism will deals with `EventBookStorage`, and 
+For the Storage component, event mechanism will deals with `EventBookStorage`, and
 faciliated by `StorageManager`.
 
 The following diagram shows the inheritance diagram for `EventBookStorage`:
