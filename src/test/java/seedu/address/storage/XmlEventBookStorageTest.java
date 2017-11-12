@@ -26,7 +26,7 @@ public class XmlEventBookStorageTest {
             .getPath("./src/test/data/XmlEventBookStorageTest/");
 
     private static final String HEADER = "Title,Description,Location,Datetime";
-    private static final String EXPORT_DATE = "TempEventBook.csv";
+    private static final String EXPORT_DATA = "TempEventBook.csv";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -41,7 +41,7 @@ public class XmlEventBookStorageTest {
     }
 
     private java.util.Optional<ReadOnlyEventBook> readEventBook(String filePath) throws Exception {
-        return new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATE, HEADER)
+        return new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATA, HEADER)
                 .readEventBook(addToTestDataPathIfNotNull(filePath));
     }
 
@@ -102,7 +102,7 @@ public class XmlEventBookStorageTest {
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getEventList_modifyList_throwsUnsupportedOperationException() {
         XmlSerializableEventBook eventBook = new XmlSerializableEventBook();
         thrown.expect(UnsupportedOperationException.class);
         eventBook.getEventList().remove(0);
@@ -113,7 +113,7 @@ public class XmlEventBookStorageTest {
      */
     private void saveEventBook(ReadOnlyEventBook eventBook, String filePath) {
         try {
-            new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATE, HEADER)
+            new XmlEventBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATA, HEADER)
                     .saveEventBook(eventBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);

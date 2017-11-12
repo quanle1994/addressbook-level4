@@ -16,12 +16,12 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.event.exceptions.DuplicateEventException;
 import seedu.address.model.event.exceptions.EventNotFoundException;
-import seedu.address.model.person.exceptions.UnrecognisedParameterException;
+import seedu.address.model.event.exceptions.UnrecognisedParameterException;
 
 //@@author kaiyu92
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
+ * A list of events that enforces uniqueness between its elements and does not allow nulls.
  * <p>
  * Supports a minimal set of list operations.
  *

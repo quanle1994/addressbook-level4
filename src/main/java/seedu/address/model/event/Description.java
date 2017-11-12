@@ -29,10 +29,11 @@ public class Description {
      */
     public Description(String description) throws IllegalValueException {
         requireNonNull(description);
-        if (!isValidDescription(description)) {
+        String trimmedDescription = description.trim();
+        if (!isValidDescription(trimmedDescription)) {
             throw new IllegalValueException(MESSAGE_DESCRIPTION_CONSTRAINTS);
         }
-        this.value = description;
+        this.value = trimmedDescription;
     }
 
     /**

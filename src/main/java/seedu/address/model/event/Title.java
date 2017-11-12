@@ -29,10 +29,11 @@ public class Title {
      */
     public Title(String title) throws IllegalValueException {
         requireNonNull(title);
-        if (!isValidTitle(title)) {
+        String trimmedTitle = title.trim();
+        if (!isValidTitle(trimmedTitle)) {
             throw new IllegalValueException(MESSAGE_TITLE_CONSTRAINTS);
         }
-        this.value = title;
+        this.value = trimmedTitle;
     }
 
     /**

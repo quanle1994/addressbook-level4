@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
-import seedu.address.model.person.exceptions.UnrecognisedParameterException;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.event.exceptions.UnrecognisedParameterException;
 
 /**
  * Order the list according to a parameter
@@ -29,13 +30,14 @@ public class OrderEventCommand extends UndoableCommand {
     }
 
     @Override
-    public CommandResult executeUndoableCommand() {
+    public CommandResult executeUndoableCommand() throws CommandException {
         try {
             model.orderEventList(orderParameter);
-            return new CommandResult(MESSAGE_SORT_SUCCESS + orderParameter);
+
         } catch (UnrecognisedParameterException upe) {
             return new CommandResult(MESSAGE_SORT_WRONG_PARAMETER);
         }
+        return new CommandResult(MESSAGE_SORT_SUCCESS + orderParameter);
     }
 
     @Override

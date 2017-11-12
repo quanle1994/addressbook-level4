@@ -21,6 +21,7 @@ import seedu.address.commons.core.Config;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.Logic;
 import seedu.address.logic.UndoRedoStack;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Account;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -59,14 +60,14 @@ public class OrderEventCommandTest {
     }
 
     @Test
-    public void execute_zeroParameter_listNotSorted() {
+    public void execute_zeroParameter_listNotSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(" ");
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_WRONG_PARAMETER,
                 Arrays.asList(SPECTRA, DEEPAVALI, HENNA, WINE));
     }
 
     @Test
-    public void execute_titleParameter_listSorted() {
+    public void execute_titleParameter_listSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(firstParameter);
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_SUCCESS + firstParameter,
                 Arrays.asList(DEEPAVALI, HENNA, SPECTRA, WINE));
@@ -74,14 +75,14 @@ public class OrderEventCommandTest {
 
 
     @Test
-    public void execute_locationParameter_listSorted() {
+    public void execute_locationParameter_listSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(secondParameter);
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_SUCCESS + secondParameter,
                 Arrays.asList(WINE, DEEPAVALI, SPECTRA, HENNA));
     }
 
     @Test
-    public void execute_datetimeParameter_listSorted() {
+    public void execute_datetimeParameter_listSorted() throws CommandException {
         OrderEventCommand command = prepareCommand(thirdParameter);
         assertOrderSuccess(command, OrderEventCommand.MESSAGE_SORT_SUCCESS + thirdParameter,
                 Arrays.asList(DEEPAVALI, WINE, HENNA, SPECTRA));
@@ -128,7 +129,7 @@ public class OrderEventCommandTest {
      * - the {@code FilteredList<ReadOnlyEvent>} is equal to {@code expectedList}<br>
      */
     private void assertOrderSuccess(OrderEventCommand command, String expectedMessage,
-                                    List<ReadOnlyEvent> expectedList) {
+                                    List<ReadOnlyEvent> expectedList) throws CommandException {
         CommandResult commandResult = command.executeUndoableCommand();
 
         assertEquals(expectedMessage, commandResult.feedbackToUser);

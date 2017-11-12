@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.core.Config;
+import seedu.address.model.event.TitleContainsKeywordsPredicate;
 import seedu.address.model.person.ContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.EventBookBuilder;
@@ -68,15 +69,18 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, differentEventBook, userPrefs,
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, eventBook, userPrefs,
                 account, config)));
 
-        // different filteredList -> returns false
+        // different Persons filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
-        ContainsKeywordsPredicate.setPredicateType('n');
         modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
 
+        // different events filteredList -> returns false
+        String keywordForEvents = SPECTRA.getTitle().value;
+        modelManager.updateFilteredEventList(new TitleContainsKeywordsPredicate(Arrays.asList(keywordForEvents)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -85,6 +89,7 @@ public class ModelManagerTest {
         // different userPrefs -> returns true
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookName("differentName");
+        differentUserPrefs.setEventBookName("differentName");
         assertTrue(modelManager.equals(new ModelManager(addressBook, eventBook, differentUserPrefs, account, config)));
     }
 }

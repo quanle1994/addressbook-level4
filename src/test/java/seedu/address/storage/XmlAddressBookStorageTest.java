@@ -24,7 +24,7 @@ public class XmlAddressBookStorageTest {
     private static final String TEST_DATA_FOLDER = FileUtil
             .getPath("./src/test/data/XmlAddressBookStorageTest/");
     private static final String HEADER = "Name,Phone,Address,Birthday,Email,Group,Remark,Tagged";
-    private static final String EXPORT_DATE = "TempAddressBook.csv";
+    private static final String EXPORT_DATA = "TempAddressBook.csv";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -40,7 +40,7 @@ public class XmlAddressBookStorageTest {
 
     private java.util.Optional<ReadOnlyAddressBook> readAddressBook(String filePath)
             throws Exception {
-        return new XmlAddressBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATE, HEADER)
+        return new XmlAddressBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATA, HEADER)
                 .readAddressBook(addToTestDataPathIfNotNull(filePath));
     }
 
@@ -118,7 +118,7 @@ public class XmlAddressBookStorageTest {
      */
     private void saveAddressBook(ReadOnlyAddressBook addressBook, String filePath) {
         try {
-            new XmlAddressBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATE, HEADER)
+            new XmlAddressBookStorage(filePath, TEST_DATA_FOLDER + EXPORT_DATA, HEADER)
                     .saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);

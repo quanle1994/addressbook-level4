@@ -420,14 +420,13 @@ public class ModelManager extends ComponentManager implements Model {
         filteredPersons.setPredicate(null);
     }
 
-    //========================================================================================================
-
     @Override
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
 
+    //========================================================================================================
 
     @Override
     public void resetEventData(ReadOnlyEventBook newData) {
@@ -495,13 +494,13 @@ public class ModelManager extends ComponentManager implements Model {
         return FXCollections.unmodifiableObservableList(filteredEvents);
     }
 
-    //===================== Account Operations =========================
-
     @Override
     public void updateFilteredEventList(Predicate<ReadOnlyEvent> predicate) {
         requireNonNull(predicate);
         filteredEvents.setPredicate(predicate);
     }
+
+    //===================== Account Operations =========================
 
     @Override
     public void persistUserAccount(ReadOnlyUser user) throws DuplicateUserException {
@@ -532,9 +531,11 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void orderEventList(String parameter) throws UnrecognisedParameterException {
+
+    public void orderEventList(String parameter)
+            throws seedu.address.model.event.exceptions.UnrecognisedParameterException {
         eventBook.orderList(parameter);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredEventList(PREDICATE_SHOW_ALL_EVENTS);
         indicateEventBookChanged();
     }
 
@@ -554,6 +555,8 @@ public class ModelManager extends ComponentManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && filteredPersons.equals(other.filteredPersons);
+                //&& eventBook.equals(other.eventBook)
+                //&& filteredEvents.equals(other.filteredEvents);
     }
 
     //@@author keloysiusmak

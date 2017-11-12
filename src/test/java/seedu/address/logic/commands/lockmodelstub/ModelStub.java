@@ -225,7 +225,8 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public void orderEventList(String parameter) throws UnrecognisedParameterException {
+    public void orderEventList(String parameter)
+            throws seedu.address.model.event.exceptions.UnrecognisedParameterException {
         fail("This method should not be called.");
     }
 

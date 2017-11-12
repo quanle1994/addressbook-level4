@@ -29,10 +29,11 @@ public class Location {
      */
     public Location(String location) throws IllegalValueException {
         requireNonNull(location);
-        if (!isValidLocation(location)) {
+        String trimmedLocation = location.trim();
+        if (!isValidLocation(trimmedLocation)) {
             throw new IllegalValueException(MESSAGE_LOCATION_CONSTRAINTS);
         }
-        this.value = location;
+        this.value = trimmedLocation;
     }
 
     /**

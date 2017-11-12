@@ -186,7 +186,7 @@ public interface Model {
     /**
      * Order the event list based on a parameter
      */
-    void orderEventList(String parameter) throws UnrecognisedParameterException;
+    void orderEventList(String parameter) throws seedu.address.model.event.exceptions.UnrecognisedParameterException;
     //===================================================================================================
 
     /**

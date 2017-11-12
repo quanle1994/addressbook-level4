@@ -110,6 +110,9 @@ public class XmlUtil {
     public static NodeList getNodeListFromFile(File file, String nodeName) throws SAXException,
             IOException, ParserConfigurationException {
 
+        requireNonNull(file);
+        requireNonNull(nodeName);
+
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(file);
@@ -128,6 +131,9 @@ public class XmlUtil {
      */
     public static void appendHeader(StringBuilder sb, String header) {
 
+        requireNonNull(sb);
+        requireNonNull(header);
+
         //Append the header to the CSV file
         sb.append(header);
         sb.append(XmlUtil.NEW_LINE_SEPARATOR);
@@ -141,6 +147,10 @@ public class XmlUtil {
      * @param fields using varargs as events book and address book have different number of fields
      */
     public static void appendContent(StringBuilder sb, Element element, String ... fields) {
+
+        requireNonNull(sb);
+        requireNonNull(element);
+        requireNonNull(fields);
 
         for (String f: fields) {
             // need "\"" at the front and back as some fields uses commas in their text

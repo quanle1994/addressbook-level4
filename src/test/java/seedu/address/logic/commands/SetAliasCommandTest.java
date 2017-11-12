@@ -45,7 +45,6 @@ import seedu.address.model.group.Group;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.model.person.exceptions.UnrecognisedParameterException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.user.ReadOnlyUser;
 import seedu.address.model.user.User;
@@ -366,7 +365,8 @@ public class SetAliasCommandTest {
         }
 
         @Override
-        public void orderEventList(String parameter) throws UnrecognisedParameterException {
+        public void orderEventList(String parameter)
+                throws seedu.address.model.event.exceptions.UnrecognisedParameterException {
             fail("This method should not be called.");
         }
 

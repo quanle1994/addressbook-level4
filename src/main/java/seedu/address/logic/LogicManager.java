@@ -38,8 +38,6 @@ public class LogicManager extends ComponentManager implements Logic {
 
     private CalendarViewStateParser calendarViewStateParser;
 
-    private CalendarView calendarView;
-
     public LogicManager(Model model, UserPrefs userprefs, Config config, Ui ui) {
         this.model = model;
         this.userPrefs = userprefs;

@@ -90,6 +90,7 @@ public class StorageManagerTest {
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof DataSavingExceptionEvent);
     }
 
+    //@@author kaiyu92
     @Test
     public void eventBookReadSave() throws Exception {
 
@@ -99,11 +100,13 @@ public class StorageManagerTest {
         assertEquals(original, new EventBook(retrieved));
     }
 
+    //@@author kaiyu92
     @Test
     public void getEventBookFilePath() {
         assertNotNull(storageManager.getEventBookFilePath());
     }
 
+    //@@author kaiyu92
     @Test
     public void handleEventBookChangedEvent_exceptionThrown_eventRaised() {
         // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
@@ -130,6 +133,7 @@ public class StorageManagerTest {
         }
     }
 
+    //@@author kaiyu92
     /**
      * A Stub class to throw an exception when the save method is called
      */
