@@ -531,7 +531,6 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-
     public void orderEventList(String parameter)
             throws seedu.address.model.event.exceptions.UnrecognisedParameterException {
         eventBook.orderList(parameter);
@@ -555,8 +554,6 @@ public class ModelManager extends ComponentManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && filteredPersons.equals(other.filteredPersons);
-                //&& eventBook.equals(other.eventBook)
-                //&& filteredEvents.equals(other.filteredEvents);
     }
 
     //@@author keloysiusmak
