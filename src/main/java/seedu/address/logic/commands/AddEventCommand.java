@@ -29,7 +29,7 @@ public class AddEventCommand extends UndoableCommand {
             + PREFIX_TITLE + "Halloween Horror Night "
             + PREFIX_DESCRIPTION + "Horrifying night "
             + PREFIX_LOCATION + "Universal Studio "
-            + PREFIX_DATETIME + "13-10-17 2359";
+            + PREFIX_DATETIME + "13-10-2017 2359";
 
     public static final String MESSAGE_SUCCESS = "New event added: %1$s";
     public static final String MESSAGE_DUPLICATE_EVENT = "This event already exists in the event book";
