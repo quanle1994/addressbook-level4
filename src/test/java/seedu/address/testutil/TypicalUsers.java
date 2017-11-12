@@ -16,7 +16,7 @@ import seedu.address.model.user.exceptions.DuplicateUserException;
  */
 public class TypicalUsers {
 
-    public static final ReadOnlyUser A = userBuilder("a", "1111111111111111111111", "a");
+    public static final ReadOnlyUser A = userBuilder("a", "1", "a");
     public static final ReadOnlyUser B = userBuilder("b", "2222222222222222222222", "b");
     public static final ReadOnlyUser C = userBuilder("c", "3333333333333333333333", "c");
     public static final ReadOnlyUser D = userBuilder("d", "4444444444444444444444", "d");
@@ -29,9 +29,9 @@ public class TypicalUsers {
      */
     public static Account getTypicalAccount() {
         Account ac = new Account();
-        for (ReadOnlyUser person : getTypicalUsers()) {
+        for (ReadOnlyUser user : getTypicalUsers()) {
             try {
-                ac.addUser(person);
+                ac.addUser(user);
             } catch (DuplicateUserException e) {
                 assert false : "not possible";
             }
@@ -50,6 +50,10 @@ public class TypicalUsers {
     public static ReadOnlyUser userBuilder(String userName, String salt, String password) {
         userName = new String(new HashDigest().getHashDigest(userName));
         userName = new HexCode().getHexFormat(userName);
+
+        password = new String(new HashDigest().getHashDigest(salt + password));
+        password = new HexCode().getHexFormat(password);
+        salt = new String(new HexCode().getHexFormat(salt));
         return new User(userName, salt, password);
     }
 

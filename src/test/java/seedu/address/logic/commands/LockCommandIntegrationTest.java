@@ -5,6 +5,7 @@ package seedu.address.logic.commands;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalUsers.getTypicalAccount;
+import static seedu.address.testutil.TypicalUsers.userBuilder;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,6 +21,7 @@ import seedu.address.model.EventBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.user.ReadOnlyUser;
 import seedu.address.model.user.User;
 import seedu.address.ui.UiManager;
 
@@ -44,7 +46,7 @@ public class LockCommandIntegrationTest {
         thrown.expect(CommandException.class);
         thrown.expectMessage(LockCommand.MESSAGE_EXISTING_USER);
 
-        prepareCommand(invalidUser, model).execute();
+        prepareLockCommand(invalidUser, model).execute();
     }
 
     @Test
@@ -55,15 +57,41 @@ public class LockCommandIntegrationTest {
                 model.getAccount(), new Config());
         expectedModel.persistUserAccount(validUser);
 
-        assertCommandSuccess(prepareCommand(validUser, model), model,
+        assertCommandSuccess(prepareLockCommand(validUser, model), model,
                 String.format(LockCommand.MESSAGE_SUCCESS, validUser), expectedModel);
     }
 
+    @Test
+    public void execute_removeUser_success() throws Exception {
+        ReadOnlyUser validUser = userBuilder("a", "1", "a");
+        Model expectedModel = new ModelManager(model.getAddressBook(), new EventBook(), new UserPrefs(),
+                model.getAccount(), new Config());
+        expectedModel.deleteUser(validUser.getUserId(),
+                validUser.getPassword()
+        );
+
+        assertCommandSuccess(prepareRemoveUserCommand("a", "a", true, model), model,
+                String.format(RemoveUserCommand.MESSAGE_REMOVE_USER_SUCCESS, "a"), expectedModel);
+    }
+
     /**
-     * Generates a new {@code AddCommand} which upon execution, adds {@code person} into the {@code model}.
+     * Generates a new {@code LockCommand} which upon execution, adds {@code user} into the {@code model}.
      */
-    private LockCommand prepareCommand(User user, Model model) {
+    private LockCommand prepareLockCommand(User user, Model model) {
         LockCommand command = new LockCommand(user.getUserId(), user.getPassword());
+        UserPrefs userPrefs = new UserPrefs();
+        Config config = new Config();
+        Logic logic = null;
+        command.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+        return command;
+    }
+
+    /**
+     * Generates a new {@code RemoveUserCommand} which upon execution, removes {@code user} into the {@code model}.
+     */
+    private RemoveUserCommand prepareRemoveUserCommand(String userName, String password, boolean cascade, Model model) {
+        RemoveUserCommand command = new RemoveUserCommand(userName, password, cascade);
         UserPrefs userPrefs = new UserPrefs();
         Config config = new Config();
         Logic logic = null;
