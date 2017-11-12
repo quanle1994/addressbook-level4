@@ -122,7 +122,7 @@ Each of the four components
 
 For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
-image::LogicClassDiagram.png[width="800"]
+image::LogicClassDiagramV1-4.png[width="800"]
 _Figure 2.1.2 : Class Diagram of the Logic Component_
 
 [discrete]
@@ -220,7 +220,6 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-//@@author keloysiusmak
 // tag::alias[]
 === Alias mechanism
 
@@ -320,7 +319,6 @@ image::SetAliasActivityDiagram.png[width="200"]
 **Pros:** It is a lot clearer to see whether the AliasSettings are stored, and also any corruption of it will not affect the rest of the preferences. +
 **Cons:** Creates a separate file for alias settings which could be grouped under the umbrella of preferences. +
 // end::alias[]
-//@@author
 
 // tag::event[]
 === Event mechanism
@@ -628,7 +626,6 @@ that matches the most fields will appear first followed by the one matching seco
 set the number of results to appear.
 //end::find[]
 
-//@@author tingtx
 // tag::group[]
 === Group mechanism
 
@@ -819,9 +816,8 @@ delete the person's previous group if it has no member.+
 **Pros:** Easy to determine if the group is empty and easy to update the map of groups. +
 **Cons:** Maybe more tedious to implement.
 // end::group[]
-//@@author
 
-//@@author tingtx
+
 //tag::list[]
 === List(group) mechanism
 The list group mechanism is an enhanced feature of the original `ListCommand` and `ListCommandParser`.
@@ -901,9 +897,7 @@ image::ListCommand_ActivityDiagram.png[width = "400"]
 **Pros:** Less complex logic, commands performed on this list will be saved and reflected +
 **Cons:** Implementation can be more tedious and duplicated records of persons will take up extra memory.
 //end::list[]
-//@@author
 
-//@@author tingtx
 // tag::order[]
 === Order(Sort) mechanism
 The order mechanism is implemented by 'OrderCommand' and `OrderCommandParser` in the Logic component.
@@ -1073,7 +1067,7 @@ image::OrderCommand_ActivityDiagram.png[width = "400"]
 
 // end::remark[]
 ---
-//@@author
+
 // end::order[]
 
 // tag::remark[]
@@ -1177,7 +1171,6 @@ Person object. +
 
 
 // tag::theme[]
-//@@author keloysiusmak
 === Theme mechanism
 
 Themes are an additional layer of configurability for users to make the application personal, which echoes our design
@@ -1301,7 +1294,6 @@ to replace the default data in a new release of TunedIn. +
 **Cons:** Users will find it complicated for themselves to upgrade to a newer version of TunedIn.
 
 // end::transfer[]
-//@@author
 
 // tag::lock[]
 === Lock Mechanism
@@ -2127,7 +2119,6 @@ A contact detail that is not meant to be shared with others
 ....
 
 [appendix]
-//@@author keloysiusmak
 == Product Survey
 
 *Wunderlist*
