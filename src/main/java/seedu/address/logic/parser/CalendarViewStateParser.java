@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.regex.Matcher;
@@ -53,9 +54,7 @@ public class CalendarViewStateParser {
     public void updateViewState(String userInput) throws ParseException {
 
         //Check whether CalendarView is a null object
-        if (calendarView == null) {
-            return;
-        }
+        requireNonNull(calendarView);
 
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {

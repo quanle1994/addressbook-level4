@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -129,10 +131,13 @@ public class XmlFileStorage {
     public static void exportAddressbook(String source, String destination, String header)
             throws ParserConfigurationException, IOException, SAXException {
 
+        requireNonNull(source);
+        requireNonNull(destination);
+        requireNonNull(header);
+
         File addressbookXmlFile = new File(source);
 
         if (!addressbookXmlFile.exists()) {
-            assert false : "Addressbook Xml file should have exist";
             throw new FileNotFoundException("File not found : " + addressbookXmlFile.getAbsolutePath());
         }
 
@@ -190,7 +195,6 @@ public class XmlFileStorage {
         File eventbookXmlFile = new File(source);
 
         if (!eventbookXmlFile.exists()) {
-            assert false : "Eventbook Xml file should have exist";
             throw new FileNotFoundException("File not found : " + eventbookXmlFile.getAbsolutePath());
         }
 
