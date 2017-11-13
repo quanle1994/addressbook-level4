@@ -20,8 +20,8 @@ Here's how to load the files into the application for testing.
 TunedIn application.
 ** If there is a addressbook.xml or eventbook.xml file created, delete them.
 * Duplicate the copied SampleData.xml file
-* In the first copy, delete the lines 489 to 544. Rename the file addressbook.xml
-* In the second copy, delete the lines 2 to 488. Rename the file eventbook.xml
+* In the first copy, delete the lines 205 to 261. Rename the file addressbook.xml
+* In the second copy, delete the lines 2 to 204. Rename the file eventbook.xml
 
 Congratulations! You have the sample data loaded and ready to go!
 
