@@ -43,14 +43,6 @@ the userName exists, it will throw a DuplicateUserExceptionError
 `Expected:` it removes the user entry in the account.xml file. If r/Y, the encrypted file of that user will be
 deleted. If r/N, the file will still be deleted but the contacts will be released to the PUBLIC account.
 
-* `Command:` order name <birthday> +
-`Expected:` it sorts the contacts lexicographically according to the parameter sequence, i.e. by name first then
-by birthday.
-
-* `Command:` find n/Betsy +
-`Expected:` it searches for the subtexts in the specified parameter, find n/Betsy finds Betsy in names, find a/Ang
-Moh Kio finds Ang Mo Kio in addresses, and find m/NUS finds NUS in all text fields.
-
 === Add Functionality
 
 * `Command:` add n/Bervyn Chuan p/87763224 a/East View Str 32 #09-20 +
@@ -60,24 +52,24 @@ Moh Kio finds Ang Mo Kio in addresses, and find m/NUS finds NUS in all text fiel
 `Expected:` person should be added
 
 * `Command:` add n/Linda Ng p/64543442 b/10-10-1997 +
-`Expected:` person should not be added
+`Expected:` person should not be added, mandatory field address is missing
 
 * `Command:` add n/Linda Lim p/64543322 a/Blk 19 Toh Guan Road #08-11 +
 `Expected:` person should not be added, duplicate contact (same name, phone and address)
 
 * `Command:` add n/Darren Chia p/64543322 a/Blk 19 Toh Guan Road #08-11 +
-`Expected:` person should be added. has different name.
+`Expected:` person should be added, same phone number and address as one of existing contact but has different name.
 
 === Order Functionality
 
 * `Command:` order group +
-`Expected:` list sorted based on group. empty group to last
+`Expected:` list sorted based alphabetical order of group name, contacts without group sorted to last.
 
 * `Command:` order birthday name +
-`Expected:` list sorted based on birthday first then name
+`Expected:` list sorted based on birthdate from oldest person to youngest, then sort by name in alphabetical order.
 
 * `Command:` order name group +
-`Expected:` not sorted invalid command cannot sort by name then group, group must be the first
+`Expected:` invalid command, cannot sort by name then group, group must be the first
 parameter
 
 * `Command:` order Email +
@@ -95,10 +87,10 @@ parameter
 `Expected:` invalid command no person should be grouped
 
 * `Command:` group 1 2 3 TEST +
-`Expected:` Invalid command no person should be grouped
+`Expected:` invalid command no person should be grouped
 
-* `Command:` group g/ +
-`Expected:` Invalid command feedback to user wrong parameter
+* `Command:` group g +
+`Expected:` invalid command feedback to user wrong parameter
 
 === List Functionality
 
@@ -109,7 +101,7 @@ parameter
 `Expected:` show a list of persons in TEST group if TEST exist OR feedback to user TEST group does not exist.
 
 * `Command:` list TEST +
-`Expected:` Invalid command
+`Expected:` invalid command
 
 === Alias Functionality
 
