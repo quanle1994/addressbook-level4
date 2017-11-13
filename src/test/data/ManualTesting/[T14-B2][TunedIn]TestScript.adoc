@@ -39,7 +39,7 @@ To generate the encrypted file, do the following steps.
 `Expected:` it creates an entry in the account.xml file, encrypts the addressbook.xml into a .encrypted file. If
 the userName exists, it will throw a DuplicateUserExceptionError
 
-* `Command:` logout u/userName p/password +
+* `Command:` logout +
 `Expected:` it logs the user out. If the user has not logged in, it will throw an error.
 
 * `Command:` currentuser +
