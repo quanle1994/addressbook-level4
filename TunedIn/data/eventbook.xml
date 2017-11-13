@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<eventbook>
-    <events>
-        <title>Hello world</title>
-        <description>testing</description>
-        <location>soc</location>
-        <datetime>13-11-2017 2359</datetime>
-    </events>
-</eventbook>
