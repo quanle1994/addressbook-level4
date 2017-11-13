@@ -18,12 +18,18 @@ Here's how to load the files into the application for testing.
 
 * In your new copy of TunedIn app, copy the file SampleData.xml (included in this folder) into the data folder in your
 TunedIn application.
+** If there is no data folder, create one.
 ** If there is a addressbook.xml or eventbook.xml file created, delete them.
 * Duplicate the copied SampleData.xml file
 * In the first copy, delete the lines 205 to 261. Rename the file addressbook.xml
 * In the second copy, delete the lines 2 to 204. Rename the file eventbook.xml
 
 Congratulations! You have the sample data loaded and ready to go!
+
+To generate the encrypted file, do the following steps.
+
+* Run the command `add n/test p/999 a/temp`
+* Run the command `delete 21`
 
 == Testing
 
@@ -33,7 +39,7 @@ Congratulations! You have the sample data loaded and ready to go!
 `Expected:` it creates an entry in the account.xml file, encrypts the addressbook.xml into a .encrypted file. If
 the userName exists, it will throw a DuplicateUserExceptionError
 
-* `Command:` logout u/userName p/password +
+* `Command:` logout +
 `Expected:` it logs the user out. If the user has not logged in, it will throw an error.
 
 * `Command:` currentuser +
