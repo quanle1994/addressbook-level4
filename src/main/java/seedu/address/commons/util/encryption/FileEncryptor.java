@@ -20,8 +20,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
  */
 public class FileEncryptor {
     private static final byte[] salt = {
-        (byte) 0x43, (byte) 0x76, (byte) 0x95, (byte) 0xc7,
-        (byte) 0x5b, (byte) 0xd7, (byte) 0x45, (byte) 0x17
+            (byte) 0x43, (byte) 0x76, (byte) 0x95, (byte) 0xc7,
+            (byte) 0x5b, (byte) 0xd7, (byte) 0x45, (byte) 0x17
     };
 
     private static final String MESSAGE_PUBLIC_CONTACTS_ENCRYPTION_ERROR = "Cannot encrypt the public contacts";
@@ -155,6 +155,10 @@ public class FileEncryptor {
     public static void encryptPublicFile(boolean isLockCommand) throws CommandException {
         try {
             if (isLockCommand) {
+                FileOutputStream outStream = new FileOutputStream("data/addressbook_empty.xml");
+                String emptyContent = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
+                        + "<addressbook/>";
+                outStream.write(emptyContent.getBytes());
                 addressBookFilePath = "data/addressbook_empty.xml";
             }
             FileEncryptor.encryptFile("PUBLIC", "PUBLIC", false);

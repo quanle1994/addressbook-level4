@@ -1,21 +1,23 @@
 package seedu.address.commons.util.encryption;
 
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileOutputStream;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 /**
  * Test the File Encryptor
  */
 public class FileEncryptorTest {
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     @Test
-    public void getImage_exitingImage() throws Exception {
-        thrown.expect(FileNotFoundException.class);
+    public void decrypt_successful() throws Exception {
+        FileOutputStream test = new FileOutputStream("data/test.encrypted");
+        test.write("test".getBytes());
+        FileEncryptor.encryptFile("test", "test", false);
         FileEncryptor.decryptFile("test", "test");
+        File file = new File("data/test.encrypted");
+        file.delete();
+        file = new File("data/addressbook.xml");
+        file.delete();
     }
 }
