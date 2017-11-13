@@ -148,17 +148,6 @@ contents
 * `Command:` remark 1 r/ +
 `Expected:` Removed an existing remark from the 1st person on the addressbook
 
-=== Export Functionality
-
-* `Command:` export addressbook +
-`Expected:` it will export the addressbook.xml file to a new csv file
-
-* `Command:` export eventbook +
-`Expected:` it will export the eventbook.xml file to a new csv file
-
-* `Command:` switch +
-`Expected:` the current viewing tab panel will switch from contacts to events
-
 === Event Functionality
 
 * `Command:` addevent et/CS2103 ed/Submission Deadline el/SoC edt/14-11-2017 2359 +
@@ -184,6 +173,17 @@ contents
 
 * `Command:` deleteevent 2 +
 `Expected:` it will remove the 2nd event in the eventbook
+
+=== Export Functionality
+
+* `Command:` export addressbook +
+`Expected:` it will export the addressbook.xml file to a new csv file
+
+* `Command:` export eventbook +
+`Expected:` it will export the eventbook.xml file to a new csv file
+
+* `Command:` switch +
+`Expected:` the current viewing tab panel will switch from contacts to events
 
 === Help Functionality
 
