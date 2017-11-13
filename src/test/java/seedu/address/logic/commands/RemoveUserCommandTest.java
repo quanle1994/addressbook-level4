@@ -7,6 +7,7 @@ import static junit.framework.TestCase.assertEquals;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -18,6 +19,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.lockmodelstub.ModelStub;
+import seedu.address.logic.currentuser.CurrentUserDetails;
 import seedu.address.model.Model;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.user.ReadOnlyUser;
@@ -32,11 +34,25 @@ public class RemoveUserCommandTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    @Before
+    public void setUp() {
+        CurrentUserDetails.setUserId("PUBLIC");
+    }
+
     @Test
     public void execute_noUserToRemove() throws Exception {
         thrown.expect(CommandException.class);
         thrown.expectMessage(RemoveUserCommand.MESSAGE_ENCRYPTION_ERROR);
 
+        new RemoveUserCommand("abc", "abc", true).execute();
+    }
+
+    @Test
+    public void execute_removeWhileLoggedIn() throws Exception {
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(RemoveUserCommand.MESSAGE_REMOVE_WHILE_LOGGED_IN);
+
+        CurrentUserDetails.setUserId("test");
         new RemoveUserCommand("abc", "abc", true).execute();
     }
 

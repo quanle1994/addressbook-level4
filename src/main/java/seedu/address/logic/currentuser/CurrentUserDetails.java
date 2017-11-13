@@ -6,7 +6,7 @@ package seedu.address.logic.currentuser;
 public class CurrentUserDetails {
     private static String userId = "PUBLIC";
     private static String userIdHex = "PUBLIC";
-    private static String saltText = "";
+    private static String saltText = "1111111111";
     private static String passwordText = "PUBLIC";
 
     public static void setCurrentUser(String userId, String userIdHex, String saltText, String passwordText) {
