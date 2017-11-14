@@ -5,6 +5,7 @@ package seedu.address.logic.commands;
 import seedu.address.commons.util.digestutil.HashDigest;
 import seedu.address.commons.util.digestutil.HexCode;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.currentuser.CurrentUserDetails;
 import seedu.address.model.user.exceptions.DuplicateUserException;
 import seedu.address.model.user.exceptions.UserNotFoundException;
 
@@ -25,6 +26,8 @@ public class RemoveUserCommand extends Command {
     public static final String MESSAGE_USER_NOT_FOUND = "The user credentials provided do not match our "
             + "database.";
     public static final String MESSAGE_ENCRYPTION_ERROR = "Decryption Failed";
+    public static final String MESSAGE_REMOVE_WHILE_LOGGED_IN = "You are still logged in as a private user. Log out "
+            + "first and remove the user as PUBLIC";
     private String userName;
     private String password;
     private boolean cascade;
@@ -41,6 +44,9 @@ public class RemoveUserCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException, DuplicateUserException {
+        if (!CurrentUserDetails.getUserId().equals("PUBLIC")) {
+            throw new CommandException(MESSAGE_REMOVE_WHILE_LOGGED_IN);
+        }
         try {
             byte[] userNameHash = new HashDigest().getHashDigest(userName);
             String userNameHex = new HexCode().getHexFormat(new String(userNameHash));

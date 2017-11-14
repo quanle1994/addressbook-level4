@@ -155,6 +155,10 @@ public class FileEncryptor {
     public static void encryptPublicFile(boolean isLockCommand) throws CommandException {
         try {
             if (isLockCommand) {
+                FileOutputStream outStream = new FileOutputStream("data/addressbook_empty.xml");
+                String emptyContent = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
+                        + "<addressbook/>";
+                outStream.write(emptyContent.getBytes());
                 addressBookFilePath = "data/addressbook_empty.xml";
             }
             FileEncryptor.encryptFile("PUBLIC", "PUBLIC", false);

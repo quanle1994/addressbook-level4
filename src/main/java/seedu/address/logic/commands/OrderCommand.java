@@ -20,7 +20,7 @@ public class OrderCommand extends UndoableCommand {
 
     public static final String MESSAGE_ORDER_SUCCESS = "Address Book has been ordered by ";
     public static final String MESSAGE_ORDER_WRONG_PARAMETER = "The parameter can only contain Name, Address, Birthday,"
-            + " Tag";
+            + " Group and Tag";
 
     private String orderParameter;
 
