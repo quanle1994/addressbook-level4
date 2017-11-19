@@ -8,7 +8,7 @@ TunedIn is a free-to-use application that brings to you the power of a full-fled
 bundled together with a user-friendly interface that keeps all of your information easily accessible and at your fingertips.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-T14-B2/main/blob/master/collated/main/quanle1994.md[Functional
-code]]
+code]][https://github.com/CS2103AUG2017-T14-B2/main/blob/master/collated/test/quanle1994.md[Test code]]
 
 === Enhancement Added: Find All Text Fields
 ==== External behavior
@@ -45,18 +45,19 @@ include::../UserGuide.adoc[tag=order]
 
 ==== Justification
 
-Ordering is essential to TunedIn. It provides the fundamental and a must-to-have functionality of an organizer.
+Ordering is essential to TunedIn. It provides the fundamental functionality of an organizer.
 With the ordering mechanism, user will be able to order the list of contacts in 14 different ways. This
-is inline with our goal in making TunedIn as customizable as possible
-and, most importantly to allow the user to organize the contacts to their most preferred way.
+is in line with our goal in making TunedIn as customizable as possible, allowing the user to organize the contacts to
+their most preferred way.
 
 ==== Implementation
+
+This command was first developed by me and later on enhanced by Xiang TingTing
 
 ---
 
 include::../DeveloperGuide.adoc[tag=order]
 
----
 
 === Enhancement Added: Lock Mechanism
 ==== External behavior
@@ -79,7 +80,6 @@ wants to manage different lists of contacts.
 
 include::../DeveloperGuide.adoc[tag=lock]
 
----
 
 === Other contributions
 

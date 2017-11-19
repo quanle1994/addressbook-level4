@@ -24,7 +24,7 @@ bundled together with a user-friendly interface that keeps all of your informati
 </div>
 <div class="paragraph">
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-T14-B2/main/blob/master/collated/main/quanle1994.md">Functional
-code</a>]</p>
+code</a>][<a href="https://github.com/CS2103AUG2017-T14-B2/main/blob/master/collated/test/quanle1994.md">Test code</a>]</p>
 </div>
 <div class="sect2">
 <h3 id="enhancement-added-find-all-text-fields"><a class="link" href="#enhancement-added-find-all-text-fields">Enhancement Added: Find All Text Fields</a></h3>
@@ -224,14 +224,17 @@ Returns address list sorted by birthday then by name.</p>
 <div class="sect3">
 <h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
 <div class="paragraph">
-<p>Ordering is essential to TunedIn. It provides the fundamental and a must-to-have functionality of an organizer.
+<p>Ordering is essential to TunedIn. It provides the fundamental functionality of an organizer.
 With the ordering mechanism, user will be able to order the list of contacts in 14 different ways. This
-is inline with our goal in making TunedIn as customizable as possible
-and, most importantly to allow the user to organize the contacts to their most preferred way.</p>
+is in line with our goal in making TunedIn as customizable as possible, allowing the user to organize the contacts to
+their most preferred way.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>This command was first developed by me and later on enhanced by Xiang TingTing</p>
+</div>
 <hr>
 </div>
 </div>
@@ -276,7 +279,7 @@ is not empty string.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>After a series of function calls, the <strong>model.orderList()</strong> method will eventually call <strong>orderBy()</strong> method
+<p>After a series of function calls, the <strong>model.orderList()</strong> method will eventually call <strong>orderPersonList()</strong> method
 in the <code>UniquePersonList</code>.</p>
 </div>
 <div class="paragraph">
@@ -289,13 +292,13 @@ and supports a set of list operations. The following diagram shows the UML diagr
 </div>
 </div>
 <div class="paragraph">
-<p><strong>orderBy()</strong> method is able to order the existing person list by a maximum of two parameters.
+<p><strong>orderPersonList()</strong> method is able to order the existing person list by a maximum of two parameters.
 It will order the list by the first parameter follow by the second parameter.
-The implementation of the <strong>orderBy()</strong> is shown below:</p>
+The implementation of the <strong>orderPersonList()</strong> is shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> orderBy(<span class="predefined-type">String</span> parameter) <span class="directive">throws</span> UnrecognisedParameterException {
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> orderPersonList(<span class="predefined-type">String</span> parameter) <span class="directive">throws</span> UnrecognisedParameterException {
 
         <span class="keyword">switch</span> (parameter) {
         <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>:
@@ -434,7 +437,6 @@ not be ordered.
 <strong>Cons:</strong> Not stable and tedious to implement.</p>
 </div>
 <hr>
-<hr>
 </div>
 </div>
 <div class="sect2">
@@ -518,185 +520,6 @@ Format: <code>login u/USER_NAME p/PASSWORD</code></p>
 <p>Logs out of the address book. This will encrypt the current list of contacts and clear them. To retrieve them, log in
  using your account credentials<br>
 Format: <code>logout</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="order-contacts-in-address-book-by-parameter-s-code-order-code-since-v1-0-2"><a class="link" href="#order-contacts-in-address-book-by-parameter-s-code-order-code-since-v1-0-2">Order contacts in Address Book by parameter(s): <code>order</code> - Since V1.0</a></h3>
-<div class="paragraph">
-<p>Order the list of persons according to a specified parameter. Parameters are case insensitive.<br>
-Format: <code>order PARAMETER [MORE_PARAMETER]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The allowable parameters are <code>NAME</code>, <code>ADDRESS</code>, <code>BIRTHDAY</code>, <code>TAG</code> and <code>GROUP</code>.</p>
-</li>
-<li>
-<p>The parameter is case insensitive. e.g 'NaMe' will match 'NAME'</p>
-</li>
-<li>
-<p>Only full word will be matched. e.g. 'addr' will not match 'Address'</p>
-</li>
-<li>
-<p>To order by multiple parameters, each parameter should be separated by a single space.</p>
-</li>
-<li>
-<p>The order of the parameter is important. e.g <code>tag address</code> will order the list by tag
-then by address.</p>
-</li>
-<li>
-<p>The command can only take in a maximum of <code>two</code> parameters.</p>
-</li>
-<li>
-<p>For order based on multiple prarameters with GROUP, GROUP must be the first paramter.</p>
-</li>
-<li>
-<p>The command changes the index of the person in the Address Book,
-which will affect other commands that use this attribute such as
-<code>delete</code> or <code>select</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>order NAME</code><br>
-Returns address list sorted by name in alphabetical order.</p>
-</li>
-<li>
-<p>'order BIRTHDAY name`<br>
-Returns address list sorted by birthday then by name.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Invalid command Example :
-* <code>order NAME GROUP</code><br></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="order-events-in-event-book-by-a-parameter-code-orderevent-code-since-v1-3"><a class="link" href="#order-events-in-event-book-by-a-parameter-code-orderevent-code-since-v1-3">Order events in Event Book by a parameter: <code>orderevent</code> - Since V1.3</a></h3>
-<div class="paragraph">
-<p>Order the list of events according to a specified parameter. Parameters are case insensitive.<br>
-Format: <code>orderevent PARAMETER [MORE_PARAMETER]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The allowable parameters are <code>TITLE</code>, <code>LOCATION</code> and 'DATETIME'.</p>
-</li>
-<li>
-<p>The parameter is case insensitive. e.g 'tiTle' will match 'TITLE'</p>
-</li>
-<li>
-<p>Only full word will be matched. e.g. 'locat' will not match 'LOCATION'</p>
-</li>
-<li>
-<p>To order by multiple parameters, each parameter should be separated by a single space.</p>
-</li>
-<li>
-<p>The command change the index of the event in the Event Book,
-which will affect other commands that use this attribute such as
-<code>deleteevent</code> or <code>selectevent</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>orderevent TITLE</code><br>
-Returns event list sorted by title</p>
-</li>
-<li>
-<p><code>orderevent LOCATION</code><br>
-Returns event list sorted by location</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code-since-v1-0"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">Redoing the previously undone command : <code>redo</code> - Since V1.0</a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="remarking-a-person-code-remark-code-since-v1-1"><a class="link" href="#remarking-a-person-code-remark-code-since-v1-1">Remarking a person : <code>remark</code> - Since V1.1</a></h3>
-<div class="paragraph">
-<p>Remarks an existing person in the address book.<br>
-Format: <code>remark INDEX r/REMARK</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Remarks the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>You can remove the person&#8217;s remark by typing <code>r/</code> without specifying any remarks after it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>remark 1 r/Likes to swim.</code><br>
-Edits the remark of the 1st person to be <code>Likes to swim</code>.</p>
-</li>
-<li>
-<p><code>remark 1 r/</code><br>
-Remove the remark of the 1st person.</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
@@ -881,25 +704,19 @@ message digest as a String</p>
         <span class="predefined-type">StringBuilder</span> temp = <span class="keyword">new</span> <span class="predefined-type">StringBuilder</span>();
 
         <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; hexString.length() - <span class="integer">1</span>; i += <span class="integer">2</span>) {
-
-            <span class="comment">//grab the hex in pairs</span>
             <span class="predefined-type">String</span> output = hexString.substring(i, (i + <span class="integer">2</span>));
-            <span class="comment">//convert hex to decimal</span>
             <span class="type">int</span> decimal = <span class="predefined-type">Integer</span>.parseInt(output, <span class="integer">16</span>);
-            <span class="comment">//convert the decimal to character</span>
             sb.append((<span class="type">char</span>) decimal);
-
             temp.append(decimal);
         }
-        <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Decimal : </span><span class="delimiter">&quot;</span></span> + temp.toString());
-
         <span class="keyword">return</span> sb.toString();
     }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The encryption and decryption of the files are done in the FileEncryptor.java file of the logic.command.encryption</p>
+<p>The encryption and decryption of the files are done in the FileEncryptor.java file of the logic.command.encryption.
+This code was contributed by Esailija on StackOverflow, 2 Dec 2012.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1077,7 +894,6 @@ the <code>SaltHex</code> and the <code>PasswordHexDigest</code> of the current u
 to the program<br></p>
 </div>
 <hr>
-<hr>
 </div>
 <div class="sect2">
 <h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
@@ -1094,7 +910,7 @@ to the program<br></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-12 22:41:08 +08:00
+Last updated 2017-11-20 00:23:30 +08:00
 </div>
 </div>
 </body>

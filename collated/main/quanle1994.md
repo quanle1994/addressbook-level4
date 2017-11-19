@@ -1,5 +1,5 @@
 # quanle1994
-###### /java/seedu/address/commons/util/digestutil/HashDigest.java
+###### \java\seedu\address\commons\util\digestutil\HashDigest.java
 ``` java
 
 /**
@@ -20,7 +20,98 @@ public class HashDigest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/LoginCommand.java
+###### \java\seedu\address\commons\util\encryption\SaveToEncryptedFile.java
+``` java
+
+import seedu.address.logic.currentuser.CurrentUserDetails;
+
+/**
+ * auto-save current address book to the encrypted file from mutating commands
+ */
+public class SaveToEncryptedFile {
+
+    /**
+     * auto-save current address book to the encrypted file from mutating commands
+     */
+    public static void save() {
+        CurrentUserDetails curUser = new CurrentUserDetails();
+        String fileName = curUser.getUserIdHex();
+        fileName = fileName.substring(0, Math.min(fileName.length(), 10));
+        String passPhrase = curUser.getSaltText() + curUser.getPasswordText();
+        try {
+            FileEncryptor.encryptFile(fileName, passPhrase, false);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
+}
+```
+###### \java\seedu\address\logic\commands\LockCommand.java
+``` java
+
+/**
+ * Create an account and encrypt the addressbook.xml with that account
+ */
+public class LockCommand extends Command {
+    public static final String COMMAND_WORD = "lock";
+    public static final String COMMAND_ALIAS = "lo";
+    public static final Object MESSAGE_USAGE = COMMAND_WORD + ": Locks the current address book with a user account. "
+            + "Parameters: "
+            + PREFIX_USERID + "USER ID "
+            + PREFIX_PASSWORD + "PASSWORD";
+    public static final String MESSAGE_SUCCESS = "Account is created and your Address Book is locked with your "
+            + "password";
+    public static final String MESSAGE_EXISTING_USER = "User already exists";
+    private static final int SALT_MIN = 0;
+    private static final int SALT_MAX = 1000000;
+    private String userId;
+    private String passwordText;
+
+    public LockCommand(String userId, String passwordText) {
+        this.userId = userId;
+        this.passwordText = passwordText;
+    }
+
+    public static String getCommandWord() {
+        return COMMAND_WORD;
+    }
+
+    @Override
+    public CommandResult execute() throws CommandException, DuplicateUserException {
+        requireNonNull(model);
+
+        byte[] uIdDigest = new HashDigest().getHashDigest(userId);
+        String saltText = "" + ThreadLocalRandom.current().nextInt(SALT_MIN, SALT_MAX + 1);
+        byte[] pwDigest = new HashDigest().getHashDigest(saltText + passwordText);
+        String hexUidDigest = new HexCode().getHexFormat(new String(uIdDigest));
+        String hexSalt = new HexCode().getHexFormat(saltText);
+        String hexPassword = new HexCode().getHexFormat(new String(pwDigest));
+        try {
+            model.persistUserAccount(new User(hexUidDigest, hexSalt, hexPassword));
+        } catch (DuplicateUserException due) {
+            throw new CommandException(MESSAGE_EXISTING_USER);
+        }
+
+        try {
+            model.encrypt(hexUidDigest.substring(0, 10), saltText + passwordText, false);
+            model.encryptPublic(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new CurrentUserDetails().setCurrentUser(this.userId, hexUidDigest, saltText, this.passwordText);
+        return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getPasswordText() {
+        return passwordText;
+    }
+}
+```
+###### \java\seedu\address\logic\commands\LoginCommand.java
 ``` java
 
 /**
@@ -86,7 +177,7 @@ public class LoginCommand extends Command {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/OrderCommand.java
+###### \java\seedu\address\logic\commands\OrderCommand.java
 ``` java
 
 /**
@@ -104,7 +195,7 @@ public class OrderCommand extends UndoableCommand {
 
     public static final String MESSAGE_ORDER_SUCCESS = "Address Book has been ordered by ";
     public static final String MESSAGE_ORDER_WRONG_PARAMETER = "The parameter can only contain Name, Address, Birthday,"
-            + " Tag";
+            + " Group and Tag";
 
     private String orderParameter;
 
@@ -134,77 +225,13 @@ public class OrderCommand extends UndoableCommand {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/LockCommand.java
-``` java
-
-/**
- * Create an account and encrypt the addressbook.xml with that account
- */
-public class LockCommand extends Command {
-    public static final String COMMAND_WORD = "lock";
-    public static final String COMMAND_ALIAS = "lo";
-    public static final Object MESSAGE_USAGE = COMMAND_WORD + ": Locks the current address book with a user account. "
-            + "Parameters: "
-            + PREFIX_USERID + "USER ID "
-            + PREFIX_PASSWORD + "PASSWORD";
-    public static final String MESSAGE_SUCCESS = "Account is created and your Address Book is locked with your "
-            + "password";
-    public static final String MESSAGE_EXISTING_USER = "User already exists";
-    private static final int SALT_MIN = 0;
-    private static final int SALT_MAX = 1000000;
-    private String userId;
-    private String passwordText;
-
-    public LockCommand(String userId, String passwordText) {
-        this.userId = userId;
-        this.passwordText = passwordText;
-    }
-
-    public static String getCommandWord() {
-        return COMMAND_WORD;
-    }
-
-    @Override
-    public CommandResult execute() throws CommandException, DuplicateUserException {
-        requireNonNull(model);
-
-        byte[] uIdDigest = new HashDigest().getHashDigest(userId);
-        String saltText = "" + ThreadLocalRandom.current().nextInt(SALT_MIN, SALT_MAX + 1);
-        byte[] pwDigest = new HashDigest().getHashDigest(saltText + passwordText);
-        String hexUidDigest = new HexCode().getHexFormat(new String(uIdDigest));
-        String hexSalt = new HexCode().getHexFormat(saltText);
-        String hexPassword = new HexCode().getHexFormat(new String(pwDigest));
-        try {
-            model.persistUserAccount(new User(hexUidDigest, hexSalt, hexPassword));
-        } catch (DuplicateUserException due) {
-            throw new CommandException(MESSAGE_EXISTING_USER);
-        }
-
-        try {
-            model.encrypt(hexUidDigest.substring(0, 10), saltText + passwordText, false);
-            model.encryptPublic(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        new CurrentUserDetails().setCurrentUser(this.userId, hexUidDigest, saltText, this.passwordText);
-        return new CommandResult(MESSAGE_SUCCESS);
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public String getPasswordText() {
-        return passwordText;
-    }
-}
-```
-###### /java/seedu/address/logic/commands/RemoveUserCommand.java
+###### \java\seedu\address\logic\commands\RemoveUserCommand.java
 ``` java
 
 import seedu.address.commons.util.digestutil.HashDigest;
 import seedu.address.commons.util.digestutil.HexCode;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.currentuser.CurrentUserDetails;
 import seedu.address.model.user.exceptions.DuplicateUserException;
 import seedu.address.model.user.exceptions.UserNotFoundException;
 
@@ -225,6 +252,8 @@ public class RemoveUserCommand extends Command {
     public static final String MESSAGE_USER_NOT_FOUND = "The user credentials provided do not match our "
             + "database.";
     public static final String MESSAGE_ENCRYPTION_ERROR = "Decryption Failed";
+    public static final String MESSAGE_REMOVE_WHILE_LOGGED_IN = "You are still logged in as a private user. Log out "
+            + "first and remove the user as PUBLIC";
     private String userName;
     private String password;
     private boolean cascade;
@@ -241,6 +270,9 @@ public class RemoveUserCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException, DuplicateUserException {
+        if (!CurrentUserDetails.getUserId().equals("PUBLIC")) {
+            throw new CommandException(MESSAGE_REMOVE_WHILE_LOGGED_IN);
+        }
         try {
             byte[] userNameHash = new HashDigest().getHashDigest(userName);
             String userNameHex = new HexCode().getHexFormat(new String(userNameHash));
@@ -267,427 +299,7 @@ public class RemoveUserCommand extends Command {
     }
 }
 ```
-###### /java/seedu/address/storage/XmlAdaptedUser.java
-``` java
-
-/**
- * JAXB-friendly version of the Event.
- */
-public class XmlAdaptedUser {
-    @XmlElement(required = true)
-    private String userId;
-    @XmlElement(required = true)
-    private String salt;
-    @XmlElement(required = true)
-    private String password;
-
-    /**
-     * Constructs an XmlAdaptedUser.
-     * This is the no-arg constructor that is required by JAXB.
-     */
-    public XmlAdaptedUser() {
-    }
-
-    /**
-     * Converts a given User into this class for JAXB use.
-     *
-     * @param source future changes to this will not affect the created XmlAdaptedPerson
-     */
-    public XmlAdaptedUser(ReadOnlyUser source) {
-        userId = source.getUserId();
-        salt = source.getSalt();
-        password = source.getPassword();
-    }
-
-    /**
-     * Converts this jaxb-friendly adapted person object into the model's Person object.
-     */
-    public User toModelType() {
-        return new User(this.userId, this.salt, this.password);
-    }
-}
-```
-###### /java/seedu/address/storage/AccountStorage.java
-``` java
-
-/**
- * Represents a storage for {@link seedu.address.model.Account}.
- */
-public interface AccountStorage {
-
-    /**
-     * Returns the file path of the data file.
-     */
-    String getAccountFilePath();
-
-    /**
-     * Returns AddressBook data as a {@link seedu.address.model.ReadOnlyAccount}.
-     * Returns {@code Optional.empty()} if storage file is not found.
-     */
-    Optional<ReadOnlyAccount> readAccount() throws FileNotFoundException, DataConversionException;
-
-    /**
-     * @see #getAccountFilePath()
-     */
-    Optional<ReadOnlyAccount> readAccount(String filePath) throws FileNotFoundException, DataConversionException;
-
-    /**
-     * Saves the given {@link ReadOnlyAccount} to the storage.
-     *
-     * @param addressBook cannot be null.
-     */
-    void saveAccount(ReadOnlyAccount addressBook) throws IOException;
-
-    /**
-     * @see #saveAccount(ReadOnlyAccount)
-     */
-    void saveAccount(ReadOnlyAccount addressBook, String filePath) throws IOException;
-
-    /**
-     * @see #saveAddressBook(ReadOnlyAddressBook)
-     */
-}
-```
-###### /java/seedu/address/storage/XmlSerializableAccount.java
-``` java
-
-/**
- * An Immutable Account that is serializable to XML format
- */
-@XmlRootElement(name = "account")
-public class XmlSerializableAccount implements ReadOnlyAccount {
-
-    @XmlElement
-    private List<XmlAdaptedUser> users;
-
-    public XmlSerializableAccount() {
-        users = new ArrayList<>();
-    }
-
-    public XmlSerializableAccount(ReadOnlyAccount src) {
-        this();
-        users.addAll(src.getUserList().stream().map(XmlAdaptedUser::new).collect(Collectors.toList()));
-    }
-
-    public List<XmlAdaptedUser> getUsers() {
-        return users;
-    }
-
-    @Override
-    public ObservableList<ReadOnlyUser> getUserList() {
-        final ObservableList<ReadOnlyUser> users = this.users.stream().map(u ->
-                u.toModelType()).collect(Collectors.toCollection(FXCollections::observableArrayList));
-        return FXCollections.unmodifiableObservableList(users);
-    }
-}
-```
-###### /java/seedu/address/storage/XmlAccountStorage.java
-``` java
-
-/**
- * A class to access TunedIn Account data stored as an xml file on the hard disk.
- */
-public class XmlAccountStorage implements AccountStorage {
-
-    private static final Logger logger = LogsCenter.getLogger(XmlAddressBookStorage.class);
-
-    private String filePath;
-
-    public XmlAccountStorage(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    @Override
-    public String getAccountFilePath() {
-        return filePath;
-    }
-
-    /**
-     * Similar to {@link #readAccount()}
-     *
-     * @param filePath location of the data. Cannot be null
-     * @throws DataConversionException if the file is not in the correct format.
-     */
-    public Optional<ReadOnlyAccount> readAccount(String filePath)
-            throws FileNotFoundException, DataConversionException {
-        requireNonNull(filePath);
-
-        File accountFile = new File(filePath);
-        if (!accountFile.exists()) {
-            logger.info("Account file " + accountFile + " not found");
-            return Optional.empty();
-        }
-
-        ReadOnlyAccount accountOptional = XmlFileStorage.loadAccountFromSaveFile(new File(filePath));
-
-        return Optional.of(accountOptional);
-    }
-
-    @Override
-    public Optional<ReadOnlyAccount> readAccount() throws FileNotFoundException, DataConversionException {
-        return readAccount(filePath);
-    }
-
-    @Override
-    public void saveAccount(ReadOnlyAccount account) throws IOException {
-        saveAccount(account, filePath);
-    }
-
-    /**
-     * Similar to {@link #saveAccount(ReadOnlyAccount)}
-     *
-     * @param filePath location of the data. Cannot be null
-     */
-    public void saveAccount(ReadOnlyAccount account, String filePath) throws IOException {
-        requireNonNull(account);
-        requireNonNull(filePath);
-
-        File file = new File(filePath);
-        FileUtil.createIfMissing(file);
-        XmlFileStorage.saveAccountToFile(file, new XmlSerializableAccount(account));
-    }
-}
-```
-###### /java/seedu/address/model/user/UniqueUserList.java
-``` java
-
-import static java.util.Objects.requireNonNull;
-
-import java.util.List;
-
-import org.fxmisc.easybind.EasyBind;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import seedu.address.model.user.exceptions.DuplicateUserException;
-import seedu.address.model.user.exceptions.UserNotFoundException;
-
-```
-###### /java/seedu/address/model/user/UniqueUserList.java
-``` java
-
-/**
- * A list of users that enforces uniqueness between its elements and does not allow nulls.
- * <p>
- * Supports a minimal set of list operations.
- *
- * @see User#equals(Object)
- */
-public class UniqueUserList {
-    private final ObservableList<User> internalList = FXCollections.observableArrayList();
-    // used by asObservableList()
-    private final ObservableList<ReadOnlyUser> mappedList = EasyBind.map(internalList, (user) -> user);
-
-    /**
-     * Returns true if the list contains an equivalent person as the given argument.
-     */
-    public boolean contains(ReadOnlyUser toCheck) {
-        requireNonNull(toCheck);
-        return internalList.contains(toCheck);
-    }
-
-    /**
-     * Adds a person to the list.
-     *
-     * @throws DuplicateUserException if the person to add is a duplicate of an existing person in the list.
-     */
-    public void add(ReadOnlyUser toAdd) throws DuplicateUserException {
-        requireNonNull(toAdd);
-        if (contains(toAdd)) {
-            throw new DuplicateUserException();
-        }
-        internalList.add(new User(toAdd));
-    }
-
-    /**
-     * Removes the equivalent event from the list.
-     *
-     * @throws UserNotFoundException if no such event could be found in the list.
-     */
-    public boolean remove(ReadOnlyUser toRemove) throws UserNotFoundException {
-        requireNonNull(toRemove);
-        final boolean userFoundAndDeleted = internalList.remove(toRemove);
-        if (!userFoundAndDeleted) {
-            throw new UserNotFoundException();
-        }
-        return userFoundAndDeleted;
-    }
-
-    /**
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
-     */
-    public ObservableList<ReadOnlyUser> asObservableList() {
-        return FXCollections.unmodifiableObservableList(mappedList);
-    }
-
-    public void setUsers(List<? extends ReadOnlyUser> users) throws DuplicateUserException {
-        final UniqueUserList replacement = new UniqueUserList();
-        for (final ReadOnlyUser user : users) {
-            replacement.add(new User(user));
-        }
-        setUsers(replacement);
-    }
-
-    public void setUsers(UniqueUserList replacement) throws DuplicateUserException {
-        this.internalList.setAll(replacement.internalList);
-    }
-
-
-    public User getUser(String userName) throws UserNotFoundException {
-        int targetIndex = this.internalList.indexOf(new User(userName));
-        if (targetIndex < 0) {
-            throw new UserNotFoundException();
-        }
-        return this.internalList.get(targetIndex);
-    }
-
-    public String getSalt(String userId) throws UserNotFoundException {
-        return getUser(userId).getSalt();
-    }
-}
-```
-###### /java/seedu/address/model/user/User.java
-``` java
-
-/**
- * Represents a User in the account.
- * Guarantees: details are present and not null, field values are validated.
- */
-public class User implements ReadOnlyUser {
-    private String userId;
-    private String salt = "";
-    private String password = "";
-
-    public User() {
-    }
-
-    public User(String userId, String salt, String password) {
-        this.userId = userId;
-        this.salt = salt;
-        this.password = password;
-    }
-
-    public User(String userId) {
-        this.userId = userId;
-    }
-
-    /**
-     * Creates a copy of the given ReadOnlyUser.
-     */
-    public User(ReadOnlyUser source) {
-        this(source.getUserId(), source.getSalt(), source.getPassword());
-    }
-
-    @Override
-    public String getUserId() {
-        return userId;
-    }
-
-    @Override
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    @Override
-    public String getSalt() {
-        return salt;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof ReadOnlyUser // instanceof handles nulls
-                && this.isSameStateAs((ReadOnlyUser) other));
-    }
-
-    /**
-     * Check if the users have the same userName and password
-     */
-    public boolean sameAs(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof ReadOnlyUser // instanceof handles nulls
-                && this.isSameUserAs((ReadOnlyUser) other));
-    }
-}
-```
-###### /java/seedu/address/model/user/exceptions/UserNotFoundException.java
-``` java
-
-/**
- * Signals that the operation is unable to find the specified user.
- */
-public class UserNotFoundException extends Exception {
-}
-```
-###### /java/seedu/address/model/user/exceptions/DuplicateUserException.java
-``` java
-
-/**
- * Signals that the operation will result in duplicate User objects.
- */
-public class DuplicateUserException extends DuplicateDataException {
-    public DuplicateUserException() {
-        super("User exists");
-    }
-}
-```
-###### /java/seedu/address/model/user/ReadOnlyUser.java
-``` java
-
-/**
- * A read-only immutable interface for a user in the Account.
- * Implementations should guarantee: details are present and not null, field values are validated.
- */
-public interface ReadOnlyUser {
-    String getUserId();
-
-    void setUserId(String userId);
-
-    String getSalt();
-
-    String getPassword();
-
-    void setPassword(String password);
-
-    /**
-     * Returns true if both have the same username. (interfaces cannot override .equals)
-     */
-    default boolean isSameStateAs(ReadOnlyUser other) {
-        return other == this // short circuit if same object
-                || (other != null // this is first to avoid NPE below
-                && other.getUserId().equals(this.getUserId())); // state checks here onwards
-    }
-
-    /**
-     * Returns true if both have the same username and password
-     */
-    default boolean isSameUserAs(ReadOnlyUser other) {
-        return other == this // short circuit if same object
-                || (other != null // this is first to avoid NPE below
-                && other.getUserId().equals(this.getUserId())
-                && other.getPassword().equals(this.getPassword())); // state checks here onwards
-    }
-}
-```
-###### /java/seedu/address/model/Account.java
+###### \java\seedu\address\model\Account.java
 ``` java
 
 /**
@@ -780,7 +392,57 @@ public class Account implements ReadOnlyAccount {
     }
 }
 ```
-###### /java/seedu/address/model/ModelManager.java
+###### \java\seedu\address\model\Model.java
+``` java
+
+    /**
+     * Returns the Account
+     */
+    ReadOnlyAccount getAccount();
+
+```
+###### \java\seedu\address\model\Model.java
+``` java
+
+    void persistUserAccount(ReadOnlyUser user) throws DuplicateUserException;
+
+    User getUserFromIdAndPassword(String userName, String password) throws UserNotFoundException;
+
+    void deleteUser(String userName, String saltedPasswordHex) throws UserNotFoundException;
+
+    String retrieveSaltFromStorage(String userId) throws UserNotFoundException;
+
+    void setUserStorage(Storage userStorage);
+
+```
+###### \java\seedu\address\model\Model.java
+``` java
+
+    void transferData() throws ConfigMissingException;
+
+    void transferDataWithDefault() throws IOException, DataConversionException;
+
+```
+###### \java\seedu\address\model\Model.java
+``` java
+
+    void deleteEncryptedContacts(String substring);
+
+    void releaseEncryptedContacts(String fileName) throws DataConversionException, IOException;
+
+```
+###### \java\seedu\address\model\ModelManager.java
+``` java
+
+    /**
+     * Raises an event to indicate the model has changed
+     */
+    private void indicateAccountChanged() {
+        raise(new AccountChangedEvent(account));
+    }
+
+```
+###### \java\seedu\address\model\ModelManager.java
 ``` java
 
     @Override
@@ -800,12 +462,9 @@ public class Account implements ReadOnlyAccount {
         file.delete();
         refreshAddressBook();
     }
-
-    @Override
-    public UserPrefs getUserPrefs() {
-        return userPref;
-    }
-
+```
+###### \java\seedu\address\model\ModelManager.java
+``` java
     @Override
     public void refreshAddressBook() throws IOException, DataConversionException {
         AddressBook temp = new AddressBook(userStorage.readAddressBook().orElseGet
@@ -859,7 +518,7 @@ public class Account implements ReadOnlyAccount {
     }
 }
 ```
-###### /java/seedu/address/model/ReadOnlyAccount.java
+###### \java\seedu\address\model\ReadOnlyAccount.java
 ``` java
 
 /**
@@ -875,28 +534,423 @@ public interface ReadOnlyAccount {
     ObservableList<ReadOnlyUser> getUserList();
 }
 ```
-###### /java/seedu/address/model/Model.java
+###### \java\seedu\address\model\user\exceptions\DuplicateUserException.java
 ``` java
 
-    void deleteEncryptedContacts(String substring);
+/**
+ * Signals that the operation will result in duplicate User objects.
+ */
+public class DuplicateUserException extends DuplicateDataException {
+    public DuplicateUserException() {
+        super("User exists");
+    }
+}
+```
+###### \java\seedu\address\model\user\exceptions\UserNotFoundException.java
+``` java
 
-    void releaseEncryptedContacts(String fileName) throws DataConversionException, IOException;
+/**
+ * Signals that the operation is unable to find the specified user.
+ */
+public class UserNotFoundException extends Exception {
+}
+```
+###### \java\seedu\address\model\user\ReadOnlyUser.java
+``` java
 
-    UserPrefs getUserPrefs();
+/**
+ * A read-only immutable interface for a user in the Account.
+ * Implementations should guarantee: details are present and not null, field values are validated.
+ */
+public interface ReadOnlyUser {
+    String getUserId();
 
-    void refreshAddressBook() throws IOException, DataConversionException;
+    void setUserId(String userId);
 
-    void emptyPersonList(ObservableList<ReadOnlyPerson> list) throws PersonNotFoundException, IOException,
-            DataConversionException;
+    String getSalt();
 
-    ObservableList<ReadOnlyPerson> getListLength() throws IOException, DataConversionException;
+    String getPassword();
 
-    void encrypt(String userId, String pass, boolean emptyFile) throws Exception;
+    void setPassword(String password);
 
-    void decrypt(String fileName, String pass) throws Exception;
+    /**
+     * Returns true if both have the same username. (interfaces cannot override .equals)
+     */
+    default boolean isSameStateAs(ReadOnlyUser other) {
+        return other == this // short circuit if same object
+                || (other != null // this is first to avoid NPE below
+                && other.getUserId().equals(this.getUserId())); // state checks here onwards
+    }
 
-    void encryptPublic(boolean isLockCommand) throws CommandException;
+    /**
+     * Returns true if both have the same username and password
+     */
+    default boolean isSameUserAs(ReadOnlyUser other) {
+        return other == this // short circuit if same object
+                || (other != null // this is first to avoid NPE below
+                && other.getUserId().equals(this.getUserId())
+                && other.getPassword().equals(this.getPassword())); // state checks here onwards
+    }
+}
+```
+###### \java\seedu\address\model\user\UniqueUserList.java
+``` java
 
-    void saveToEncryptedFile();
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
+import org.fxmisc.easybind.EasyBind;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.user.exceptions.DuplicateUserException;
+import seedu.address.model.user.exceptions.UserNotFoundException;
+
+```
+###### \java\seedu\address\model\user\UniqueUserList.java
+``` java
+
+/**
+ * A list of users that enforces uniqueness between its elements and does not allow nulls.
+ * <p>
+ * Supports a minimal set of list operations.
+ *
+ * @see User#equals(Object)
+ */
+public class UniqueUserList {
+    private final ObservableList<User> internalList = FXCollections.observableArrayList();
+    // used by asObservableList()
+    private final ObservableList<ReadOnlyUser> mappedList = EasyBind.map(internalList, (user) -> user);
+
+    /**
+     * Returns true if the list contains an equivalent person as the given argument.
+     */
+    public boolean contains(ReadOnlyUser toCheck) {
+        requireNonNull(toCheck);
+        return internalList.contains(toCheck);
+    }
+
+    /**
+     * Adds a person to the list.
+     *
+     * @throws DuplicateUserException if the person to add is a duplicate of an existing person in the list.
+     */
+    public void add(ReadOnlyUser toAdd) throws DuplicateUserException {
+        requireNonNull(toAdd);
+        if (contains(toAdd)) {
+            throw new DuplicateUserException();
+        }
+        internalList.add(new User(toAdd));
+    }
+
+    /**
+     * Removes the equivalent event from the list.
+     *
+     * @throws UserNotFoundException if no such event could be found in the list.
+     */
+    public boolean remove(ReadOnlyUser toRemove) throws UserNotFoundException {
+        requireNonNull(toRemove);
+        final boolean userFoundAndDeleted = internalList.remove(toRemove);
+        if (!userFoundAndDeleted) {
+            throw new UserNotFoundException();
+        }
+        return userFoundAndDeleted;
+    }
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList<ReadOnlyUser> asObservableList() {
+        return FXCollections.unmodifiableObservableList(mappedList);
+    }
+
+    public void setUsers(List<? extends ReadOnlyUser> users) throws DuplicateUserException {
+        final UniqueUserList replacement = new UniqueUserList();
+        for (final ReadOnlyUser user : users) {
+            replacement.add(new User(user));
+        }
+        setUsers(replacement);
+    }
+
+    public void setUsers(UniqueUserList replacement) throws DuplicateUserException {
+        this.internalList.setAll(replacement.internalList);
+    }
+
+
+    public User getUser(String userName) throws UserNotFoundException {
+        int targetIndex = this.internalList.indexOf(new User(userName));
+        if (targetIndex < 0) {
+            throw new UserNotFoundException();
+        }
+        return this.internalList.get(targetIndex);
+    }
+
+    public String getSalt(String userId) throws UserNotFoundException {
+        return getUser(userId).getSalt();
+    }
+}
+```
+###### \java\seedu\address\model\user\User.java
+``` java
+
+/**
+ * Represents a User in the account.
+ * Guarantees: details are present and not null, field values are validated.
+ */
+public class User implements ReadOnlyUser {
+    private String userId;
+    private String salt = "";
+    private String password = "";
+
+    public User() {
+    }
+
+    public User(String userId, String salt, String password) {
+        this.userId = userId;
+        this.salt = salt;
+        this.password = password;
+    }
+
+    public User(String userId) {
+        this.userId = userId;
+    }
+
+    /**
+     * Creates a copy of the given ReadOnlyUser.
+     */
+    public User(ReadOnlyUser source) {
+        this(source.getUserId(), source.getSalt(), source.getPassword());
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String getSalt() {
+        return salt;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ReadOnlyUser // instanceof handles nulls
+                && this.isSameStateAs((ReadOnlyUser) other));
+    }
+
+    /**
+     * Check if the users have the same userName and password
+     */
+    public boolean sameAs(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ReadOnlyUser // instanceof handles nulls
+                && this.isSameUserAs((ReadOnlyUser) other));
+    }
+}
+```
+###### \java\seedu\address\storage\AccountStorage.java
+``` java
+
+/**
+ * Represents a storage for {@link seedu.address.model.Account}.
+ */
+public interface AccountStorage {
+
+    /**
+     * Returns the file path of the data file.
+     */
+    String getAccountFilePath();
+
+    /**
+     * Returns AddressBook data as a {@link seedu.address.model.ReadOnlyAccount}.
+     * Returns {@code Optional.empty()} if storage file is not found.
+     */
+    Optional<ReadOnlyAccount> readAccount() throws FileNotFoundException, DataConversionException;
+
+    /**
+     * @see #getAccountFilePath()
+     */
+    Optional<ReadOnlyAccount> readAccount(String filePath) throws FileNotFoundException, DataConversionException;
+
+    /**
+     * Saves the given {@link ReadOnlyAccount} to the storage.
+     *
+     * @param addressBook cannot be null.
+     */
+    void saveAccount(ReadOnlyAccount addressBook) throws IOException;
+
+    /**
+     * @see #saveAccount(ReadOnlyAccount)
+     */
+    void saveAccount(ReadOnlyAccount addressBook, String filePath) throws IOException;
+
+    /**
+     * @see #saveAddressBook(ReadOnlyAddressBook)
+     */
+}
+```
+###### \java\seedu\address\storage\XmlAccountStorage.java
+``` java
+
+/**
+ * A class to access TunedIn Account data stored as an xml file on the hard disk.
+ */
+public class XmlAccountStorage implements AccountStorage {
+
+    private static final Logger logger = LogsCenter.getLogger(XmlAddressBookStorage.class);
+
+    private String filePath;
+
+    public XmlAccountStorage(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    @Override
+    public String getAccountFilePath() {
+        return filePath;
+    }
+
+    /**
+     * Similar to {@link #readAccount()}
+     *
+     * @param filePath location of the data. Cannot be null
+     * @throws DataConversionException if the file is not in the correct format.
+     */
+    public Optional<ReadOnlyAccount> readAccount(String filePath)
+            throws FileNotFoundException, DataConversionException {
+        requireNonNull(filePath);
+
+        File accountFile = new File(filePath);
+        if (!accountFile.exists()) {
+            logger.info("Account file " + accountFile + " not found");
+            return Optional.empty();
+        }
+
+        ReadOnlyAccount accountOptional = XmlFileStorage.loadAccountFromSaveFile(new File(filePath));
+
+        return Optional.of(accountOptional);
+    }
+
+    @Override
+    public Optional<ReadOnlyAccount> readAccount() throws FileNotFoundException, DataConversionException {
+        return readAccount(filePath);
+    }
+
+    @Override
+    public void saveAccount(ReadOnlyAccount account) throws IOException {
+        saveAccount(account, filePath);
+    }
+
+    /**
+     * Similar to {@link #saveAccount(ReadOnlyAccount)}
+     *
+     * @param filePath location of the data. Cannot be null
+     */
+    public void saveAccount(ReadOnlyAccount account, String filePath) throws IOException {
+        requireNonNull(account);
+        requireNonNull(filePath);
+
+        File file = new File(filePath);
+        FileUtil.createIfMissing(file);
+        XmlFileStorage.saveAccountToFile(file, new XmlSerializableAccount(account));
+    }
+}
+```
+###### \java\seedu\address\storage\XmlAdaptedUser.java
+``` java
+
+/**
+ * JAXB-friendly version of the Event.
+ */
+public class XmlAdaptedUser {
+    @XmlElement(required = true)
+    private String userId;
+    @XmlElement(required = true)
+    private String salt;
+    @XmlElement(required = true)
+    private String password;
+
+    /**
+     * Constructs an XmlAdaptedUser.
+     * This is the no-arg constructor that is required by JAXB.
+     */
+    public XmlAdaptedUser() {
+    }
+
+    /**
+     * Converts a given User into this class for JAXB use.
+     *
+     * @param source future changes to this will not affect the created XmlAdaptedPerson
+     */
+    public XmlAdaptedUser(ReadOnlyUser source) {
+        userId = source.getUserId();
+        salt = source.getSalt();
+        password = source.getPassword();
+    }
+
+    /**
+     * Converts this jaxb-friendly adapted person object into the model's Person object.
+     */
+    public User toModelType() {
+        return new User(this.userId, this.salt, this.password);
+    }
+}
+```
+###### \java\seedu\address\storage\XmlSerializableAccount.java
+``` java
+
+/**
+ * An Immutable Account that is serializable to XML format
+ */
+@XmlRootElement(name = "account")
+public class XmlSerializableAccount implements ReadOnlyAccount {
+
+    @XmlElement
+    private List<XmlAdaptedUser> users;
+
+    public XmlSerializableAccount() {
+        users = new ArrayList<>();
+    }
+
+    public XmlSerializableAccount(ReadOnlyAccount src) {
+        this();
+        users.addAll(src.getUserList().stream().map(XmlAdaptedUser::new).collect(Collectors.toList()));
+    }
+
+    public List<XmlAdaptedUser> getUsers() {
+        return users;
+    }
+
+    @Override
+    public ObservableList<ReadOnlyUser> getUserList() {
+        final ObservableList<ReadOnlyUser> users = this.users.stream().map(u ->
+                u.toModelType()).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        return FXCollections.unmodifiableObservableList(users);
+    }
 }
 ```

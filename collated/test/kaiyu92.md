@@ -1,5 +1,5 @@
 # kaiyu92
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Before
     public void setup() throws Exception {
@@ -11,7 +11,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void exportGeneralBookDataToFile_nullDestination_throwsNullPointerException() throws Exception {
@@ -19,7 +19,7 @@
         XmlUtil.exportDataToFile(null, new StringBuilder());
     }
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendGeneralBookHeader_nullBuilder_throwsNullPointerException() throws Exception {
@@ -28,7 +28,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendGeneralBookHeader_nullHeader_throwsNullPointerException() throws Exception {
@@ -108,7 +108,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void exportAddressBookDataToFile_nullContent_throwsNullPointerException() throws Exception {
@@ -117,7 +117,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getAddressBookNodeList_missingFile_fileNotFoundException() throws Exception {
@@ -126,7 +126,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getAddressBookNodeList_nullNodeName_throwsNullPointerException() throws Exception {
@@ -135,7 +135,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getAddressBookNodeList_validFile_validResult() throws Exception {
@@ -144,7 +144,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendAddressBookHeader_validHeader_validResult() throws Exception {
@@ -155,7 +155,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendAddressBookContent_nullBuilder_throwsNullPointerException() throws Exception {
@@ -165,7 +165,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendAddressBookContent_nullElement_throwsNullPointerException() throws Exception {
@@ -175,7 +175,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendAddressBookContent_nullFields_throwsNullPointerException() throws Exception {
@@ -187,7 +187,7 @@
 
     //============================EventBook===============================================================
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookDataFromFile_nullFile_throwsNullPointerException() throws Exception {
@@ -196,7 +196,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookDataFromFile_nullClass_throwsNullPointerException() throws Exception {
@@ -205,7 +205,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookDataFromFile_missingFile_fileNotFoundException() throws Exception {
@@ -214,7 +214,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookDataFromFile_emptyFile_dataFormatMismatchException() throws Exception {
@@ -223,7 +223,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookDataFromFile_validFile_validResult() throws Exception {
@@ -233,7 +233,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void saveDataToFile_nullFile_throwsNullPointerException() throws Exception {
@@ -242,7 +242,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void saveEventBookDataToFile_nullClass_throwsNullPointerException() throws Exception {
@@ -251,7 +251,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void saveEventBookDataToFile_missingFile_fileNotFoundException() throws Exception {
@@ -260,7 +260,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void saveEventBookDataToFile_validFile_dataSaved() throws Exception {
@@ -281,7 +281,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void exportEventBookDataToFile_nullContent_throwsNullPointerException() throws Exception {
@@ -290,7 +290,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookNodeList_missingFile_fileNotFoundException() throws Exception {
@@ -299,7 +299,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookNodeList_nullNodeName_throwsNullPointerException() throws Exception {
@@ -308,7 +308,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void getEventBookNodeList_validFile_validResult() throws Exception {
@@ -317,7 +317,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendEventBookHeader_validHeader_validResult() throws Exception {
@@ -328,7 +328,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendEventBookContent_nullBuilder_throwsNullPointerException() throws Exception {
@@ -337,7 +337,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendEventBookContent_nullElement_throwsNullPointerException() throws Exception {
@@ -347,7 +347,7 @@
     }
 
 ```
-###### /java/seedu/address/commons/util/XmlUtilTest.java
+###### \java\seedu\address\commons\util\XmlUtilTest.java
 ``` java
     @Test
     public void appendEventBookContent_nullFields_throwsNullPointerException() throws Exception {
@@ -357,427 +357,7 @@
     //=======================================================================================================
 }
 ```
-###### /java/seedu/address/logic/parser/FindEventCommandParserTest.java
-``` java
-public class FindEventCommandParserTest {
-
-    private FindEventCommandParser parser = new FindEventCommandParser();
-
-    @Test
-    public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                FindEventCommand.MESSAGE_USAGE));
-    }
-
-    @Test
-    public void parse_validArgs_returnsFindCommand() {
-        // no leading and trailing whitespaces
-        FindEventCommand expectedFindCommand =
-                new FindEventCommand(new TitleContainsKeywordsPredicate(Arrays.asList("Spectra", "Deepavali")));
-        assertParseSuccess(parser, "et/Spectra Deepavali", expectedFindCommand);
-
-        // multiple whitespaces between keywords
-        assertParseSuccess(parser, "et/ \n Spectra \n \t Deepavali  \t", expectedFindCommand);
-    }
-}
-```
-###### /java/seedu/address/logic/parser/SelectEventCommandParserTest.java
-``` java
-
-/**
- * Test scope: similar to {@code DeleteSelectCommandParserTest}.
- *
- * @see DeleteEventCommandParserTest
- */
-public class SelectEventCommandParserTest {
-
-    private SelectEventCommandParser parser = new SelectEventCommandParser();
-
-    @Test
-    public void parse_validArgs_returnsSelectCommand() {
-        assertParseSuccess(parser, "1", new SelectEventCommand(INDEX_FIRST_EVENT));
-    }
-
-    @Test
-    public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                SelectEventCommand.MESSAGE_USAGE));
-    }
-}
-```
-###### /java/seedu/address/logic/parser/EditEventCommandParserTest.java
-``` java
-public class EditEventCommandParserTest {
-
-    private static final String MESSAGE_INVALID_FORMAT =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditEventCommand.MESSAGE_USAGE);
-
-    private EditEventCommandParser parser = new EditEventCommandParser();
-
-    @Test
-    public void parse_missingParts_failure() {
-        // no index specified
-        assertParseFailure(parser, VALID_TITLE_SPECTRA, MESSAGE_INVALID_FORMAT);
-
-        // no field specified
-        assertParseFailure(parser, "1", EditEventCommand.MESSAGE_NOT_EDITED);
-
-        // no index and no field specified
-        assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
-    }
-
-    @Test
-    public void parse_invalidPreamble_failure() {
-        // negative index
-        assertParseFailure(parser, "-5" + TITLE_DESC_SPECTRA, MESSAGE_INVALID_FORMAT);
-
-        // zero index
-        assertParseFailure(parser, "0" + TITLE_DESC_SPECTRA, MESSAGE_INVALID_FORMAT);
-
-        // invalid arguments being parsed as preamble
-        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
-
-        // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
-    }
-
-    @Test
-    public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_TITLE_DESC,
-                Title.MESSAGE_TITLE_CONSTRAINTS); // invalid title
-        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC,
-                Description.MESSAGE_DESCRIPTION_CONSTRAINTS); // invalid description
-        assertParseFailure(parser, "1" + INVALID_LOCATION_DESC,
-                Location.MESSAGE_LOCATION_CONSTRAINTS); // invalid location
-        assertParseFailure(parser, "1" + INVALID_DATETIME_DESC,
-                Datetime.MESSAGE_DATETIME_CONSTRAINTS); // invalid datetime
-
-        // invalid description followed by valid location
-        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC
-                + LOCATION_DESC_SPECTRA, Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
-
-        // valid description followed by invalid location. The test case for invalid phone followed by valid phone
-        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
-        assertParseFailure(parser, "1" + DESCRIPTION_DESC_DEEPAVALI
-                + INVALID_DESCRIPTION_DESC, Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
-
-        // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_TITLE_DESC + INVALID_DESCRIPTION_DESC
-                + VALID_LOCATION_SPECTRA + VALID_DATETIME_SPECTRA, Title.MESSAGE_TITLE_CONSTRAINTS);
-    }
-
-    @Test
-    public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_EVENT;
-        String userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_DEEPAVALI
-                + LOCATION_DESC_SPECTRA + DATETIME_DESC_SPECTRA + TITLE_DESC_SPECTRA;
-
-        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withTitle(VALID_TITLE_SPECTRA)
-                .withDescription(VALID_DESCRIPTION_DEEPAVALI).withLocation(VALID_LOCATION_SPECTRA)
-                .withDatetime(VALID_DATETIME_SPECTRA).build();
-        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
-
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_EVENT;
-        String userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_SPECTRA;
-
-        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_DEEPAVALI)
-                .withLocation(VALID_LOCATION_SPECTRA).build();
-        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
-
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_oneFieldSpecified_success() {
-        // title
-        Index targetIndex = INDEX_THIRD_EVENT;
-        String userInput = targetIndex.getOneBased() + TITLE_DESC_SPECTRA;
-        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withTitle(VALID_TITLE_SPECTRA).build();
-        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // description
-        userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_SPECTRA;
-        descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_SPECTRA).build();
-        expectedCommand = new EditEventCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // location
-        userInput = targetIndex.getOneBased() + LOCATION_DESC_SPECTRA;
-        descriptor = new EditEventDescriptorBuilder().withLocation(VALID_LOCATION_SPECTRA).build();
-        expectedCommand = new EditEventCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // datetime
-        userInput = targetIndex.getOneBased() + DATETIME_DESC_SPECTRA;
-        descriptor = new EditEventDescriptorBuilder().withDatetime(VALID_DATETIME_SPECTRA).build();
-        expectedCommand = new EditEventCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = INDEX_FIRST_EVENT;
-        String userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_SPECTRA + DATETIME_DESC_SPECTRA
-                + LOCATION_DESC_SPECTRA + DESCRIPTION_DESC_SPECTRA + DATETIME_DESC_SPECTRA + LOCATION_DESC_SPECTRA
-                + DESCRIPTION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI;
-
-        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_DEEPAVALI)
-                .withLocation(VALID_LOCATION_DEEPAVALI).withDatetime(VALID_DATETIME_DEEPAVALI)
-                .build();
-        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
-
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_invalidValueFollowedByValidValue_success() {
-        // no other valid values specified
-        Index targetIndex = INDEX_FIRST_EVENT;
-        String userInput = targetIndex.getOneBased() + INVALID_DESCRIPTION_DESC + DESCRIPTION_DESC_DEEPAVALI;
-        EditEventDescriptor descriptor = new EditEventDescriptorBuilder()
-                .withDescription(VALID_DESCRIPTION_DEEPAVALI).build();
-        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // other valid values specified
-        userInput = targetIndex.getOneBased() + LOCATION_DESC_DEEPAVALI + INVALID_DESCRIPTION_DESC
-                + DATETIME_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI;
-        descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_DEEPAVALI)
-                .withLocation(VALID_LOCATION_DEEPAVALI).withDatetime(VALID_DATETIME_DEEPAVALI).build();
-        expectedCommand = new EditEventCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-}
-```
-###### /java/seedu/address/logic/parser/AddEventCommandParserTest.java
-``` java
-public class AddEventCommandParserTest {
-    private AddEventCommandParser parser = new AddEventCommandParser();
-
-    @Test
-    public void parse_allFieldsPresent_success() {
-        Event expectedEvent = new EventBuilder().withTitle(VALID_TITLE_DEEPAVALI)
-                .withDescription(VALID_DESCRIPTION_DEEPAVALI)
-                .withLocation(VALID_LOCATION_DEEPAVALI).withDatetime(VALID_DATETIME_DEEPAVALI).build();
-
-        // multiple titles - last title accepted
-        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_SPECTRA + TITLE_DESC_DEEPAVALI
-                + DESCRIPTION_DESC_DEEPAVALI
-                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
-
-        // multiple description - last description accepted
-        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_SPECTRA
-                + DESCRIPTION_DESC_DEEPAVALI
-                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
-
-        // multiple locations - last location accepted
-        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
-                + LOCATION_DESC_SPECTRA
-                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
-
-        // multiple datetime - last datetime accepted
-        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
-                + LOCATION_DESC_DEEPAVALI
-                + DATETIME_DESC_SPECTRA + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
-
-    }
-
-    @Test
-    public void parse_optionalFieldsMissing_success() {
-        // zero tags
-        Event expectedEvent = new EventBuilder().withTitle(VALID_TITLE_SPECTRA)
-                .withDescription(VALID_DESCRIPTION_SPECTRA)
-                .withLocation(VALID_LOCATION_SPECTRA).withDatetime(VALID_DATETIME_SPECTRA).build();
-        // command word
-        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_SPECTRA + DESCRIPTION_DESC_SPECTRA
-                + LOCATION_DESC_SPECTRA + DATETIME_DESC_SPECTRA, new AddEventCommand(expectedEvent));
-
-    }
-
-    @Test
-    public void parse_compulsoryFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEventCommand.MESSAGE_USAGE);
-
-        // missing title prefix
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + VALID_TITLE_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
-                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, expectedMessage);
-
-        // missing description prefix
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + VALID_DESCRIPTION_DEEPAVALI
-                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, expectedMessage);
-
-        // missing location prefix
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
-                + VALID_LOCATION_DEEPAVALI + DATETIME_DESC_DEEPAVALI, expectedMessage);
-
-        // missing datetime prefix
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
-                + LOCATION_DESC_DEEPAVALI + VALID_DATETIME_DEEPAVALI, expectedMessage);
-    }
-
-    @Test
-    public void parse_invalidValue_failure() {
-
-        // invalid title
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + INVALID_TITLE_DESC
-                + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI
-                + DATETIME_DESC_DEEPAVALI, Title.MESSAGE_TITLE_CONSTRAINTS);
-
-        // invalid description
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI
-                + INVALID_DESCRIPTION_DESC + LOCATION_DESC_DEEPAVALI
-                + DATETIME_DESC_DEEPAVALI, Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
-
-        // invalid location
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI
-                + DESCRIPTION_DESC_DEEPAVALI + INVALID_LOCATION_DESC
-                + DATETIME_DESC_DEEPAVALI, Location.MESSAGE_LOCATION_CONSTRAINTS);
-
-        // invalid datetime
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI
-                + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI
-                + INVALID_DATETIME_DESC, Datetime.MESSAGE_DATETIME_CONSTRAINTS);
-
-        // two invalid values, only first invalid value reported
-        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + INVALID_TITLE_DESC
-                + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI
-                + INVALID_DATETIME_DESC, Title.MESSAGE_TITLE_CONSTRAINTS);
-    }
-}
-```
-###### /java/seedu/address/logic/parser/OrderEventCommandParserTest.java
-``` java
-public class OrderEventCommandParserTest {
-
-    private OrderEventCommandParser parser = new OrderEventCommandParser();
-
-    @Test
-    public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, OrderEventCommand.MESSAGE_USAGE));
-    }
-
-    @Test
-    public void parse_validArgs_returnsFindCommand() {
-
-        OrderEventCommand expectedOrderCommand = new OrderEventCommand("TITLE");
-
-        //same value
-        assertParseSuccess(parser, "TITLE", expectedOrderCommand);
-
-        //case insensitive
-        assertParseSuccess(parser, "tItLe", expectedOrderCommand);
-    }
-}
-```
-###### /java/seedu/address/logic/parser/CalendarViewStateParserTest.java
-``` java
-public class CalendarViewStateParserTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    private UserPrefs userPrefs;
-    private Model model;
-
-    @Before
-    public void setup() {
-        userPrefs = new UserPrefs();
-        model = new ModelManager();
-    }
-
-    @Test
-    public void updateViewState_nullCalendar_throwsNullPointerException() throws Exception {
-        CalendarViewStateParser parser = new CalendarViewStateParser(userPrefs, model, null);
-        thrown.expect(NullPointerException.class);
-        parser.updateViewState("Test");
-    }
-}
-```
-###### /java/seedu/address/logic/parser/ExportCommandParserTest.java
-``` java
-public class ExportCommandParserTest {
-
-    private ExportCommandParser parser = new ExportCommandParser();
-
-    @Test
-    public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_BOOK_PARAMS,
-                ExportCommand.MESSAGE_USAGE));
-    }
-
-    @Test
-    public void parse_validArgs_returnsExportCommand() {
-        // no leading and trailing whitespaces
-        ExportCommand expectedExportCommand =
-                new ExportCommand("addressbook");
-        assertParseSuccess(parser, "addressbook", expectedExportCommand);
-    }
-}
-```
-###### /java/seedu/address/logic/parser/RemarkCommandParserTest.java
-``` java
-public class RemarkCommandParserTest {
-    private RemarkCommandParser parser = new RemarkCommandParser();
-
-    @Test
-    public void parse_indexSpecified_failure() throws Exception {
-        final Remark remark = new Remark("Some remark.");
-
-        // have remarks
-        Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK.toString() + " " + remark;
-        RemarkCommand expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, remark);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // no remarks
-        userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK.toString();
-        expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(""));
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_noFieldSpecified_failure() throws Exception {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE);
-
-        // nothing at all
-        assertParseFailure(parser, RemarkCommand.COMMAND_WORD, expectedMessage);
-    }
-}
-```
-###### /java/seedu/address/logic/parser/DeleteEventCommandParserTest.java
-``` java
-
-/**
- * As we are only doing white-box testing, our test cases do not cover path variations
- * outside of the DeleteEventCommand code. For example, inputs "1" and "1 abc" take the
- * same path through the DeleteCommand, and therefore we test only one of them.
- * The path variation for those two cases occur inside the ParserUtil, and
- * therefore should be covered by the ParserUtilTest.
- */
-public class DeleteEventCommandParserTest {
-
-    private DeleteEventCommandParser parser = new DeleteEventCommandParser();
-
-    @Test
-    public void parse_validArgs_returnsDeleteEventCommand() {
-        assertParseSuccess(parser, "1", new DeleteEventCommand(INDEX_FIRST_EVENT));
-    }
-
-    @Test
-    public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                DeleteEventCommand.MESSAGE_USAGE));
-    }
-}
-```
-###### /java/seedu/address/logic/commands/AddEventCommandIntegrationTest.java
+###### \java\seedu\address\logic\commands\AddEventCommandIntegrationTest.java
 ``` java
 
 /**
@@ -825,7 +405,7 @@ public class AddEventCommandIntegrationTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/AddEventCommandTest.java
+###### \java\seedu\address\logic\commands\AddEventCommandTest.java
 ``` java
 public class AddEventCommandTest {
 
@@ -1173,258 +753,119 @@ public class AddEventCommandTest {
 
 }
 ```
-###### /java/seedu/address/logic/commands/EditEventDescriptorTest.java
-``` java
-public class EditEventDescriptorTest {
-
-    @Test
-    public void equals() {
-        // same values -> returns true
-        EditEventCommand.EditEventDescriptor descriptorWithSameValues =
-                new EditEventCommand.EditEventDescriptor(DESC_SPECTRA);
-        assertTrue(DESC_SPECTRA.equals(descriptorWithSameValues));
-
-        // same object -> returns true
-        assertTrue(DESC_SPECTRA.equals(DESC_SPECTRA));
-
-        // null -> returns false
-        assertFalse(DESC_SPECTRA.equals(null));
-
-        // different types -> returns false
-        assertFalse(DESC_SPECTRA.equals(5));
-
-        // different values -> returns false
-        assertFalse(DESC_SPECTRA.equals(DESC_DEEPAVALI));
-
-        // different title -> returns false
-        EditEventCommand.EditEventDescriptor editedSpectra =
-                new EditEventDescriptorBuilder(DESC_SPECTRA).withTitle(VALID_TITLE_DEEPAVALI).build();
-        assertFalse(DESC_SPECTRA.equals(editedSpectra));
-
-        // different description -> returns false
-        editedSpectra =
-                new EditEventDescriptorBuilder(DESC_SPECTRA).withDescription(VALID_DESCRIPTION_DEEPAVALI).build();
-        assertFalse(DESC_SPECTRA.equals(editedSpectra));
-
-        // different email -> returns false
-        editedSpectra = new EditEventDescriptorBuilder(DESC_SPECTRA).withLocation(VALID_LOCATION_DEEPAVALI).build();
-        assertFalse(DESC_SPECTRA.equals(editedSpectra));
-
-        // different address -> returns false
-        editedSpectra = new EditEventDescriptorBuilder(DESC_SPECTRA).withDatetime(VALID_DATETIME_DEEPAVALI).build();
-        assertFalse(DESC_SPECTRA.equals(editedSpectra));
-    }
-}
-```
-###### /java/seedu/address/logic/commands/SelectEventCommandTest.java
+###### \java\seedu\address\logic\commands\DeleteEventCommandTest.java
 ``` java
 
 /**
- * Contains integration tests (interaction with the Model) for {@code SelectEventCommand}.
+ * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteEventCommand}.
  */
-public class SelectEventCommandTest {
-    @Rule
-    public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
+public class DeleteEventCommandTest {
 
-    private Model model;
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalEventBook(), new UserPrefs(),
+            new Account(), new Config());
 
-    @Before
-    public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), getTypicalEventBook(), new UserPrefs(), new Account(),
-                new Config());
+    @Test
+    public void execute_validIndexUnfilteredList_success() throws Exception {
+        ReadOnlyEvent eventToDelete = model.getFilteredEventList().get(INDEX_FIRST_EVENT.getZeroBased());
+        DeleteEventCommand deleteEventCommand = prepareCommand(INDEX_FIRST_EVENT);
+
+        String expectedMessage = String.format(DeleteEventCommand.MESSAGE_DELETE_EVENT_SUCCESS, eventToDelete);
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), model.getEventBook(), new UserPrefs(),
+                new Account(), new Config());
+        ReadOnlyEvent expectedEventToDelete = expectedModel.getFilteredEventList()
+                .get(INDEX_FIRST_EVENT.getZeroBased());
+        expectedModel.deleteEvent(expectedEventToDelete);
+
+        assertCommandSuccess(deleteEventCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
-        Index lastEventIndex = Index.fromOneBased(model.getFilteredEventList().size());
+    public void execute_invalidIndexUnfilteredList_throwsCommandException() throws Exception {
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+        DeleteEventCommand deleteEventCommand = prepareCommand(outOfBoundIndex);
 
-        assertExecutionSuccess(INDEX_FIRST_EVENT);
-        assertExecutionSuccess(INDEX_THIRD_EVENT);
-        assertExecutionSuccess(lastEventIndex);
+        assertCommandFailure(deleteEventCommand, model, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
     }
 
     @Test
-    public void execute_invalidIndexUnfilteredList_failure() {
-        Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredEventList().size() + 1);
-
-        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void execute_validIndexFilteredList_success() {
+    public void execute_validIndexFilteredList_success() throws Exception {
         showFirstEventOnly(model);
 
-        assertExecutionSuccess(INDEX_FIRST_EVENT);
+        ReadOnlyEvent eventToDelete = model.getFilteredEventList().get(INDEX_FIRST_EVENT.getZeroBased());
+        DeleteEventCommand deleteEventCommand = prepareCommand(INDEX_FIRST_EVENT);
+
+        String expectedMessage = String.format(DeleteEventCommand.MESSAGE_DELETE_EVENT_SUCCESS, eventToDelete);
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), model.getEventBook(), new UserPrefs(),
+                new Account(), new Config());
+        ReadOnlyEvent expectedEventToDelete = expectedModel.getFilteredEventList()
+                .get(INDEX_FIRST_EVENT.getZeroBased());
+        expectedModel.deleteEvent(expectedEventToDelete);
+        showNoEvent(expectedModel);
+
+        assertCommandSuccess(deleteEventCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_invalidIndexFilteredList_failure() {
+    public void execute_invalidIndexFilteredList_throwsCommandException() {
         showFirstEventOnly(model);
 
-        Index outOfBoundsIndex = INDEX_SECOND_EVENT;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundsIndex.getZeroBased() < model.getEventBook().getEventList().size());
+        Index outOfBoundIndex = INDEX_SECOND_EVENT;
+        // ensures that outOfBoundIndex is still in bounds of event book list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getEventBook().getEventList().size());
 
-        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
+        DeleteEventCommand deleteEventCommand = prepareCommand(outOfBoundIndex);
+
+        assertCommandFailure(deleteEventCommand, model, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
     }
 
     @Test
     public void equals() {
-        SelectEventCommand selectFirstCommand = new SelectEventCommand(INDEX_FIRST_EVENT);
-        SelectEventCommand selectSecondCommand = new SelectEventCommand(INDEX_SECOND_EVENT);
+        DeleteEventCommand deleteFirstEventCommand = new DeleteEventCommand(INDEX_FIRST_EVENT);
+        DeleteEventCommand deleteSecondEventCommand = new DeleteEventCommand(INDEX_SECOND_EVENT);
 
         // same object -> returns true
-        assertTrue(selectFirstCommand.equals(selectFirstCommand));
+        assertTrue(deleteFirstEventCommand.equals(deleteFirstEventCommand));
 
         // same values -> returns true
-        SelectEventCommand selectFirstCommandCopy = new SelectEventCommand(INDEX_FIRST_EVENT);
-        assertTrue(selectFirstCommand.equals(selectFirstCommandCopy));
+        DeleteEventCommand deleteFirstEventCommandCopy = new DeleteEventCommand(INDEX_FIRST_EVENT);
+        assertTrue(deleteFirstEventCommand.equals(deleteFirstEventCommandCopy));
 
         // different types -> returns false
-        assertFalse(selectFirstCommand.equals(1));
+        assertFalse(deleteFirstEventCommand.equals(1));
 
         // null -> returns false
-        assertFalse(selectFirstCommand.equals(null));
+        assertFalse(deleteFirstEventCommand.equals(null));
 
         // different person -> returns false
-        assertFalse(selectFirstCommand.equals(selectSecondCommand));
+        assertFalse(deleteFirstEventCommand.equals(deleteSecondEventCommand));
     }
 
     /**
-     * Executes a {@code SelectEventCommand} with the given {@code index},
-     * and checks that {@code JumpToListRequestEvent}
-     * is raised with the correct index.
+     * Returns a {@code DeleteCommand} with the parameter {@code index}.
      */
-    private void assertExecutionSuccess(Index index) {
-        SelectEventCommand selectEventCommand = prepareCommand(index);
-
-        try {
-            CommandResult commandResult = selectEventCommand.execute();
-            assertEquals(String.format(SelectEventCommand.MESSAGE_SELECT_EVENT_SUCCESS, index.getOneBased()),
-                    commandResult.feedbackToUser);
-        } catch (CommandException ce) {
-            throw new IllegalArgumentException("Execution of command should not fail.", ce);
-        }
-
-        //JumpToListRequestEvent lastEvent =
-        // (JumpToListRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
-        assertEquals(index, Index.fromZeroBased(index.getZeroBased()));
-    }
-
-    /**
-     * Executes a {@code SelectEventCommand} with the given {@code index}, and checks that a {@code CommandException}
-     * is thrown with the {@code expectedMessage}.
-     */
-    private void assertExecutionFailure(Index index, String expectedMessage) {
-        SelectEventCommand selectEventCommand = prepareCommand(index);
-
-        try {
-            selectEventCommand.execute();
-            fail("The expected CommandException was not thrown.");
-        } catch (CommandException ce) {
-            assertEquals(expectedMessage, ce.getMessage());
-            assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
-        }
-    }
-
-    /**
-     * Returns a {@code SelectEventCommand} with parameters {@code index}.
-     */
-    private SelectEventCommand prepareCommand(Index index) {
-        SelectEventCommand selectEventCommand = new SelectEventCommand(index);
+    private DeleteEventCommand prepareCommand(Index index) {
+        DeleteEventCommand deleteEventCommand = new DeleteEventCommand(index);
         UserPrefs userPrefs = new UserPrefs();
         Config config = new Config();
         Logic logic = null;
-        selectEventCommand.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+        deleteEventCommand.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
                 new UiManager(logic, config, userPrefs));
-        return selectEventCommand;
-    }
-}
-```
-###### /java/seedu/address/logic/commands/FindEventCommandTest.java
-``` java
-
-/**
- * Contains integration tests (interaction with the Model) for {@code FindEventCommand}.
- */
-public class FindEventCommandTest {
-
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalEventBook(), new UserPrefs(), new
-            Account(), new Config());
-
-    @Test
-    public void equals() {
-        TitleContainsKeywordsPredicate firstPredicate =
-                new TitleContainsKeywordsPredicate(Collections.singletonList("first"));
-        TitleContainsKeywordsPredicate secondPredicate =
-                new TitleContainsKeywordsPredicate(Collections.singletonList("second"));
-
-        FindEventCommand findFirstCommand = new FindEventCommand(firstPredicate);
-        FindEventCommand findSecondCommand = new FindEventCommand(secondPredicate);
-
-        // same object -> returns true
-        assertTrue(findFirstCommand.equals(findFirstCommand));
-
-        // same values -> returns true
-        FindEventCommand findFirstCommandCopy = new FindEventCommand(firstPredicate);
-        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
-
-        // different types -> returns false
-        assertFalse(findFirstCommand.equals(1));
-
-        // null -> returns false
-        assertFalse(findFirstCommand.equals(null));
-
-        // different person -> returns false
-        assertFalse(findFirstCommand.equals(findSecondCommand));
-    }
-
-    @Test
-    public void execute_zeroKeywords_noEventFound() {
-        String expectedMessage = String.format(MESSAGE_EVENTS_LISTED_OVERVIEW, 0);
-        FindEventCommand command = prepareCommand(" ");
-        assertCommandSuccess(command, expectedMessage, Collections.emptyList());
-    }
-
-    @Test
-    public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_EVENTS_LISTED_OVERVIEW, 3);
-        FindEventCommand command = prepareCommand("Spectra Deepavali Henna");
-        assertCommandSuccess(command, expectedMessage, Arrays.asList(SPECTRA, DEEPAVALI, HENNA));
+        return deleteEventCommand;
     }
 
     /**
-     * Parses {@code userInput} into a {@code FindEventCommand}.
+     * Updates {@code model}'s filtered list to show no one.
      */
-    private FindEventCommand prepareCommand(String userInput) {
-        FindEventCommand command =
-                new FindEventCommand(new TitleContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+"))));
-        UserPrefs userPrefs = new UserPrefs();
-        Config config = new Config();
-        Logic logic = null;
-        command.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
-                new UiManager(logic, config, userPrefs));
-        return command;
-    }
+    private void showNoEvent(Model model) {
+        model.updateFilteredEventList(p -> false);
 
-    /**
-     * Asserts that {@code command} is successfully executed, and<br>
-     * - the command feedback is equal to {@code expectedMessage}<br>
-     * - the {@code FilteredList<ReadOnlyEvent>} is equal to {@code expectedList}<br>
-     * - the {@code EventBook} in model remains the same after executing the {@code command}
-     */
-    private void assertCommandSuccess(FindEventCommand command, String expectedMessage,
-                                      List<ReadOnlyEvent> expectedList) {
-        EventBook expectedEventBook = new EventBook(model.getEventBook());
-        CommandResult commandResult = command.execute();
-
-        assertEquals(expectedMessage, commandResult.feedbackToUser);
-        assertEquals(expectedList, model.getFilteredEventList());
-        assertEquals(expectedEventBook.toString(), model.getEventBook().toString());
+        assert model.getFilteredEventList().isEmpty();
     }
 }
 ```
-###### /java/seedu/address/logic/commands/EditEventCommandTest.java
+###### \java\seedu\address\logic\commands\EditEventCommandTest.java
 ``` java
 
 /**
@@ -1593,7 +1034,219 @@ public class EditEventCommandTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/OrderEventCommandTest.java
+###### \java\seedu\address\logic\commands\EditEventDescriptorTest.java
+``` java
+public class EditEventDescriptorTest {
+
+    @Test
+    public void equals() {
+        // same values -> returns true
+        EditEventCommand.EditEventDescriptor descriptorWithSameValues =
+                new EditEventCommand.EditEventDescriptor(DESC_SPECTRA);
+        assertTrue(DESC_SPECTRA.equals(descriptorWithSameValues));
+
+        // same object -> returns true
+        assertTrue(DESC_SPECTRA.equals(DESC_SPECTRA));
+
+        // null -> returns false
+        assertFalse(DESC_SPECTRA.equals(null));
+
+        // different types -> returns false
+        assertFalse(DESC_SPECTRA.equals(5));
+
+        // different values -> returns false
+        assertFalse(DESC_SPECTRA.equals(DESC_DEEPAVALI));
+
+        // different title -> returns false
+        EditEventCommand.EditEventDescriptor editedSpectra =
+                new EditEventDescriptorBuilder(DESC_SPECTRA).withTitle(VALID_TITLE_DEEPAVALI).build();
+        assertFalse(DESC_SPECTRA.equals(editedSpectra));
+
+        // different description -> returns false
+        editedSpectra =
+                new EditEventDescriptorBuilder(DESC_SPECTRA).withDescription(VALID_DESCRIPTION_DEEPAVALI).build();
+        assertFalse(DESC_SPECTRA.equals(editedSpectra));
+
+        // different email -> returns false
+        editedSpectra = new EditEventDescriptorBuilder(DESC_SPECTRA).withLocation(VALID_LOCATION_DEEPAVALI).build();
+        assertFalse(DESC_SPECTRA.equals(editedSpectra));
+
+        // different address -> returns false
+        editedSpectra = new EditEventDescriptorBuilder(DESC_SPECTRA).withDatetime(VALID_DATETIME_DEEPAVALI).build();
+        assertFalse(DESC_SPECTRA.equals(editedSpectra));
+    }
+}
+```
+###### \java\seedu\address\logic\commands\ExportCommandTest.java
+``` java
+public class ExportCommandTest {
+
+    private ExportCommand exportCommandForAddressBook;
+    private ExportCommand exportCommandForEventBook;
+    private CommandHistory history;
+
+    @Before
+    public void setUp() {
+
+        UserPrefs userPrefs = new UserPrefs();
+        Config config = new Config();
+        Storage userStorage = new StorageManager(
+                new XmlAddressBookStorage(userPrefs.getAddressBookFilePath(), userPrefs.getAddressbookExportedPath(),
+                        userPrefs.getAddressbookHeader()),
+                new XmlEventBookStorage(userPrefs.getEventBookFilePath(), userPrefs.getEventbookExportedPath(),
+                        userPrefs.getEventbookHeader()),
+                new JsonUserPrefsStorage(config.getUserPrefsFilePath()),
+                new XmlAccountStorage(userPrefs.getAccountFilePath()));
+        Model model = new ModelManager();
+        model.setUserStorage(userStorage);
+        history = new CommandHistory();
+        exportCommandForAddressBook = new ExportCommand("addressbook");
+        exportCommandForEventBook = new ExportCommand("eventbook");
+
+
+        Logic logic = null;
+        exportCommandForAddressBook.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+        exportCommandForEventBook.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+    }
+
+    @Test
+    public void execute_exportAddressBook_success() throws CommandException, DuplicateUserException {
+        CommandResult result = exportCommandForAddressBook.execute();
+        assertEquals(MESSAGE_EXPORT_BOOK_SUCCESS, result.feedbackToUser);
+    }
+
+    @Test
+    public void execute_exportEventBook_success() throws CommandException, DuplicateUserException {
+        CommandResult result = exportCommandForEventBook.execute();
+        assertEquals(MESSAGE_EXPORT_BOOK_SUCCESS, result.feedbackToUser);
+    }
+}
+```
+###### \java\seedu\address\logic\commands\FindEventCommandTest.java
+``` java
+
+/**
+ * Contains integration tests (interaction with the Model) for {@code FindEventCommand}.
+ */
+public class FindEventCommandTest {
+
+    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalEventBook(), new UserPrefs(), new
+            Account(), new Config());
+
+    @Test
+    public void equals() {
+        TitleContainsKeywordsPredicate firstPredicate =
+                new TitleContainsKeywordsPredicate(Collections.singletonList("first"));
+        TitleContainsKeywordsPredicate secondPredicate =
+                new TitleContainsKeywordsPredicate(Collections.singletonList("second"));
+
+        FindEventCommand findFirstCommand = new FindEventCommand(firstPredicate);
+        FindEventCommand findSecondCommand = new FindEventCommand(secondPredicate);
+
+        // same object -> returns true
+        assertTrue(findFirstCommand.equals(findFirstCommand));
+
+        // same values -> returns true
+        FindEventCommand findFirstCommandCopy = new FindEventCommand(firstPredicate);
+        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
+
+        // different types -> returns false
+        assertFalse(findFirstCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(findFirstCommand.equals(null));
+
+        // different person -> returns false
+        assertFalse(findFirstCommand.equals(findSecondCommand));
+    }
+
+    @Test
+    public void execute_zeroKeywords_noEventFound() {
+        String expectedMessage = String.format(MESSAGE_EVENTS_LISTED_OVERVIEW, 0);
+        FindEventCommand command = prepareCommand(" ");
+        assertCommandSuccess(command, expectedMessage, Collections.emptyList());
+    }
+
+    @Test
+    public void execute_multipleKeywords_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_EVENTS_LISTED_OVERVIEW, 3);
+        FindEventCommand command = prepareCommand("Spectra Deepavali Henna");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(SPECTRA, DEEPAVALI, HENNA));
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code FindEventCommand}.
+     */
+    private FindEventCommand prepareCommand(String userInput) {
+        FindEventCommand command =
+                new FindEventCommand(new TitleContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+"))));
+        UserPrefs userPrefs = new UserPrefs();
+        Config config = new Config();
+        Logic logic = null;
+        command.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+        return command;
+    }
+
+    /**
+     * Asserts that {@code command} is successfully executed, and<br>
+     * - the command feedback is equal to {@code expectedMessage}<br>
+     * - the {@code FilteredList<ReadOnlyEvent>} is equal to {@code expectedList}<br>
+     * - the {@code EventBook} in model remains the same after executing the {@code command}
+     */
+    private void assertCommandSuccess(FindEventCommand command, String expectedMessage,
+                                      List<ReadOnlyEvent> expectedList) {
+        EventBook expectedEventBook = new EventBook(model.getEventBook());
+        CommandResult commandResult = command.execute();
+
+        assertEquals(expectedMessage, commandResult.feedbackToUser);
+        assertEquals(expectedList, model.getFilteredEventList());
+        assertEquals(expectedEventBook.toString(), model.getEventBook().toString());
+    }
+}
+```
+###### \java\seedu\address\logic\commands\ListEventCommandTest.java
+``` java
+
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for ListEventCommand.
+ */
+public class ListEventCommandTest {
+
+    private Model model;
+    private Model expectedModel;
+    private ListEventCommand listEventCommand;
+
+    @Before
+    public void setUp() {
+        model = new ModelManager(getTypicalAddressBook(), getTypicalEventBook(), new UserPrefs(), new Account(),
+                new Config());
+        expectedModel = new ModelManager(model.getAddressBook(), model.getEventBook(), new UserPrefs(), new Account(),
+                new Config());
+
+        listEventCommand = new ListEventCommand();
+        UserPrefs userPrefs = new UserPrefs();
+        Config config = new Config();
+        Logic logic = null;
+        listEventCommand.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+    }
+
+    @Test
+    public void execute_listIsNotFiltered_showsSameList() {
+        assertCommandSuccess(listEventCommand, model, ListEventCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_listIsFiltered_showsEverything() {
+        showFirstEventOnly(model);
+        assertCommandSuccess(listEventCommand, model, ListEventCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+}
+```
+###### \java\seedu\address\logic\commands\OrderEventCommandTest.java
 ``` java
 public class OrderEventCommandTest {
     private Model model;
@@ -1702,119 +1355,7 @@ public class OrderEventCommandTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/DeleteEventCommandTest.java
-``` java
-
-/**
- * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteEventCommand}.
- */
-public class DeleteEventCommandTest {
-
-    private Model model = new ModelManager(getTypicalAddressBook(), getTypicalEventBook(), new UserPrefs(),
-            new Account(), new Config());
-
-    @Test
-    public void execute_validIndexUnfilteredList_success() throws Exception {
-        ReadOnlyEvent eventToDelete = model.getFilteredEventList().get(INDEX_FIRST_EVENT.getZeroBased());
-        DeleteEventCommand deleteEventCommand = prepareCommand(INDEX_FIRST_EVENT);
-
-        String expectedMessage = String.format(DeleteEventCommand.MESSAGE_DELETE_EVENT_SUCCESS, eventToDelete);
-
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), model.getEventBook(), new UserPrefs(),
-                new Account(), new Config());
-        ReadOnlyEvent expectedEventToDelete = expectedModel.getFilteredEventList()
-                .get(INDEX_FIRST_EVENT.getZeroBased());
-        expectedModel.deleteEvent(expectedEventToDelete);
-
-        assertCommandSuccess(deleteEventCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
-    public void execute_invalidIndexUnfilteredList_throwsCommandException() throws Exception {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        DeleteEventCommand deleteEventCommand = prepareCommand(outOfBoundIndex);
-
-        assertCommandFailure(deleteEventCommand, model, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void execute_validIndexFilteredList_success() throws Exception {
-        showFirstEventOnly(model);
-
-        ReadOnlyEvent eventToDelete = model.getFilteredEventList().get(INDEX_FIRST_EVENT.getZeroBased());
-        DeleteEventCommand deleteEventCommand = prepareCommand(INDEX_FIRST_EVENT);
-
-        String expectedMessage = String.format(DeleteEventCommand.MESSAGE_DELETE_EVENT_SUCCESS, eventToDelete);
-
-        Model expectedModel = new ModelManager(model.getAddressBook(), model.getEventBook(), new UserPrefs(),
-                new Account(), new Config());
-        ReadOnlyEvent expectedEventToDelete = expectedModel.getFilteredEventList()
-                .get(INDEX_FIRST_EVENT.getZeroBased());
-        expectedModel.deleteEvent(expectedEventToDelete);
-        showNoEvent(expectedModel);
-
-        assertCommandSuccess(deleteEventCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
-    public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showFirstEventOnly(model);
-
-        Index outOfBoundIndex = INDEX_SECOND_EVENT;
-        // ensures that outOfBoundIndex is still in bounds of event book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getEventBook().getEventList().size());
-
-        DeleteEventCommand deleteEventCommand = prepareCommand(outOfBoundIndex);
-
-        assertCommandFailure(deleteEventCommand, model, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void equals() {
-        DeleteEventCommand deleteFirstEventCommand = new DeleteEventCommand(INDEX_FIRST_EVENT);
-        DeleteEventCommand deleteSecondEventCommand = new DeleteEventCommand(INDEX_SECOND_EVENT);
-
-        // same object -> returns true
-        assertTrue(deleteFirstEventCommand.equals(deleteFirstEventCommand));
-
-        // same values -> returns true
-        DeleteEventCommand deleteFirstEventCommandCopy = new DeleteEventCommand(INDEX_FIRST_EVENT);
-        assertTrue(deleteFirstEventCommand.equals(deleteFirstEventCommandCopy));
-
-        // different types -> returns false
-        assertFalse(deleteFirstEventCommand.equals(1));
-
-        // null -> returns false
-        assertFalse(deleteFirstEventCommand.equals(null));
-
-        // different person -> returns false
-        assertFalse(deleteFirstEventCommand.equals(deleteSecondEventCommand));
-    }
-
-    /**
-     * Returns a {@code DeleteCommand} with the parameter {@code index}.
-     */
-    private DeleteEventCommand prepareCommand(Index index) {
-        DeleteEventCommand deleteEventCommand = new DeleteEventCommand(index);
-        UserPrefs userPrefs = new UserPrefs();
-        Config config = new Config();
-        Logic logic = null;
-        deleteEventCommand.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
-                new UiManager(logic, config, userPrefs));
-        return deleteEventCommand;
-    }
-
-    /**
-     * Updates {@code model}'s filtered list to show no one.
-     */
-    private void showNoEvent(Model model) {
-        model.updateFilteredEventList(p -> false);
-
-        assert model.getFilteredEventList().isEmpty();
-    }
-}
-```
-###### /java/seedu/address/logic/commands/RemarkCommandTest.java
+###### \java\seedu\address\logic\commands\RemarkCommandTest.java
 ``` java
 public class RemarkCommandTest {
 
@@ -1935,163 +1476,768 @@ public class RemarkCommandTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/ListEventCommandTest.java
+###### \java\seedu\address\logic\commands\SelectEventCommandTest.java
 ``` java
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for ListEventCommand.
+ * Contains integration tests (interaction with the Model) for {@code SelectEventCommand}.
  */
-public class ListEventCommandTest {
+public class SelectEventCommandTest {
+    @Rule
+    public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
 
     private Model model;
-    private Model expectedModel;
-    private ListEventCommand listEventCommand;
 
     @Before
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), getTypicalEventBook(), new UserPrefs(), new Account(),
                 new Config());
-        expectedModel = new ModelManager(model.getAddressBook(), model.getEventBook(), new UserPrefs(), new Account(),
-                new Config());
-
-        listEventCommand = new ListEventCommand();
-        UserPrefs userPrefs = new UserPrefs();
-        Config config = new Config();
-        Logic logic = null;
-        listEventCommand.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
-                new UiManager(logic, config, userPrefs));
     }
 
     @Test
-    public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(listEventCommand, model, ListEventCommand.MESSAGE_SUCCESS, expectedModel);
+    public void execute_validIndexUnfilteredList_success() {
+        Index lastEventIndex = Index.fromOneBased(model.getFilteredEventList().size());
+
+        assertExecutionSuccess(INDEX_FIRST_EVENT);
+        assertExecutionSuccess(INDEX_THIRD_EVENT);
+        assertExecutionSuccess(lastEventIndex);
     }
 
     @Test
-    public void execute_listIsFiltered_showsEverything() {
+    public void execute_invalidIndexUnfilteredList_failure() {
+        Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredEventList().size() + 1);
+
+        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_validIndexFilteredList_success() {
         showFirstEventOnly(model);
-        assertCommandSuccess(listEventCommand, model, ListEventCommand.MESSAGE_SUCCESS, expectedModel);
+
+        assertExecutionSuccess(INDEX_FIRST_EVENT);
     }
-}
-```
-###### /java/seedu/address/logic/commands/ExportCommandTest.java
-``` java
-public class ExportCommandTest {
 
-    private ExportCommand exportCommandForAddressBook;
-    private ExportCommand exportCommandForEventBook;
-    private CommandHistory history;
+    @Test
+    public void execute_invalidIndexFilteredList_failure() {
+        showFirstEventOnly(model);
 
-    @Before
-    public void setUp() {
+        Index outOfBoundsIndex = INDEX_SECOND_EVENT;
+        // ensures that outOfBoundIndex is still in bounds of address book list
+        assertTrue(outOfBoundsIndex.getZeroBased() < model.getEventBook().getEventList().size());
 
+        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void equals() {
+        SelectEventCommand selectFirstCommand = new SelectEventCommand(INDEX_FIRST_EVENT);
+        SelectEventCommand selectSecondCommand = new SelectEventCommand(INDEX_SECOND_EVENT);
+
+        // same object -> returns true
+        assertTrue(selectFirstCommand.equals(selectFirstCommand));
+
+        // same values -> returns true
+        SelectEventCommand selectFirstCommandCopy = new SelectEventCommand(INDEX_FIRST_EVENT);
+        assertTrue(selectFirstCommand.equals(selectFirstCommandCopy));
+
+        // different types -> returns false
+        assertFalse(selectFirstCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(selectFirstCommand.equals(null));
+
+        // different person -> returns false
+        assertFalse(selectFirstCommand.equals(selectSecondCommand));
+    }
+
+    /**
+     * Executes a {@code SelectEventCommand} with the given {@code index},
+     * and checks that {@code JumpToListRequestEvent}
+     * is raised with the correct index.
+     */
+    private void assertExecutionSuccess(Index index) {
+        SelectEventCommand selectEventCommand = prepareCommand(index);
+
+        try {
+            CommandResult commandResult = selectEventCommand.execute();
+            assertEquals(String.format(SelectEventCommand.MESSAGE_SELECT_EVENT_SUCCESS, index.getOneBased()),
+                    commandResult.feedbackToUser);
+        } catch (CommandException ce) {
+            throw new IllegalArgumentException("Execution of command should not fail.", ce);
+        }
+
+        //JumpToListRequestEvent lastEvent =
+        // (JumpToListRequestEvent) eventsCollectorRule.eventsCollector.getMostRecent();
+        assertEquals(index, Index.fromZeroBased(index.getZeroBased()));
+    }
+
+    /**
+     * Executes a {@code SelectEventCommand} with the given {@code index}, and checks that a {@code CommandException}
+     * is thrown with the {@code expectedMessage}.
+     */
+    private void assertExecutionFailure(Index index, String expectedMessage) {
+        SelectEventCommand selectEventCommand = prepareCommand(index);
+
+        try {
+            selectEventCommand.execute();
+            fail("The expected CommandException was not thrown.");
+        } catch (CommandException ce) {
+            assertEquals(expectedMessage, ce.getMessage());
+            assertTrue(eventsCollectorRule.eventsCollector.isEmpty());
+        }
+    }
+
+    /**
+     * Returns a {@code SelectEventCommand} with parameters {@code index}.
+     */
+    private SelectEventCommand prepareCommand(Index index) {
+        SelectEventCommand selectEventCommand = new SelectEventCommand(index);
         UserPrefs userPrefs = new UserPrefs();
         Config config = new Config();
-        Storage userStorage = new StorageManager(
-                new XmlAddressBookStorage(userPrefs.getAddressBookFilePath(), userPrefs.getAddressbookExportedPath(),
-                        userPrefs.getAddressbookHeader()),
-                new XmlEventBookStorage(userPrefs.getEventBookFilePath(), userPrefs.getEventbookExportedPath(),
-                        userPrefs.getEventbookHeader()),
-                new JsonUserPrefsStorage(config.getUserPrefsFilePath()),
-                new XmlAccountStorage(userPrefs.getAccountFilePath()));
-        Model model = new ModelManager();
-        model.setUserStorage(userStorage);
-        history = new CommandHistory();
-        exportCommandForAddressBook = new ExportCommand("addressbook");
-        exportCommandForEventBook = new ExportCommand("eventbook");
-
-
         Logic logic = null;
-        exportCommandForAddressBook.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+        selectEventCommand.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
                 new UiManager(logic, config, userPrefs));
-        exportCommandForEventBook.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
-                new UiManager(logic, config, userPrefs));
-    }
-
-    @Test
-    public void execute_exportAddressBook_success() throws CommandException, DuplicateUserException {
-        CommandResult result = exportCommandForAddressBook.execute();
-        assertEquals(MESSAGE_EXPORT_BOOK_SUCCESS, result.feedbackToUser);
-    }
-
-    @Test
-    public void execute_exportEventBook_success() throws CommandException, DuplicateUserException {
-        CommandResult result = exportCommandForEventBook.execute();
-        assertEquals(MESSAGE_EXPORT_BOOK_SUCCESS, result.feedbackToUser);
+        return selectEventCommand;
     }
 }
 ```
-###### /java/seedu/address/storage/XmlFileStorageTest.java
+###### \java\seedu\address\logic\parser\AddEventCommandParserTest.java
 ``` java
-/**
- * Checking the test of the exportation for both addressbook and eventbook
- */
-public class XmlFileStorageTest {
+public class AddEventCommandParserTest {
+    private AddEventCommandParser parser = new AddEventCommandParser();
 
-    private static final String TEST_DATA_FOLDER = FileUtil.getPath("src/test/data/XmlUtilTest/");
-    private static final String MISSING_FILE = TEST_DATA_FOLDER + "missing.xml";
+    @Test
+    public void parse_allFieldsPresent_success() {
+        Event expectedEvent = new EventBuilder().withTitle(VALID_TITLE_DEEPAVALI)
+                .withDescription(VALID_DESCRIPTION_DEEPAVALI)
+                .withLocation(VALID_LOCATION_DEEPAVALI).withDatetime(VALID_DATETIME_DEEPAVALI).build();
 
-    private static final String VALID_ADDRESSBOOK_PATH = TEST_DATA_FOLDER + "validAddressBook.xml";
-    private static final String ADDRESSBOOK_DESTINATION_PATH = TEST_DATA_FOLDER + "validAddressBook.csv";
-    private static final String ADDRESSBOOK_HEADER = "Name,Phone,Address,Birthday,Email,Group,Remark,Tagged";
+        // multiple titles - last title accepted
+        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_SPECTRA + TITLE_DESC_DEEPAVALI
+                + DESCRIPTION_DESC_DEEPAVALI
+                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
 
-    private static final String VALID_EVENTBOOK_FILE = TEST_DATA_FOLDER + "validEventBook.xml";
-    private static final String EVENTBOOK_DESTINATION_PATH = TEST_DATA_FOLDER + "validEventBook.csv";
-    private static final String EVENTBOOK_HEADER = "Title,Description,Location,Datetime";
+        // multiple description - last description accepted
+        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_SPECTRA
+                + DESCRIPTION_DESC_DEEPAVALI
+                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
+
+        // multiple locations - last location accepted
+        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
+                + LOCATION_DESC_SPECTRA
+                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
+
+        // multiple datetime - last datetime accepted
+        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
+                + LOCATION_DESC_DEEPAVALI
+                + DATETIME_DESC_SPECTRA + DATETIME_DESC_DEEPAVALI, new AddEventCommand(expectedEvent));
+
+    }
+
+    @Test
+    public void parse_optionalFieldsMissing_success() {
+        // zero tags
+        Event expectedEvent = new EventBuilder().withTitle(VALID_TITLE_SPECTRA)
+                .withDescription(VALID_DESCRIPTION_SPECTRA)
+                .withLocation(VALID_LOCATION_SPECTRA).withDatetime(VALID_DATETIME_SPECTRA).build();
+        // command word
+        assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_SPECTRA + DESCRIPTION_DESC_SPECTRA
+                + LOCATION_DESC_SPECTRA + DATETIME_DESC_SPECTRA, new AddEventCommand(expectedEvent));
+
+    }
+
+    @Test
+    public void parse_compulsoryFieldMissing_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEventCommand.MESSAGE_USAGE);
+
+        // missing title prefix
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + VALID_TITLE_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
+                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, expectedMessage);
+
+        // missing description prefix
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + VALID_DESCRIPTION_DEEPAVALI
+                + LOCATION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI, expectedMessage);
+
+        // missing location prefix
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
+                + VALID_LOCATION_DEEPAVALI + DATETIME_DESC_DEEPAVALI, expectedMessage);
+
+        // missing datetime prefix
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI
+                + LOCATION_DESC_DEEPAVALI + VALID_DATETIME_DEEPAVALI, expectedMessage);
+    }
+
+    @Test
+    public void parse_invalidValue_failure() {
+
+        // invalid title
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + INVALID_TITLE_DESC
+                + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI
+                + DATETIME_DESC_DEEPAVALI, Title.MESSAGE_TITLE_CONSTRAINTS);
+
+        // invalid description
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI
+                + INVALID_DESCRIPTION_DESC + LOCATION_DESC_DEEPAVALI
+                + DATETIME_DESC_DEEPAVALI, Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
+
+        // invalid location
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI
+                + DESCRIPTION_DESC_DEEPAVALI + INVALID_LOCATION_DESC
+                + DATETIME_DESC_DEEPAVALI, Location.MESSAGE_LOCATION_CONSTRAINTS);
+
+        // invalid datetime
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + TITLE_DESC_DEEPAVALI
+                + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI
+                + INVALID_DATETIME_DESC, Datetime.MESSAGE_DATETIME_CONSTRAINTS);
+
+        // two invalid values, only first invalid value reported
+        assertParseFailure(parser, AddEventCommand.COMMAND_WORD + INVALID_TITLE_DESC
+                + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI
+                + INVALID_DATETIME_DESC, Title.MESSAGE_TITLE_CONSTRAINTS);
+    }
+}
+```
+###### \java\seedu\address\logic\parser\CalendarViewStateParserTest.java
+``` java
+public class CalendarViewStateParserTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    private UserPrefs userPrefs;
+    private Model model;
+
+    @Before
+    public void setup() {
+        userPrefs = new UserPrefs();
+        model = new ModelManager();
+    }
+
     @Test
-    public void exportAddressbook_nullSource_throwsNullPointerException() throws Exception {
+    public void updateViewState_nullCalendar_throwsNullPointerException() throws Exception {
+        CalendarViewStateParser parser = new CalendarViewStateParser(userPrefs, model, null);
         thrown.expect(NullPointerException.class);
-        XmlFileStorage.exportAddressbook(null, ADDRESSBOOK_DESTINATION_PATH, ADDRESSBOOK_HEADER);
-    }
-
-    @Test
-    public void exportAddressbook_nullDestination_throwsNullPointerException() throws Exception {
-        thrown.expect(NullPointerException.class);
-        XmlFileStorage.exportAddressbook(VALID_ADDRESSBOOK_PATH, null, ADDRESSBOOK_HEADER);
-    }
-
-    @Test
-    public void exportAddressbook_nullHeader_throwsNullPointerException() throws Exception {
-        thrown.expect(NullPointerException.class);
-        XmlFileStorage.exportAddressbook(VALID_ADDRESSBOOK_PATH, ADDRESSBOOK_DESTINATION_PATH, null);
-    }
-
-    @Test
-    public void exportAddressbook_missingSourceFile_fileNotFoundException() throws Exception {
-        thrown.expect(FileNotFoundException.class);
-        XmlFileStorage.exportAddressbook(MISSING_FILE, ADDRESSBOOK_DESTINATION_PATH, ADDRESSBOOK_HEADER);
-    }
-
-    @Test
-    public void exportEventbook_nullSource_throwsNullPointerException() throws Exception {
-        thrown.expect(NullPointerException.class);
-        XmlFileStorage.exportEventbook(null, EVENTBOOK_DESTINATION_PATH, EVENTBOOK_HEADER);
-    }
-
-    @Test
-    public void exportEventbook_nullDestination_throwsNullPointerException() throws Exception {
-        thrown.expect(NullPointerException.class);
-        XmlFileStorage.exportEventbook(VALID_EVENTBOOK_FILE, null, EVENTBOOK_HEADER);
-    }
-
-    @Test
-    public void exportEventbook_nullHeader_throwsNullPointerException() throws Exception {
-        thrown.expect(NullPointerException.class);
-        XmlFileStorage.exportEventbook(VALID_EVENTBOOK_FILE, EVENTBOOK_DESTINATION_PATH, null);
-    }
-
-    @Test
-    public void exportEventbook_missingSourceFile_fileNotFoundException() throws Exception {
-        thrown.expect(FileNotFoundException.class);
-        XmlFileStorage.exportEventbook(MISSING_FILE, EVENTBOOK_DESTINATION_PATH, EVENTBOOK_HEADER);
+        parser.updateViewState("Test");
     }
 }
 ```
-###### /java/seedu/address/storage/StorageManagerTest.java
+###### \java\seedu\address\logic\parser\DeleteEventCommandParserTest.java
+``` java
+
+/**
+ * As we are only doing white-box testing, our test cases do not cover path variations
+ * outside of the DeleteEventCommand code. For example, inputs "1" and "1 abc" take the
+ * same path through the DeleteCommand, and therefore we test only one of them.
+ * The path variation for those two cases occur inside the ParserUtil, and
+ * therefore should be covered by the ParserUtilTest.
+ */
+public class DeleteEventCommandParserTest {
+
+    private DeleteEventCommandParser parser = new DeleteEventCommandParser();
+
+    @Test
+    public void parse_validArgs_returnsDeleteEventCommand() {
+        assertParseSuccess(parser, "1", new DeleteEventCommand(INDEX_FIRST_EVENT));
+    }
+
+    @Test
+    public void parse_invalidArgs_throwsParseException() {
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteEventCommand.MESSAGE_USAGE));
+    }
+}
+```
+###### \java\seedu\address\logic\parser\EditEventCommandParserTest.java
+``` java
+public class EditEventCommandParserTest {
+
+    private static final String MESSAGE_INVALID_FORMAT =
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditEventCommand.MESSAGE_USAGE);
+
+    private EditEventCommandParser parser = new EditEventCommandParser();
+
+    @Test
+    public void parse_missingParts_failure() {
+        // no index specified
+        assertParseFailure(parser, VALID_TITLE_SPECTRA, MESSAGE_INVALID_FORMAT);
+
+        // no field specified
+        assertParseFailure(parser, "1", EditEventCommand.MESSAGE_NOT_EDITED);
+
+        // no index and no field specified
+        assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_invalidPreamble_failure() {
+        // negative index
+        assertParseFailure(parser, "-5" + TITLE_DESC_SPECTRA, MESSAGE_INVALID_FORMAT);
+
+        // zero index
+        assertParseFailure(parser, "0" + TITLE_DESC_SPECTRA, MESSAGE_INVALID_FORMAT);
+
+        // invalid arguments being parsed as preamble
+        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
+
+        // invalid prefix being parsed as preamble
+        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_invalidValue_failure() {
+        assertParseFailure(parser, "1" + INVALID_TITLE_DESC,
+                Title.MESSAGE_TITLE_CONSTRAINTS); // invalid title
+        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC,
+                Description.MESSAGE_DESCRIPTION_CONSTRAINTS); // invalid description
+        assertParseFailure(parser, "1" + INVALID_LOCATION_DESC,
+                Location.MESSAGE_LOCATION_CONSTRAINTS); // invalid location
+        assertParseFailure(parser, "1" + INVALID_DATETIME_DESC,
+                Datetime.MESSAGE_DATETIME_CONSTRAINTS); // invalid datetime
+
+        // invalid description followed by valid location
+        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC
+                + LOCATION_DESC_SPECTRA, Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
+
+        // valid description followed by invalid location. The test case for invalid phone followed by valid phone
+        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
+        assertParseFailure(parser, "1" + DESCRIPTION_DESC_DEEPAVALI
+                + INVALID_DESCRIPTION_DESC, Description.MESSAGE_DESCRIPTION_CONSTRAINTS);
+
+        // multiple invalid values, but only the first invalid value is captured
+        assertParseFailure(parser, "1" + INVALID_TITLE_DESC + INVALID_DESCRIPTION_DESC
+                + VALID_LOCATION_SPECTRA + VALID_DATETIME_SPECTRA, Title.MESSAGE_TITLE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_allFieldsSpecified_success() {
+        Index targetIndex = INDEX_SECOND_EVENT;
+        String userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_DEEPAVALI
+                + LOCATION_DESC_SPECTRA + DATETIME_DESC_SPECTRA + TITLE_DESC_SPECTRA;
+
+        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withTitle(VALID_TITLE_SPECTRA)
+                .withDescription(VALID_DESCRIPTION_DEEPAVALI).withLocation(VALID_LOCATION_SPECTRA)
+                .withDatetime(VALID_DATETIME_SPECTRA).build();
+        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_someFieldsSpecified_success() {
+        Index targetIndex = INDEX_FIRST_EVENT;
+        String userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_DEEPAVALI + LOCATION_DESC_SPECTRA;
+
+        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_DEEPAVALI)
+                .withLocation(VALID_LOCATION_SPECTRA).build();
+        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_oneFieldSpecified_success() {
+        // title
+        Index targetIndex = INDEX_THIRD_EVENT;
+        String userInput = targetIndex.getOneBased() + TITLE_DESC_SPECTRA;
+        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withTitle(VALID_TITLE_SPECTRA).build();
+        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // description
+        userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_SPECTRA;
+        descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_SPECTRA).build();
+        expectedCommand = new EditEventCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // location
+        userInput = targetIndex.getOneBased() + LOCATION_DESC_SPECTRA;
+        descriptor = new EditEventDescriptorBuilder().withLocation(VALID_LOCATION_SPECTRA).build();
+        expectedCommand = new EditEventCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // datetime
+        userInput = targetIndex.getOneBased() + DATETIME_DESC_SPECTRA;
+        descriptor = new EditEventDescriptorBuilder().withDatetime(VALID_DATETIME_SPECTRA).build();
+        expectedCommand = new EditEventCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_multipleRepeatedFields_acceptsLast() {
+        Index targetIndex = INDEX_FIRST_EVENT;
+        String userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_SPECTRA + DATETIME_DESC_SPECTRA
+                + LOCATION_DESC_SPECTRA + DESCRIPTION_DESC_SPECTRA + DATETIME_DESC_SPECTRA + LOCATION_DESC_SPECTRA
+                + DESCRIPTION_DESC_DEEPAVALI + DATETIME_DESC_DEEPAVALI + LOCATION_DESC_DEEPAVALI;
+
+        EditEventDescriptor descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_DEEPAVALI)
+                .withLocation(VALID_LOCATION_DEEPAVALI).withDatetime(VALID_DATETIME_DEEPAVALI)
+                .build();
+        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_invalidValueFollowedByValidValue_success() {
+        // no other valid values specified
+        Index targetIndex = INDEX_FIRST_EVENT;
+        String userInput = targetIndex.getOneBased() + INVALID_DESCRIPTION_DESC + DESCRIPTION_DESC_DEEPAVALI;
+        EditEventDescriptor descriptor = new EditEventDescriptorBuilder()
+                .withDescription(VALID_DESCRIPTION_DEEPAVALI).build();
+        EditEventCommand expectedCommand = new EditEventCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // other valid values specified
+        userInput = targetIndex.getOneBased() + LOCATION_DESC_DEEPAVALI + INVALID_DESCRIPTION_DESC
+                + DATETIME_DESC_DEEPAVALI + DESCRIPTION_DESC_DEEPAVALI;
+        descriptor = new EditEventDescriptorBuilder().withDescription(VALID_DESCRIPTION_DEEPAVALI)
+                .withLocation(VALID_LOCATION_DEEPAVALI).withDatetime(VALID_DATETIME_DEEPAVALI).build();
+        expectedCommand = new EditEventCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+}
+```
+###### \java\seedu\address\logic\parser\ExportCommandParserTest.java
+``` java
+public class ExportCommandParserTest {
+
+    private ExportCommandParser parser = new ExportCommandParser();
+
+    @Test
+    public void parse_emptyArg_throwsParseException() {
+        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_BOOK_PARAMS,
+                ExportCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_validArgs_returnsExportCommand() {
+        // no leading and trailing whitespaces
+        ExportCommand expectedExportCommand =
+                new ExportCommand("addressbook");
+        assertParseSuccess(parser, "addressbook", expectedExportCommand);
+    }
+}
+```
+###### \java\seedu\address\logic\parser\FindEventCommandParserTest.java
+``` java
+public class FindEventCommandParserTest {
+
+    private FindEventCommandParser parser = new FindEventCommandParser();
+
+    @Test
+    public void parse_emptyArg_throwsParseException() {
+        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                FindEventCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_validArgs_returnsFindCommand() {
+        // no leading and trailing whitespaces
+        FindEventCommand expectedFindCommand =
+                new FindEventCommand(new TitleContainsKeywordsPredicate(Arrays.asList("Spectra", "Deepavali")));
+        assertParseSuccess(parser, "et/Spectra Deepavali", expectedFindCommand);
+
+        // multiple whitespaces between keywords
+        assertParseSuccess(parser, "et/ \n Spectra \n \t Deepavali  \t", expectedFindCommand);
+    }
+}
+```
+###### \java\seedu\address\logic\parser\OrderEventCommandParserTest.java
+``` java
+public class OrderEventCommandParserTest {
+
+    private OrderEventCommandParser parser = new OrderEventCommandParser();
+
+    @Test
+    public void parse_emptyArg_throwsParseException() {
+        assertParseFailure(parser, "     ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, OrderEventCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_validArgs_returnsFindCommand() {
+
+        OrderEventCommand expectedOrderCommand = new OrderEventCommand("TITLE");
+
+        //same value
+        assertParseSuccess(parser, "TITLE", expectedOrderCommand);
+
+        //case insensitive
+        assertParseSuccess(parser, "tItLe", expectedOrderCommand);
+    }
+}
+```
+###### \java\seedu\address\logic\parser\RemarkCommandParserTest.java
+``` java
+public class RemarkCommandParserTest {
+    private RemarkCommandParser parser = new RemarkCommandParser();
+
+    @Test
+    public void parse_indexSpecified_failure() throws Exception {
+        final Remark remark = new Remark("Some remark.");
+
+        // have remarks
+        Index targetIndex = INDEX_FIRST_PERSON;
+        String userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK.toString() + " " + remark;
+        RemarkCommand expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, remark);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // no remarks
+        userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK.toString();
+        expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(""));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_noFieldSpecified_failure() throws Exception {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE);
+
+        // nothing at all
+        assertParseFailure(parser, RemarkCommand.COMMAND_WORD, expectedMessage);
+    }
+}
+```
+###### \java\seedu\address\logic\parser\SelectEventCommandParserTest.java
+``` java
+
+/**
+ * Test scope: similar to {@code DeleteSelectCommandParserTest}.
+ *
+ * @see DeleteEventCommandParserTest
+ */
+public class SelectEventCommandParserTest {
+
+    private SelectEventCommandParser parser = new SelectEventCommandParser();
+
+    @Test
+    public void parse_validArgs_returnsSelectCommand() {
+        assertParseSuccess(parser, "1", new SelectEventCommand(INDEX_FIRST_EVENT));
+    }
+
+    @Test
+    public void parse_invalidArgs_throwsParseException() {
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                SelectEventCommand.MESSAGE_USAGE));
+    }
+}
+```
+###### \java\seedu\address\model\event\DatetimeTest.java
+``` java
+public class DatetimeTest {
+
+    @Test
+    public void isValidDate() {
+        // invalid datetime
+        assertFalse(Datetime.isValidDatetime("")); // empty string
+        assertFalse(Datetime.isValidDatetime(" ")); // spaces only
+        assertFalse(Datetime.isValidDatetime("123456789")); // numbers only
+        assertFalse(Datetime.isValidDatetime("shakjhsa")); // characters only
+        assertFalse(Datetime.isValidDatetime("test123")); // numbers and characters
+        assertFalse(Datetime.isValidDatetime("1-09-2017 2010")); // invalid date format
+        assertFalse(Datetime.isValidDatetime("90-09-2017 2010")); // invalid day
+        assertFalse(Datetime.isValidDatetime("02-13-2017 2010")); // invalid month
+        assertFalse(Datetime.isValidDatetime("02-09-17 2010")); // invalid year
+        assertFalse(Datetime.isValidDatetime("02-09-2017 2510")); // invalid hour
+        assertFalse(Datetime.isValidDatetime("02-09-2017 2065")); // invalid minute
+
+        // valid datetime
+        assertTrue(Datetime.isValidDatetime("02-09-2017 2015"));
+    }
+}
+```
+###### \java\seedu\address\model\event\DescriptionTest.java
+``` java
+public class DescriptionTest {
+
+    @Test
+    public void isValidDescription() {
+        // invalid description
+        assertFalse(Description.isValidDescription("")); // empty string
+        assertFalse(Description.isValidDescription(" ")); // spaces only
+        assertFalse(Description.isValidDescription("~!?>")); //Symbols cannot be at the start
+
+        // valid description
+        assertTrue(Description.isValidDescription("IT Fair 2017 with many offers")); // alphabets only
+        assertTrue(Description.isValidDescription("123456789")); // numbers only
+        assertTrue(Description.isValidDescription(
+                "This is a testing event to test to accept long description")); // long description
+        assertTrue(Description.isValidDescription("Hello World with Test")); // with capital letters
+        assertTrue(Description.isValidDescription("5top Test")); // alphanumeric characters
+    }
+}
+```
+###### \java\seedu\address\model\event\LocationTest.java
+``` java
+public class LocationTest {
+
+    @Test
+    public void isValidLocation() {
+        // invalid location
+        assertFalse(Location.isValidLocation("")); // empty string
+        assertFalse(Location.isValidLocation(" ")); // spaces only
+        assertFalse(Location.isValidLocation("~!?>")); //Symbols cannot be at the start
+
+        // valid location
+        assertTrue(Location.isValidLocation("sentosa")); // alphabets only
+        assertTrue(Location.isValidLocation("123456789")); // numbers only
+        assertTrue(Location.isValidLocation(
+                "This is a testing event to test to accept long location")); // long description
+        assertTrue(Location.isValidLocation("Hello World with Test")); // with capital letters
+        assertTrue(Location.isValidLocation("5top Test")); // alphanumeric characters
+    }
+}
+```
+###### \java\seedu\address\model\event\TitleTest.java
+``` java
+public class TitleTest {
+
+    @Test
+    public void isValidTitle() {
+        // invalid title
+        assertFalse(Title.isValidTitle("")); // empty string
+        assertFalse(Title.isValidTitle(" ")); // spaces only
+        assertFalse(Title.isValidTitle("~!?>")); //Symbols cannot be at the start
+
+        // valid title
+        assertTrue(Title.isValidTitle("Computing fair")); // alphabets only
+        assertTrue(Title.isValidTitle("13580")); // numbers only
+        assertTrue(Title.isValidTitle("Chinese New Year Hari Raya Deepavali")); // long title
+        assertTrue(Title.isValidTitle("Sentosa Event")); // with capital letters
+        assertTrue(Title.isValidTitle("Jay Chou 10th World Tour")); // alphanumeric characters
+    }
+}
+```
+###### \java\seedu\address\model\EventBookTest.java
+``` java
+public class EventBookTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    private final EventBook eventBook = new EventBook();
+
+    @Test
+    public void constructor() {
+        assertEquals(Collections.emptyList(), eventBook.getEventList());
+    }
+
+    @Test
+    public void resetData_null_throwsNullPointerException() {
+        thrown.expect(NullPointerException.class);
+        eventBook.resetData(null);
+    }
+
+    @Test
+    public void resetData_withValidReadOnlyEventBook_replacesData() {
+        EventBook newData = getTypicalEventBook();
+        eventBook.resetData(newData);
+        assertEquals(newData, eventBook);
+    }
+
+    @Test
+    public void resetData_withDuplicateEvents_throwsAssertionError() {
+        // Repeat SPECTRA twice
+        List<Event> newEvents = Arrays.asList(new Event(SPECTRA), new Event(SPECTRA));
+        EventBookStub newData = new EventBookStub(newEvents);
+
+        thrown.expect(AssertionError.class);
+        eventBook.resetData(newData);
+    }
+
+    @Test
+    public void getEventList_modifyList_throwsUnsupportedOperationException() {
+        thrown.expect(UnsupportedOperationException.class);
+        eventBook.getEventList().remove(0);
+    }
+
+    /**
+     * A stub ReadOnlyEventBook whose events lists can violate interface constraints.
+     */
+    private static class EventBookStub implements ReadOnlyEventBook {
+        private final ObservableList<ReadOnlyEvent> events = FXCollections.observableArrayList();
+
+        EventBookStub(Collection<? extends ReadOnlyEvent> events) {
+            this.events.setAll(events);
+        }
+
+        @Override
+        public ObservableList<ReadOnlyEvent> getEventList() {
+            return events;
+        }
+    }
+}
+```
+###### \java\seedu\address\model\ModelManagerTest.java
+``` java
+    @Test
+    public void equals() {
+        AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        AddressBook differentAddressBook = new AddressBook();
+
+        EventBook eventBook = new EventBookBuilder().withEvent(SPECTRA).withEvent(DEEPAVALI).build();
+        EventBook differentEventBook = new EventBook();
+
+        UserPrefs userPrefs = new UserPrefs();
+
+        Account account = new Account();
+
+        Config config = new Config();
+
+        // same values -> returns true
+        ModelManager modelManager = new ModelManager(addressBook, eventBook, userPrefs, account, config);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, eventBook, userPrefs, account, config);
+        assertTrue(modelManager.equals(modelManagerCopy));
+
+        // same object -> returns true
+        assertTrue(modelManager.equals(modelManager));
+
+        // null -> returns false
+        assertFalse(modelManager.equals(null));
+
+        // different types -> returns false
+        assertFalse(modelManager.equals(5));
+
+        // different addressBook -> returns false
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, eventBook, userPrefs,
+                account, config)));
+
+        // different Persons filteredList -> returns false
+        String[] keywords = ALICE.getName().fullName.split("\\s+");
+        modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
+
+        // different events filteredList -> returns false
+        String keywordForEvents = SPECTRA.getTitle().value;
+        modelManager.updateFilteredEventList(new TitleContainsKeywordsPredicate(Arrays.asList(keywordForEvents)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
+
+        // resets modelManager to initial state for upcoming tests
+        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        modelManager.updateFilteredEventList(PREDICATE_SHOW_ALL_EVENTS);
+
+        // different userPrefs -> returns true
+        UserPrefs differentUserPrefs = new UserPrefs();
+        differentUserPrefs.setAddressBookName("differentName");
+        differentUserPrefs.setEventBookName("differentName");
+        assertTrue(modelManager.equals(new ModelManager(addressBook, eventBook, differentUserPrefs, account, config)));
+    }
+}
+```
+###### \java\seedu\address\model\UniqueEventListTest.java
+``` java
+public class UniqueEventListTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
+        UniqueEventList uniqueEventList = new UniqueEventList();
+        thrown.expect(UnsupportedOperationException.class);
+        uniqueEventList.asObservableList().remove(0);
+    }
+}
+```
+###### \java\seedu\address\storage\StorageManagerTest.java
 ``` java
     @Test
     public void eventBookReadSave() throws Exception {
@@ -2103,7 +2249,7 @@ public class XmlFileStorageTest {
     }
 
 ```
-###### /java/seedu/address/storage/StorageManagerTest.java
+###### \java\seedu\address\storage\StorageManagerTest.java
 ``` java
     @Test
     public void getEventBookFilePath() {
@@ -2111,7 +2257,7 @@ public class XmlFileStorageTest {
     }
 
 ```
-###### /java/seedu/address/storage/StorageManagerTest.java
+###### \java\seedu\address\storage\StorageManagerTest.java
 ``` java
     @Test
     public void handleEventBookChangedEvent_exceptionThrown_eventRaised() {
@@ -2140,7 +2286,7 @@ public class XmlFileStorageTest {
     }
 
 ```
-###### /java/seedu/address/storage/StorageManagerTest.java
+###### \java\seedu\address\storage\StorageManagerTest.java
 ``` java
     /**
      * A Stub class to throw an exception when the save method is called
@@ -2158,7 +2304,7 @@ public class XmlFileStorageTest {
     }
 }
 ```
-###### /java/seedu/address/storage/XmlEventBookStorageTest.java
+###### \java\seedu\address\storage\XmlEventBookStorageTest.java
 ``` java
 public class XmlEventBookStorageTest {
     private static final String TEST_DATA_FOLDER = FileUtil
@@ -2266,223 +2412,115 @@ public class XmlEventBookStorageTest {
     }
 }
 ```
-###### /java/seedu/address/model/EventBookTest.java
+###### \java\seedu\address\storage\XmlFileStorageTest.java
 ``` java
-public class EventBookTest {
+/**
+ * Checking the test of the exportation for both addressbook and eventbook
+ */
+public class XmlFileStorageTest {
+
+    private static final String TEST_DATA_FOLDER = FileUtil.getPath("src/test/data/XmlUtilTest/");
+    private static final String MISSING_FILE = TEST_DATA_FOLDER + "missing.xml";
+
+    private static final String VALID_ADDRESSBOOK_PATH = TEST_DATA_FOLDER + "validAddressBook.xml";
+    private static final String ADDRESSBOOK_DESTINATION_PATH = TEST_DATA_FOLDER + "validAddressBook.csv";
+    private static final String ADDRESSBOOK_HEADER = "Name,Phone,Address,Birthday,Email,Group,Remark,Tagged";
+
+    private static final String VALID_EVENTBOOK_FILE = TEST_DATA_FOLDER + "validEventBook.xml";
+    private static final String EVENTBOOK_DESTINATION_PATH = TEST_DATA_FOLDER + "validEventBook.csv";
+    private static final String EVENTBOOK_HEADER = "Title,Description,Location,Datetime";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private final EventBook eventBook = new EventBook();
-
     @Test
-    public void constructor() {
-        assertEquals(Collections.emptyList(), eventBook.getEventList());
-    }
-
-    @Test
-    public void resetData_null_throwsNullPointerException() {
+    public void exportAddressbook_nullSource_throwsNullPointerException() throws Exception {
         thrown.expect(NullPointerException.class);
-        eventBook.resetData(null);
+        XmlFileStorage.exportAddressbook(null, ADDRESSBOOK_DESTINATION_PATH, ADDRESSBOOK_HEADER);
     }
 
     @Test
-    public void resetData_withValidReadOnlyEventBook_replacesData() {
-        EventBook newData = getTypicalEventBook();
-        eventBook.resetData(newData);
-        assertEquals(newData, eventBook);
+    public void exportAddressbook_nullDestination_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlFileStorage.exportAddressbook(VALID_ADDRESSBOOK_PATH, null, ADDRESSBOOK_HEADER);
     }
 
     @Test
-    public void resetData_withDuplicateEvents_throwsAssertionError() {
-        // Repeat SPECTRA twice
-        List<Event> newEvents = Arrays.asList(new Event(SPECTRA), new Event(SPECTRA));
-        EventBookStub newData = new EventBookStub(newEvents);
-
-        thrown.expect(AssertionError.class);
-        eventBook.resetData(newData);
+    public void exportAddressbook_nullHeader_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlFileStorage.exportAddressbook(VALID_ADDRESSBOOK_PATH, ADDRESSBOOK_DESTINATION_PATH, null);
     }
 
     @Test
-    public void getEventList_modifyList_throwsUnsupportedOperationException() {
-        thrown.expect(UnsupportedOperationException.class);
-        eventBook.getEventList().remove(0);
+    public void exportAddressbook_missingSourceFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlFileStorage.exportAddressbook(MISSING_FILE, ADDRESSBOOK_DESTINATION_PATH, ADDRESSBOOK_HEADER);
+    }
+
+    @Test
+    public void exportEventbook_nullSource_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlFileStorage.exportEventbook(null, EVENTBOOK_DESTINATION_PATH, EVENTBOOK_HEADER);
+    }
+
+    @Test
+    public void exportEventbook_nullDestination_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlFileStorage.exportEventbook(VALID_EVENTBOOK_FILE, null, EVENTBOOK_HEADER);
+    }
+
+    @Test
+    public void exportEventbook_nullHeader_throwsNullPointerException() throws Exception {
+        thrown.expect(NullPointerException.class);
+        XmlFileStorage.exportEventbook(VALID_EVENTBOOK_FILE, EVENTBOOK_DESTINATION_PATH, null);
+    }
+
+    @Test
+    public void exportEventbook_missingSourceFile_fileNotFoundException() throws Exception {
+        thrown.expect(FileNotFoundException.class);
+        XmlFileStorage.exportEventbook(MISSING_FILE, EVENTBOOK_DESTINATION_PATH, EVENTBOOK_HEADER);
+    }
+}
+```
+###### \java\seedu\address\testutil\EventBookBuilder.java
+``` java
+
+/**
+ * A utility class to help with building Eventbook objects.
+ * Example usage: <br>
+ * {@code EventBook ab = new EventBookBuilder().withEvent(Sentosa).build();}
+ */
+public class EventBookBuilder {
+
+    private EventBook eventBook;
+
+    public EventBookBuilder() {
+        eventBook = new EventBook();
+    }
+
+    public EventBookBuilder(EventBook eventBook) {
+        this.eventBook = eventBook;
     }
 
     /**
-     * A stub ReadOnlyEventBook whose events lists can violate interface constraints.
+     * Adds a new {@code Event} to the {@code EventBook} that we are building.
      */
-    private static class EventBookStub implements ReadOnlyEventBook {
-        private final ObservableList<ReadOnlyEvent> events = FXCollections.observableArrayList();
-
-        EventBookStub(Collection<? extends ReadOnlyEvent> events) {
-            this.events.setAll(events);
+    public EventBookBuilder withEvent(ReadOnlyEvent event) {
+        try {
+            eventBook.addEvent(event);
+        } catch (DuplicateEventException dpe) {
+            throw new IllegalArgumentException("event is expected to be unique.");
         }
+        return this;
+    }
 
-        @Override
-        public ObservableList<ReadOnlyEvent> getEventList() {
-            return events;
-        }
+
+    public EventBook build() {
+        return eventBook;
     }
 }
 ```
-###### /java/seedu/address/model/UniqueEventListTest.java
-``` java
-public class UniqueEventListTest {
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        UniqueEventList uniqueEventList = new UniqueEventList();
-        thrown.expect(UnsupportedOperationException.class);
-        uniqueEventList.asObservableList().remove(0);
-    }
-}
-```
-###### /java/seedu/address/model/ModelManagerTest.java
-``` java
-    @Test
-    public void equals() {
-        AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
-        AddressBook differentAddressBook = new AddressBook();
-
-        EventBook eventBook = new EventBookBuilder().withEvent(SPECTRA).withEvent(DEEPAVALI).build();
-        EventBook differentEventBook = new EventBook();
-
-        UserPrefs userPrefs = new UserPrefs();
-
-        Account account = new Account();
-
-        Config config = new Config();
-
-        // same values -> returns true
-        ModelManager modelManager = new ModelManager(addressBook, eventBook, userPrefs, account, config);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, eventBook, userPrefs, account, config);
-        assertTrue(modelManager.equals(modelManagerCopy));
-
-        // same object -> returns true
-        assertTrue(modelManager.equals(modelManager));
-
-        // null -> returns false
-        assertFalse(modelManager.equals(null));
-
-        // different types -> returns false
-        assertFalse(modelManager.equals(5));
-
-        // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, eventBook, userPrefs,
-                account, config)));
-
-        // different Persons filteredList -> returns false
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredPersonList(new ContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
-
-        // different events filteredList -> returns false
-        String keywordForEvents = SPECTRA.getTitle().value;
-        modelManager.updateFilteredEventList(new TitleContainsKeywordsPredicate(Arrays.asList(keywordForEvents)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, eventBook, userPrefs, account, config)));
-
-        // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        modelManager.updateFilteredEventList(PREDICATE_SHOW_ALL_EVENTS);
-
-        // different userPrefs -> returns true
-        UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setAddressBookName("differentName");
-        differentUserPrefs.setEventBookName("differentName");
-        assertTrue(modelManager.equals(new ModelManager(addressBook, eventBook, differentUserPrefs, account, config)));
-    }
-}
-```
-###### /java/seedu/address/model/event/LocationTest.java
-``` java
-public class LocationTest {
-
-    @Test
-    public void isValidLocation() {
-        // invalid location
-        assertFalse(Location.isValidLocation("")); // empty string
-        assertFalse(Location.isValidLocation(" ")); // spaces only
-        assertFalse(Location.isValidLocation("~!?>")); //Symbols cannot be at the start
-
-        // valid location
-        assertTrue(Location.isValidLocation("sentosa")); // alphabets only
-        assertTrue(Location.isValidLocation("123456789")); // numbers only
-        assertTrue(Location.isValidLocation(
-                "This is a testing event to test to accept long location")); // long description
-        assertTrue(Location.isValidLocation("Hello World with Test")); // with capital letters
-        assertTrue(Location.isValidLocation("5top Test")); // alphanumeric characters
-    }
-}
-```
-###### /java/seedu/address/model/event/DescriptionTest.java
-``` java
-public class DescriptionTest {
-
-    @Test
-    public void isValidDescription() {
-        // invalid description
-        assertFalse(Description.isValidDescription("")); // empty string
-        assertFalse(Description.isValidDescription(" ")); // spaces only
-        assertFalse(Description.isValidDescription("~!?>")); //Symbols cannot be at the start
-
-        // valid description
-        assertTrue(Description.isValidDescription("IT Fair 2017 with many offers")); // alphabets only
-        assertTrue(Description.isValidDescription("123456789")); // numbers only
-        assertTrue(Description.isValidDescription(
-                "This is a testing event to test to accept long description")); // long description
-        assertTrue(Description.isValidDescription("Hello World with Test")); // with capital letters
-        assertTrue(Description.isValidDescription("5top Test")); // alphanumeric characters
-    }
-}
-```
-###### /java/seedu/address/model/event/DatetimeTest.java
-``` java
-public class DatetimeTest {
-
-    @Test
-    public void isValidDate() {
-        // invalid datetime
-        assertFalse(Datetime.isValidDatetime("")); // empty string
-        assertFalse(Datetime.isValidDatetime(" ")); // spaces only
-        assertFalse(Datetime.isValidDatetime("123456789")); // numbers only
-        assertFalse(Datetime.isValidDatetime("shakjhsa")); // characters only
-        assertFalse(Datetime.isValidDatetime("test123")); // numbers and characters
-        assertFalse(Datetime.isValidDatetime("1-09-2017 2010")); // invalid date format
-        assertFalse(Datetime.isValidDatetime("90-09-2017 2010")); // invalid day
-        assertFalse(Datetime.isValidDatetime("02-13-2017 2010")); // invalid month
-        assertFalse(Datetime.isValidDatetime("02-09-17 2010")); // invalid year
-        assertFalse(Datetime.isValidDatetime("02-09-2017 2510")); // invalid hour
-        assertFalse(Datetime.isValidDatetime("02-09-2017 2065")); // invalid minute
-
-        // valid datetime
-        assertTrue(Datetime.isValidDatetime("02-09-2017 2015"));
-    }
-}
-```
-###### /java/seedu/address/model/event/TitleTest.java
-``` java
-public class TitleTest {
-
-    @Test
-    public void isValidTitle() {
-        // invalid title
-        assertFalse(Title.isValidTitle("")); // empty string
-        assertFalse(Title.isValidTitle(" ")); // spaces only
-        assertFalse(Title.isValidTitle("~!?>")); //Symbols cannot be at the start
-
-        // valid title
-        assertTrue(Title.isValidTitle("Computing fair")); // alphabets only
-        assertTrue(Title.isValidTitle("13580")); // numbers only
-        assertTrue(Title.isValidTitle("Chinese New Year Hari Raya Deepavali")); // long title
-        assertTrue(Title.isValidTitle("Sentosa Event")); // with capital letters
-        assertTrue(Title.isValidTitle("Jay Chou 10th World Tour")); // alphanumeric characters
-    }
-}
-```
-###### /java/seedu/address/testutil/EventBuilder.java
+###### \java\seedu\address\testutil\EventBuilder.java
 ``` java
 
 /**
@@ -2569,45 +2607,7 @@ public class EventBuilder {
     }
 }
 ```
-###### /java/seedu/address/testutil/EventBookBuilder.java
-``` java
-
-/**
- * A utility class to help with building Eventbook objects.
- * Example usage: <br>
- * {@code EventBook ab = new EventBookBuilder().withEvent(Sentosa).build();}
- */
-public class EventBookBuilder {
-
-    private EventBook eventBook;
-
-    public EventBookBuilder() {
-        eventBook = new EventBook();
-    }
-
-    public EventBookBuilder(EventBook eventBook) {
-        this.eventBook = eventBook;
-    }
-
-    /**
-     * Adds a new {@code Event} to the {@code EventBook} that we are building.
-     */
-    public EventBookBuilder withEvent(ReadOnlyEvent event) {
-        try {
-            eventBook.addEvent(event);
-        } catch (DuplicateEventException dpe) {
-            throw new IllegalArgumentException("event is expected to be unique.");
-        }
-        return this;
-    }
-
-
-    public EventBook build() {
-        return eventBook;
-    }
-}
-```
-###### /java/seedu/address/testutil/TypicalEvents.java
+###### \java\seedu\address\testutil\TypicalEvents.java
 ``` java
 
 /**

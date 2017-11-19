@@ -113,12 +113,14 @@ Examples:
 
 Clears all entries from the address book and event book. +
 Format: `clear`
+
 // tag::lock[]
 === Current User Display: `currentuser` - Since V1.5
 
 Displays the current user name. The default user name is `PUBLIC` +
 Format: `currentuser`
 // end::lock[]
+
 // tag::undoredo[]
 === Deleting a person : `delete` - Since V1.0
 
@@ -376,7 +378,8 @@ Examples:
 Logs out of the address book. This will encrypt the current list of contacts and clear them. To retrieve them, log in
  using your account credentials +
 Format: `logout`
-// end::lock
+
+// end::lock[]
 
 // tag::order[]
 === Order contacts in Address Book by parameter(s): `order` - Since V1.0

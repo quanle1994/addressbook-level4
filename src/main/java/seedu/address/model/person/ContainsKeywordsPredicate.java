@@ -22,6 +22,7 @@ public class ContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> {
 
     @Override
     public boolean test(ReadOnlyPerson person) {
+        //@author quanle1994
         if (predicateType == 'n') {
             return keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));

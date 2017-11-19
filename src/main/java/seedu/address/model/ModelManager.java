@@ -267,12 +267,16 @@ public class ModelManager extends ComponentManager implements Model {
         raise(new AddressBookChangedEvent(addressBook));
     }
 
+    //@@author quanle1994
+
     /**
      * Raises an event to indicate the model has changed
      */
     private void indicateAccountChanged() {
         raise(new AccountChangedEvent(account));
     }
+
+    //@@author
 
     @Override
     public synchronized void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException {
@@ -500,6 +504,8 @@ public class ModelManager extends ComponentManager implements Model {
         filteredEvents.setPredicate(predicate);
     }
 
+    //@author quanle1994
+
     //===================== Account Operations =========================
 
     @Override
@@ -529,6 +535,8 @@ public class ModelManager extends ComponentManager implements Model {
     public void setUserStorage(Storage userStorage) {
         this.userStorage = userStorage;
     }
+
+    //@@author
 
     @Override
     public void orderEventList(String parameter)
@@ -679,12 +687,14 @@ public class ModelManager extends ComponentManager implements Model {
         file.delete();
         refreshAddressBook();
     }
+    //@@author
 
     @Override
     public UserPrefs getUserPrefs() {
         return userPref;
     }
 
+    //@@author quanle1994
     @Override
     public void refreshAddressBook() throws IOException, DataConversionException {
         AddressBook temp = new AddressBook(userStorage.readAddressBook().orElseGet

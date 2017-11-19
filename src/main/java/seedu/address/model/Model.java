@@ -63,10 +63,14 @@ public interface Model {
     void exportAddressBook() throws FileNotFoundException, ParserConfigurationException, IOException,
             SAXException, TransformerException;
 
+    //@@author quanle1994
+
     /**
      * Returns the Account
      */
     ReadOnlyAccount getAccount();
+
+    //@@author
 
     /**
      * Deletes the given person
@@ -196,6 +200,8 @@ public interface Model {
      */
     void setAlias(String command, String alias) throws UnknownCommandException, DuplicateAliasException;
 
+    //@@author quanle1994
+
     void persistUserAccount(ReadOnlyUser user) throws DuplicateUserException;
 
     User getUserFromIdAndPassword(String userName, String password) throws UserNotFoundException;
@@ -205,6 +211,8 @@ public interface Model {
     String retrieveSaltFromStorage(String userId) throws UserNotFoundException;
 
     void setUserStorage(Storage userStorage);
+
+    //@@author quanle1994
 
     void transferData() throws ConfigMissingException;
 
@@ -216,7 +224,11 @@ public interface Model {
 
     void releaseEncryptedContacts(String fileName) throws DataConversionException, IOException;
 
+    //@@author
+
     UserPrefs getUserPrefs();
+
+    //@author quanle1994
 
     void refreshAddressBook() throws IOException, DataConversionException;
 
