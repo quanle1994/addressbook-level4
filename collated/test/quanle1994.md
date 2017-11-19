@@ -1,5 +1,30 @@
 # quanle1994
-###### /java/seedu/address/logic/commands/LockCommandIntegrationTest.java
+###### \java\seedu\address\commons\util\encryption\FileEncryptorTest.java
+``` java
+
+import java.io.File;
+import java.io.FileOutputStream;
+
+import org.junit.Test;
+
+/**
+ * Test the File Encryptor
+ */
+public class FileEncryptorTest {
+    @Test
+    public void decrypt_successful() throws Exception {
+        FileOutputStream test = new FileOutputStream("data/test.encrypted");
+        test.write("test".getBytes());
+        FileEncryptor.encryptFile("test", "test", false);
+        FileEncryptor.decryptFile("test", "test");
+        File file = new File("data/test.encrypted");
+        file.delete();
+        file = new File("data/addressbook.xml");
+        file.delete();
+    }
+}
+```
+###### \java\seedu\address\logic\commands\LockCommandIntegrationTest.java
 ``` java
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -73,7 +98,101 @@ public class LockCommandIntegrationTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/LoginCommandTest.java
+###### \java\seedu\address\logic\commands\LockCommandTest.java
+``` java
+
+/**
+ * Test Lock Command.
+ */
+public class LockCommandTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void execute_lockSuccessful() throws Exception {
+        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
+
+        CommandResult commandResult = getLockCommand("test", "123", modelStub).execute();
+        assertEquals(LockCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
+        String userIdHash = new String(new HashDigest().getHashDigest("test"));
+        String userIdHex = new HexCode().getHexFormat(userIdHash);
+        assertEquals(userIdHex, modelStub.userAdded.getUserId());
+        assertEquals(new CurrentUserDetails().getUserId(), "test");
+
+        commandResult = getLockCommand("lequangquan", "123", modelStub).execute();
+        assertEquals(LockCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
+        userIdHash = new String(new HashDigest().getHashDigest("lequangquan"));
+        userIdHex = new HexCode().getHexFormat(userIdHash);
+        assertEquals(userIdHex, modelStub.userAdded.getUserId());
+        assertEquals(new CurrentUserDetails().getUserId(), "lequangquan");
+    }
+
+    @Test
+    public void execute_throwDuplicateUserException() throws Exception {
+        ModelStubThrowingDuplicateUserException modelStub = new ModelStubThrowingDuplicateUserException();
+
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(LockCommand.MESSAGE_EXISTING_USER);
+
+        getLockCommand("test", "123456", modelStub).execute();
+    }
+
+    @Test
+    public void execute_correctUserAndPassword() throws Exception {
+        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
+        LockCommand lockCommand = getLockCommand("test", "123456", modelStub);
+        lockCommand.execute();
+        String userName = lockCommand.getUserId();
+        String passWord = lockCommand.getPasswordText();
+        assertEquals(userName, "test");
+        assertEquals(passWord, "123456");
+
+    }
+
+    @Test
+    public void execute_nullModelException() throws Exception {
+        Model modelStub = null;
+
+        thrown.expect(NullPointerException.class);
+
+        getLockCommand("test", "123456", modelStub).execute();
+    }
+
+    /**
+     * Generates a new LockCommand with the details of the given event.
+     */
+    public LockCommand getLockCommand(String userName, String password, Model model) {
+        LockCommand command = new LockCommand(userName, password);
+        UserPrefs userPrefs = new UserPrefs();
+        Config config = new Config();
+        Logic logic = null;
+        command.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+        return command;
+    }
+
+    /**
+     * A Model stub that always throw a DuplicateEventException when trying to add a event.
+     */
+    private class ModelStubThrowingDuplicateUserException extends ModelStub {
+        @Override
+        public void persistUserAccount(ReadOnlyUser event) throws DuplicateUserException {
+            throw new DuplicateUserException();
+        }
+    }
+
+    private class ModelStubAcceptingUserAdded extends ModelStub {
+        private User userAdded;
+
+        @Override
+        public void persistUserAccount(ReadOnlyUser user) throws DuplicateUserException {
+            userAdded = new User(user);
+        }
+    }
+}
+```
+###### \java\seedu\address\logic\commands\LoginCommandTest.java
 ``` java
 
 import static junit.framework.TestCase.assertEquals;
@@ -158,13 +277,12 @@ public class LoginCommandTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/RemoveUserCommandTest.java
+###### \java\seedu\address\logic\commands\LogoutCommandTest.java
 ``` java
 
 import static junit.framework.TestCase.assertEquals;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -177,6 +295,120 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.lockmodelstub.ModelStub;
+import seedu.address.logic.currentuser.CurrentUserDetails;
+import seedu.address.model.Model;
+import seedu.address.model.UserPrefs;
+import seedu.address.ui.UiManager;
+
+/**
+ * Test Logout Command
+ */
+public class LogoutCommandTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void execute_logoutBeforeLoginException() throws Exception {
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(LogoutCommand.MESSAGE_LOGOUT_ERROR);
+
+        getLogoutCommand(new ModelStubAcceptingUserAdded()).execute();
+    }
+
+    @Test
+    public void execute_logoutSuccessful() throws Exception {
+        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
+        CurrentUserDetails.setCurrentUser("test", "1111111111111111111111111111111", "", "");
+        LogoutCommand logoutCommand = getLogoutCommand(modelStub);
+        CommandResult commandResult = logoutCommand.execute();
+        assertEquals(LogoutCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
+    }
+
+    @Test
+    public void execute_hexIdIndexOutOfBound() throws Exception {
+        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
+        CurrentUserDetails.setCurrentUser("test", "", "", "");
+
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(LogoutCommand.MESSAGE_ENCRYPTION_ERROR);
+
+        getLogoutCommand(modelStub).execute();
+    }
+
+    @Test
+    public void execute_decryptionError() throws Exception {
+        ModelStubThrowingError modelStub = new ModelStubThrowingError();
+        CurrentUserDetails.setCurrentUser("test", "1111111111111111111", "abc",
+                "abc");
+        modelStub.control = true;
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(LogoutCommand.MESSAGE_ENCRYPTION_ERROR);
+
+        getLogoutCommand(modelStub).execute();
+    }
+
+    @Test
+    public void execute_refreshAbError() throws Exception {
+        ModelStubThrowingError modelStub = new ModelStubThrowingError();
+        CurrentUserDetails.setCurrentUser("test", "1111111111111111111", "abc",
+                "abc");
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(LogoutCommand.MESSAGE_ENCRYPTION_ERROR);
+
+        getLogoutCommand(modelStub).execute();
+    }
+
+    private LogoutCommand getLogoutCommand(Model model) {
+        LogoutCommand command = new LogoutCommand();
+        UserPrefs userPrefs = new UserPrefs();
+        Config config = new Config();
+        Logic logic = null;
+        command.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
+                new UiManager(logic, config, userPrefs));
+        return command;
+    }
+
+    private class ModelStubAcceptingUserAdded extends ModelStub {
+    }
+
+    private class ModelStubThrowingError extends ModelStub {
+        private boolean control = false;
+
+        @Override
+        public void decrypt(String fileName, String pass) throws Exception {
+            if (control) {
+                throw new Exception();
+            }
+        }
+
+        @Override
+        public void refreshAddressBook() throws IOException, DataConversionException {
+            throw new IOException();
+        }
+    }
+}
+```
+###### \java\seedu\address\logic\commands\RemoveUserCommandTest.java
+``` java
+
+import static junit.framework.TestCase.assertEquals;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import seedu.address.commons.core.Config;
+import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.Logic;
+import seedu.address.logic.UndoRedoStack;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.lockmodelstub.ModelStub;
+import seedu.address.logic.currentuser.CurrentUserDetails;
 import seedu.address.model.Model;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.user.ReadOnlyUser;
@@ -191,11 +423,25 @@ public class RemoveUserCommandTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    @Before
+    public void setUp() {
+        CurrentUserDetails.setUserId("PUBLIC");
+    }
+
     @Test
     public void execute_noUserToRemove() throws Exception {
         thrown.expect(CommandException.class);
         thrown.expectMessage(RemoveUserCommand.MESSAGE_ENCRYPTION_ERROR);
 
+        new RemoveUserCommand("abc", "abc", true).execute();
+    }
+
+    @Test
+    public void execute_removeWhileLoggedIn() throws Exception {
+        thrown.expect(CommandException.class);
+        thrown.expectMessage(RemoveUserCommand.MESSAGE_REMOVE_WHILE_LOGGED_IN);
+
+        CurrentUserDetails.setUserId("test");
         new RemoveUserCommand("abc", "abc", true).execute();
     }
 
@@ -330,212 +576,7 @@ public class RemoveUserCommandTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/LogoutCommandTest.java
-``` java
-
-import static junit.framework.TestCase.assertEquals;
-
-import java.io.IOException;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import seedu.address.commons.core.Config;
-import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.logic.CommandHistory;
-import seedu.address.logic.Logic;
-import seedu.address.logic.UndoRedoStack;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.lockmodelstub.ModelStub;
-import seedu.address.logic.currentuser.CurrentUserDetails;
-import seedu.address.model.Model;
-import seedu.address.model.UserPrefs;
-import seedu.address.ui.UiManager;
-
-/**
- * Test Logout Command
- */
-public class LogoutCommandTest {
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
-    public void execute_logoutBeforeLoginException() throws Exception {
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(LogoutCommand.MESSAGE_LOGOUT_ERROR);
-
-        getLogoutCommand(new ModelStubAcceptingUserAdded()).execute();
-    }
-
-    @Test
-    public void execute_logoutSuccessful() throws Exception {
-        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
-        CurrentUserDetails.setCurrentUser("test", "1111111111111111111111111111111", "", "");
-        LogoutCommand logoutCommand = getLogoutCommand(modelStub);
-        CommandResult commandResult = logoutCommand.execute();
-        assertEquals(LogoutCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
-    }
-
-    @Test
-    public void execute_hexIdIndexOutOfBound() throws Exception {
-        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
-        CurrentUserDetails.setCurrentUser("test", "", "", "");
-
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(LogoutCommand.MESSAGE_ENCRYPTION_ERROR);
-
-        getLogoutCommand(modelStub).execute();
-    }
-
-    @Test
-    public void execute_decryptionError() throws Exception {
-        ModelStubThrowingError modelStub = new ModelStubThrowingError();
-        CurrentUserDetails.setCurrentUser("test", "1111111111111111111", "abc",
-                "abc");
-        modelStub.control = true;
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(LogoutCommand.MESSAGE_ENCRYPTION_ERROR);
-
-        getLogoutCommand(modelStub).execute();
-    }
-
-    @Test
-    public void execute_refreshAbError() throws Exception {
-        ModelStubThrowingError modelStub = new ModelStubThrowingError();
-        CurrentUserDetails.setCurrentUser("test", "1111111111111111111", "abc",
-                "abc");
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(LogoutCommand.MESSAGE_ENCRYPTION_ERROR);
-
-        getLogoutCommand(modelStub).execute();
-    }
-
-    private LogoutCommand getLogoutCommand(Model model) {
-        LogoutCommand command = new LogoutCommand();
-        UserPrefs userPrefs = new UserPrefs();
-        Config config = new Config();
-        Logic logic = null;
-        command.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
-                new UiManager(logic, config, userPrefs));
-        return command;
-    }
-
-    private class ModelStubAcceptingUserAdded extends ModelStub {
-    }
-
-    private class ModelStubThrowingError extends ModelStub {
-        private boolean control = false;
-
-        @Override
-        public void decrypt(String fileName, String pass) throws Exception {
-            if (control) {
-                throw new Exception();
-            }
-        }
-
-        @Override
-        public void refreshAddressBook() throws IOException, DataConversionException {
-            throw new IOException();
-        }
-    }
-}
-```
-###### /java/seedu/address/logic/commands/LockCommandTest.java
-``` java
-
-/**
- * Test Lock Command.
- */
-public class LockCommandTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
-    public void execute_lockSuccessful() throws Exception {
-        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
-
-        CommandResult commandResult = getLockCommand("test", "123", modelStub).execute();
-        assertEquals(LockCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
-        String userIdHash = new String(new HashDigest().getHashDigest("test"));
-        String userIdHex = new HexCode().getHexFormat(userIdHash);
-        assertEquals(userIdHex, modelStub.userAdded.getUserId());
-        assertEquals(new CurrentUserDetails().getUserId(), "test");
-
-        commandResult = getLockCommand("lequangquan", "123", modelStub).execute();
-        assertEquals(LockCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
-        userIdHash = new String(new HashDigest().getHashDigest("lequangquan"));
-        userIdHex = new HexCode().getHexFormat(userIdHash);
-        assertEquals(userIdHex, modelStub.userAdded.getUserId());
-        assertEquals(new CurrentUserDetails().getUserId(), "lequangquan");
-    }
-
-    @Test
-    public void execute_throwDuplicateUserException() throws Exception {
-        ModelStubThrowingDuplicateUserException modelStub = new ModelStubThrowingDuplicateUserException();
-
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(LockCommand.MESSAGE_EXISTING_USER);
-
-        getLockCommand("test", "123456", modelStub).execute();
-    }
-
-    @Test
-    public void execute_correctUserAndPassword() throws Exception {
-        ModelStubAcceptingUserAdded modelStub = new ModelStubAcceptingUserAdded();
-        LockCommand lockCommand = getLockCommand("test", "123456", modelStub);
-        lockCommand.execute();
-        String userName = lockCommand.getUserId();
-        String passWord = lockCommand.getPasswordText();
-        assertEquals(userName, "test");
-        assertEquals(passWord, "123456");
-
-    }
-
-    @Test
-    public void execute_nullModelException() throws Exception {
-        Model modelStub = null;
-
-        thrown.expect(NullPointerException.class);
-
-        getLockCommand("test", "123456", modelStub).execute();
-    }
-
-    /**
-     * Generates a new LockCommand with the details of the given event.
-     */
-    public LockCommand getLockCommand(String userName, String password, Model model) {
-        LockCommand command = new LockCommand(userName, password);
-        UserPrefs userPrefs = new UserPrefs();
-        Config config = new Config();
-        Logic logic = null;
-        command.setData(model, new CommandHistory(), new UndoRedoStack(), new Config(),
-                new UiManager(logic, config, userPrefs));
-        return command;
-    }
-
-    /**
-     * A Model stub that always throw a DuplicateEventException when trying to add a event.
-     */
-    private class ModelStubThrowingDuplicateUserException extends ModelStub {
-        @Override
-        public void persistUserAccount(ReadOnlyUser event) throws DuplicateUserException {
-            throw new DuplicateUserException();
-        }
-    }
-
-    private class ModelStubAcceptingUserAdded extends ModelStub {
-        private User userAdded;
-
-        @Override
-        public void persistUserAccount(ReadOnlyUser user) throws DuplicateUserException {
-            userAdded = new User(user);
-        }
-    }
-}
-```
-###### /java/seedu/address/model/user/UserTest.java
+###### \java\seedu\address\model\user\UserTest.java
 ``` java
 
 import static org.junit.Assert.assertTrue;
