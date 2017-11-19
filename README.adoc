@@ -67,5 +67,6 @@ learning curve.
 * Some parts of this sample application were inspired by the excellent http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
 _Marco Jakob_.
 * This application was built off the AddressBook-Level4 project created by SE-EDU initiative at https://github.com/se-edu/.
+* This application has used the javafx calendar from SirGoose3432: Voelkening, J (2016) SirGoose3432 source code [Source code]. https://github.com/SirGoose3432/javafx-calendar
 
 == Licence : link:LICENSE[MIT]
